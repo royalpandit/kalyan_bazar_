@@ -106,9 +106,9 @@ fun <Api> buildApi(
             val token = MyApplication.tinyDB.getString(Constants.SharedPref.ACCESS_TOKEN, "")
             if (!token.isNullOrEmpty())
                 builder.addHeader(
-                    "Authorization",
+                    "AccessToken",
 //                    "Bearer " + AES.decrypt(token, Constants.SharedPref.ACCESS_TOKEN)
-                    "Bearer $token"
+                    "$token"
                 )
             return chain.proceed(builder.build())
         }

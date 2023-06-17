@@ -22,4 +22,7 @@ class UserRepository @Inject constructor(
     suspend fun RequestDashBoardList() =
         safeApiCall { api.RequestDashBoardList() }
 
+    suspend fun getInDashboard(marketId: Int?) =
+        safeApiCall { api.getInDashboard(marketId) }
+
 }

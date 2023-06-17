@@ -8,8 +8,7 @@ import com.app.kalyanbazar.data.repositry.BaseModel
 import com.app.kalyanbazar.data.repositry.UserRepository
 import com.app.kalyanbazar.model.request.RequestLogin
 import com.app.kalyanbazar.model.request.RequestRegister
-import com.app.kalyanbazar.model.response.ResponseLogin
-import com.app.kalyanbazar.model.response.ResponseLoginItem
+import com.app.kalyanbazar.model.response.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -40,9 +39,9 @@ class HomeViewModel  @Inject constructor(
     }
 
 
-    private val _RequestProfile: MutableLiveData<Resource<BaseModel<ArrayList<ResponseLoginItem>>>> =
+    private val _RequestProfile: MutableLiveData<Resource<BaseModel<ResponseUserProfile>>> =
         MutableLiveData()
-    val RequestProfile: LiveData<Resource<BaseModel<ArrayList<ResponseLoginItem>>>>
+    val RequestProfile: LiveData<Resource<BaseModel<ResponseUserProfile>>>
         get() = _RequestProfile
 
     fun RequestProfile() = viewModelScope.launch {
@@ -52,14 +51,26 @@ class HomeViewModel  @Inject constructor(
 
 
 
-    private val _RequestDashBoardList: MutableLiveData<Resource<BaseModel<ArrayList<ResponseLoginItem>>>> =
+    private val _RequestDashBoardList: MutableLiveData<Resource<BaseModel<ArrayList<ResponseDashBoardListItem>>>> =
         MutableLiveData()
-    val RequestDashBoardList: LiveData<Resource<BaseModel<ArrayList<ResponseLoginItem>>>>
+    val RequestDashBoardList: LiveData<Resource<BaseModel<ArrayList<ResponseDashBoardListItem>>>>
         get() = _RequestDashBoardList
 
     fun RequestDashBoardList() = viewModelScope.launch {
         _RequestDashBoardList.value = Resource.Loading
         _RequestDashBoardList.value = repository.RequestDashBoardList()
+    }
+
+
+
+    private val _getInDashboard: MutableLiveData<Resource<BaseModel<ArrayList<ResponseInDashBoard>>>> =
+        MutableLiveData()
+    val getInDashboard: LiveData<Resource<BaseModel<ArrayList<ResponseInDashBoard>>>>
+        get() = _getInDashboard
+
+    fun getInDashboard(marketId: Int?) = viewModelScope.launch {
+        _getInDashboard.value = Resource.Loading
+        _getInDashboard.value = repository.getInDashboard(marketId)
     }
 
 

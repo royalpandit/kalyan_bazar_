@@ -14,17 +14,13 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ActivitySplash : BaseActivity<ActivitySplashBinding>() {
-
+    var token: String = ""
 
     override fun getLayoutResId(): Int =R.layout.activity_splash
 
     override fun setupViews() {
         postDelayed()
-        /*Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, ActivityLogin::class.java)
-            startActivity(intent)
-            finish()
-        }, 3000)*/
+
     }
 
     override fun setupViewsOnResume() {
@@ -33,15 +29,16 @@ class ActivitySplash : BaseActivity<ActivitySplashBinding>() {
 
     private fun postDelayed() {
         Handler(Looper.getMainLooper()).postDelayed({
-            Log.e("11>>","11")
-            var toekn = MyApplication.tinyDB.getString(Constants.SharedPref.ACCESS_TOKEN, "")
-
-            if (toekn != null){
-                startAActivity(HomeDashboardActivity::class.java)
+             token = MyApplication.tinyDB.getString(Constants.SharedPref.ACCESS_TOKEN, "-1").toString()
+            if (token == "-1"){
+                 startAActivity(ActivityLogin::class.java)
+                finish()
+            }
+            else if (token != null  && token != ""){
+                 startAActivity(HomeDashboardActivity::class.java)
                 finish()
             }else {
-                startAActivity(ActivityLogin::class.java)
-                //     startAActivityM("LoginActivity")
+                 startAActivity(ActivityLogin::class.java)
                 finish()
             }
 

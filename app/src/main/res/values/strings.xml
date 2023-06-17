@@ -27,7 +27,7 @@
     <string name="from_date">From Date</string>
     <string name="to_date">To Date</string>
     <string name="enter_your_mobile">Enter your mobile number</string>
-     <string name="notaccount">Don\'t have an account? REGISTER</string>
+    <string name="notaccount">Don\'t have an account? REGISTER</string>
     <string name="alreadyaccount">Already have an account? LOGIN</string>
     <string name="wallet">Wallet</string>
     <string name="home">Home</string>

@@ -108,6 +108,7 @@ class Constants {
         const val checklist_TYpe = "checklist_Type"
         const val TrackingStatus = "0"
         const val reportID = " reportID"
+        const val marketID = " marketId"
         const val clientName = "clientName"
         const val SELECT_TYPE = "selectType"
         const val SINGLE = "single"
