@@ -4,7 +4,6 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.kalyanbazar.R
 import com.app.kalyanbazar.adapter.AdapterHome
-import com.app.kalyanbazar.adapter.AdapterWalletStatement
 import com.app.kalyanbazar.databinding.ActivityHomeBinding
 import com.app.kalyanbazar.model.User
 import com.app.kalyanbazar.utils.BaseActivity
@@ -19,7 +18,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     override fun setupViews() {
         dataBinding.apply {
 
-            setAdapter()
+          //  setAdapter()
         }
      }
 
@@ -27,7 +26,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
      }
 
 
-    fun setAdapter(){
+ /*   fun setAdapter(){
         dataBinding.recRecyclerView.layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayout.VERTICAL, false)
 
 
@@ -41,11 +40,11 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         users.add(User("Logout Bonus Also", "2023-06-12 10:20:09","Madhur Morning","10:20 AM","12:20 PM","720-47-423","Teen Bazar"))
 
         //creating our adapter
-        val adapter = AdapterHome(this,users)
+        val adapter = AdapterHome(this, users, this)
 
         //now adding the adapter to recyclerview
         dataBinding.recRecyclerView.adapter = adapter
 
 
-    }
+    }*/
 }

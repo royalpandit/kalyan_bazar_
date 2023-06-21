@@ -96,5 +96,6 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 //Shimmer
     implementation 'com.romainpiel.shimmer:library:1.4.0@aar'
-
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+   // implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
 }
