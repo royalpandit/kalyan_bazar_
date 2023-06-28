@@ -36,7 +36,7 @@
                     app:navigationIcon="@drawable/navigationicon"
                     app:popupTheme="@style/MyDarkToolbarStyle"
                     app:title="@string/app_name"
-                    app:titleTextColor="@color/white_opacity"/>
+                    app:titleTextColor="@color/golden"/>
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabs"

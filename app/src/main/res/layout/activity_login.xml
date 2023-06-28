@@ -9,102 +9,134 @@
 
 <RelativeLayout
      android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bluetheme"
+    >
+
+    <ImageView
+        android:layout_alignParentTop="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/group_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:id="@+id/img1"
+        app:tint="#f8cf40" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/img1">
         <LinearLayout
-            android:layout_marginStart="@dimen/_25sdp"
-            android:layout_marginEnd="@dimen/_25sdp"
+
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_width="match_parent"
+             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="@dimen/_120sdp"
-                android:layout_gravity="center_horizontal"
-                app:cardBackgroundColor="#270015"
-                app:cardCornerRadius="80dp">
 
-                <com.google.android.material.imageview.ShapeableImageView
+            <LinearLayout
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/transparent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_120sdp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/filledTextemail"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        app:hintTextColor="@color/golden"
+                        app:shapeAppearance="@style/Rounded"
+                        app:boxStrokeColor="@color/golden"
+                        android:hint="Enter Email">
+                        <!--this is the actual edit text which takes the input-->
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_email"
+                            android:textColor="@color/golden"
+                            android:textColorHint="@color/golden"
+                             android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/filledTextpwd"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        app:hintTextColor="@color/golden"
+                        app:shapeAppearance="@style/Rounded"
+                        app:boxStrokeColor="@color/golden"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Password">
+                        <!--this is the actual edit text which takes the input-->
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_pwd"
+                            android:textColor="@color/golden"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:background="?attr/selectableItemBackground"
+                    android:onClick="forPass"
+                     android:padding="@dimen/_10sdp"
+                    android:text="Forgot Password"
+                    android:textColor="@color/golden" />
+
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/golden"
+                    android:paddingVertical="13dp"
+                    android:text="@string/login"
+                    android:id="@+id/login"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:cornerRadius="20dp" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/tvregister"
                     android:layout_gravity="center"
-                    android:background="#270015"
-                    android:src="@drawable/logoblacksplash" />
-            </com.google.android.material.card.MaterialCardView>
+                    android:layout_height="wrap_content"
+                     android:onClick="registerClick"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:text="@string/notaccount"
+                    android:textAllCaps="false"
+                    android:textColor="@color/golden"
+                    app:cornerRadius="@dimen/_8sdp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/filledTextemail"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            </LinearLayout>
 
-                android:layout_marginTop="@dimen/_100sdp"
 
-                android:hint="Enter Email">
-                <!--this is the actual edit text which takes the input-->
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/filledTextpwd"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:hint="Enter Password">
-                <!--this is the actual edit text which takes the input-->
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_pwd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:background="?attr/selectableItemBackground"
-                android:onClick="forPass"
-                android:padding="@dimen/_10sdp"
-                android:text="Forgot Password"
-                android:textColor="@color/black" />
-
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/yellowdark"
-                 android:paddingVertical="13dp"
-                android:text="@string/login"
-                android:id="@+id/login"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:cornerRadius="20dp" />
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:id="@+id/tvregister"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/blackdark"
-                android:onClick="registerClick"
-                android:paddingVertical="@dimen/_10sdp"
-                android:text="@string/notaccount"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                app:cornerRadius="@dimen/_8sdp" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <ImageView
+       android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/group_bottom"
+        android:layout_width="match_parent"
+        app:tint="#f8cf40"
+        android:layout_height="@dimen/_100sdp"/>
 
 </RelativeLayout>
 </layout>

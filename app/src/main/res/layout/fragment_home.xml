@@ -10,24 +10,23 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_green">
+    android:background="@color/golden">
     <androidx.cardview.widget.CardView
         android:id="@+id/mViewPagerFrame"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="10dp">
+        android:layout_height="@dimen/_150sdp">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <androidx.viewpager.widget.ViewPager
-                android:id="@+id/mViewPager"
+                android:id="@+id/viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:background="@color/light_green" />
+                android:background="@color/bluetheme" />
+
         </FrameLayout>
     </androidx.cardview.widget.CardView>
     <FrameLayout
@@ -35,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/mViewPagerFrame"
-        android:background="@color/theme_start"
+        android:background="@color/bluetheme"
         android:elevation="1dp">
 
         <com.google.android.material.textview.MaterialTextView

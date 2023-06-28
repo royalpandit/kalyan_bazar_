@@ -54,7 +54,7 @@ class Constants {
         const val VISIT_ID = "visitId"
         const val VISIT_DETAIL_ID = "visitdetailId"
         const val LEAD_MEETING_ID = "leadmeetingId"
-        const val MATERIAL_ID = "materialId"
+        const val MARKET_ID = "marketId"
         const val MACHINE_DETAIL_ID = "MACHINE_DETAIL_ID"
         const val VENDOR_DETAIL_ID = "VENDOR_DETAIL_ID"
         const val FROM_PAGE = "from_page"

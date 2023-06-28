@@ -1,6 +1,7 @@
 package com.app.kalyanbazar.data.network
 
 import com.app.kalyanbazar.data.repositry.BaseModel
+import com.app.kalyanbazar.model.request.RequestBankAccountDetails
 import com.app.kalyanbazar.model.request.RequestCreateBid
 import com.app.kalyanbazar.model.request.RequestLogin
 import com.app.kalyanbazar.model.request.RequestRegister
@@ -34,5 +35,8 @@ interface ApiInterface {
 
     @POST("dashboard/create-bid/")
     suspend fun RequestCreateBid(@Body model: RequestCreateBid): BaseModel<*>
+
+    @POST("user-bank-account-details-create/")
+    suspend fun RequestUserBankAccountDetails(@Body model: RequestBankAccountDetails): BaseModel<*>
 
 }

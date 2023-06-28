@@ -6,6 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.app.kalyanbazar.data.network.Resource
 import com.app.kalyanbazar.data.repositry.BaseModel
 import com.app.kalyanbazar.data.repositry.UserRepository
+import com.app.kalyanbazar.model.request.RequestBankAccountDetails
+import com.app.kalyanbazar.model.request.RequestCreateBid
 import com.app.kalyanbazar.model.request.RequestLogin
 import com.app.kalyanbazar.model.request.RequestRegister
 import com.app.kalyanbazar.model.response.*
@@ -27,6 +29,7 @@ class HomeViewModel  @Inject constructor(
         _RequestRegister.value = Resource.Loading
         _RequestRegister.value = repository.RequestRegister(data)
     }
+
 
     private val _RequestLogin: MutableLiveData<Resource<BaseModel<ArrayList<ResponseLoginItem>>>> =
         MutableLiveData()
@@ -74,5 +77,36 @@ class HomeViewModel  @Inject constructor(
     }
 
 
+
+    private val _getImageSlider: MutableLiveData<Resource<BaseModel<ArrayList<ResponseImageSlider>>>> =
+        MutableLiveData()
+    val getImageSlider: LiveData<Resource<BaseModel<ArrayList<ResponseImageSlider>>>>
+        get() = _getImageSlider
+
+    fun getImageSlider() = viewModelScope.launch {
+        _getImageSlider.value = Resource.Loading
+        _getImageSlider.value = repository.getImageSlider()
+    }
+
+
+    private val _RequestCreateBid: MutableLiveData<Resource<BaseModel<*>>> =
+        MutableLiveData()
+    val RequestCreateBid: LiveData<Resource<BaseModel<*>>>
+        get() = _RequestCreateBid
+
+    fun RequestCreateBid(data: RequestCreateBid) = viewModelScope.launch {
+        _RequestCreateBid.value = Resource.Loading
+        _RequestCreateBid.value = repository.RequestCreateBid(data)
+    }
+
+    private val _RequestUserBankAccountDetails: MutableLiveData<Resource<BaseModel<*>>> =
+        MutableLiveData()
+    val RequestUserBankAccountDetails: LiveData<Resource<BaseModel<*>>>
+        get() = _RequestUserBankAccountDetails
+
+    fun RequestUserBankAccountDetails(data: RequestBankAccountDetails) = viewModelScope.launch {
+        _RequestUserBankAccountDetails.value = Resource.Loading
+        _RequestUserBankAccountDetails.value = repository.RequestUserBankAccountDetails(data)
+    }
 
 }

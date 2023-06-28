@@ -10,6 +10,9 @@
     <color name="red_200">#F44336</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFEB3B</color>
+    <color name="golden">#f8cf40</color>
+    <color name="bluetheme">#172230</color>
+    <color name="bluethemes">#25201b</color>
     <color name="black_dark">#000000</color>
     <color name="theme_start">#025B00</color>
     <color name="seme_transparent">#95000000</color>
@@ -18,6 +21,7 @@
     <color name="greendark">#025B00</color>
      <color name="menu_bg">#FFFFFF</color>
     <color name="light_green">#E8FEDF</color>
+    <color name="light_golden">#23E8E7E7</color>
 
     <color name="transparent">#00000000</color>
     <color name="warn_red">#ec5645</color>

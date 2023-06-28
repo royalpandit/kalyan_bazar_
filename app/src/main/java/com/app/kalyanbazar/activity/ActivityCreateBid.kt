@@ -16,13 +16,13 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
     private val viewModel by viewModels<HomeViewModel>()
     var marketId: Int = 0
     var catId: Int = 0
-    var marketName: String =""
-    var userId: Int? =null
+    var marketName: String = ""
+    var userId: Int? = null
 
-    override fun getLayoutResId(): Int =R.layout.activity_create_bid
+    override fun getLayoutResId(): Int = R.layout.activity_create_bid
 
     override fun setupViews() {
-        userId= MyApplication.tinyDB.getInt(Constants.SharedPref.OWNER_ID, -1)
+        userId = MyApplication.tinyDB.getInt(Constants.SharedPref.OWNER_ID, -1)
         marketId = intent.getIntExtra(Constants.MARKET_ID, 0)
         catId = intent.getIntExtra(Constants.CAT_ID, 0)
         marketName = intent.getStringExtra(Constants.Category_Name).toString()
@@ -33,16 +33,16 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
             toolbar.ivBack.setOnClickListener {
                 onBackPressed()
             }
-            chooseDate.text=Helper.getCurrentDateYMD()
+            chooseDate.text = Helper.getCurrentDateYMD()
 
-btnProceed.setOnClickListener {
-    createBid(marketId)
-}
+            btnProceed.setOnClickListener {
+                createBid(marketId)
+            }
         }
-     }
+    }
 
     override fun setupViewsOnResume() {
-     }
+    }
 
     //RequestCreateBid
 
@@ -77,16 +77,15 @@ btnProceed.setOnClickListener {
                 RequestCreateBid(
                     pana = inputD.text.toString(),
                     marketInsideId = marketId,
-                 // userId = MyApplication.tinyDB.getInt(Constants.SharedPref.OWNER_ID, -1),
+                    // userId = MyApplication.tinyDB.getInt(Constants.SharedPref.OWNER_ID, -1),
                     userId = userId,
                     panaDate = chooseDate.text.toString(),
-                    session = false ,
+                    session = false,
                     points = inputCoins.text.toString().toInt(),
                     status = true
 
 
-
-                    )
+                )
             )
 
         }

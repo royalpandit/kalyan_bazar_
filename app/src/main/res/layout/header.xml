@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/rl_tool"
         android:layout_width="match_parent"
-        android:background="@color/greendark"
+        android:background="@color/bluetheme"
         android:layout_height="@dimen/_40sdp">
 
         <ImageView
@@ -30,7 +30,7 @@
             android:textSize="@dimen/_15sdp"
             android:text="Title"
 android:textStyle="bold"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
 
 
     </RelativeLayout>
