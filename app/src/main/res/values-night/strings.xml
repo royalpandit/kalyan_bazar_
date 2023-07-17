@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="choose_date">Choose Date</string>
+    <string name="chart">CHART</string>
 </resources>

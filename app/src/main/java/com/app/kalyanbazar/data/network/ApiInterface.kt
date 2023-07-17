@@ -23,7 +23,7 @@ interface ApiInterface {
 
 
     @GET("dashboard/list/")
-    suspend fun RequestDashBoardList(): BaseModel<ArrayList<ResponseDashBoardListItem>>
+    suspend fun RequestDashBoardList(@Query("market_type")marketType:String): BaseModel<ArrayList<ResponseDashBoardListItem>>
 
 
     @GET("dashboard/get-inner-market?")
@@ -38,5 +38,11 @@ interface ApiInterface {
 
     @POST("user-bank-account-details-create/")
     suspend fun RequestUserBankAccountDetails(@Body model: RequestBankAccountDetails): BaseModel<*>
+
+    @GET("chart-pdf-get/")
+    suspend fun ChartPdfGet(): BaseModel<ArrayList<ResponseChartPdfGetItem>>
+
+    @GET(" dashboard/get-bid/")
+    suspend fun getBid(@Query("start_date") startDate: String?,@Query("end_date") endDate: String?): BaseModel<ArrayList<ResponseGetBid>>
 
 }

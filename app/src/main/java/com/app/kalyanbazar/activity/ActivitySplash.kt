@@ -1,10 +1,8 @@
 package com.app.kalyanbazar.activity
 
-import android.content.Intent
-import android.os.Handler
+ import android.os.Handler
 import android.os.Looper
-import android.util.Log
-import com.app.kalyanbazar.R
+ import com.app.kalyanbazar.R
 import com.app.kalyanbazar.databinding.ActivitySplashBinding
 import com.app.kalyanbazar.utils.BaseActivity
 import com.app.kalyanbazar.utils.Constants
@@ -42,7 +40,7 @@ class ActivitySplash : BaseActivity<ActivitySplashBinding>() {
                 finish()
             }
 
-        },3000)
+        },1000)
 
 
     }
