@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/button_gradient"
+        android:background="@drawable/white"
         android:orientation="vertical">
 
     <RelativeLayout
@@ -23,7 +23,7 @@
     </RelativeLayout>
 <LinearLayout
     android:orientation="vertical"
-    android:background="@color/light_green"
+    android:background="@color/white"
     android:layout_below="@+id/rl_tool"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -36,7 +36,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/darkblue"
+        android:background="@color/bluetheme"
         android:orientation="horizontal"
         android:visibility="visible">
 
@@ -49,7 +49,7 @@
 
             android:paddingVertical="8dp"
             android:text="@string/single_digit"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/single_d_v"
@@ -59,7 +59,7 @@
             android:gravity="center|center_vertical"
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
     </FrameLayout>
 
     <FrameLayout
@@ -70,7 +70,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/darkblue"
+        android:background="@color/bluetheme"
         android:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
@@ -81,7 +81,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:text="@string/jodi_digit"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/jodi_d_value"
@@ -91,7 +91,7 @@
             android:gravity="center|center_vertical"
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
     </FrameLayout>
 
     <FrameLayout
@@ -102,7 +102,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/darkblue"
+        android:background="@color/bluetheme"
         android:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
@@ -113,7 +113,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:text="@string/single_pana"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/single_p_v"
@@ -123,7 +123,7 @@
             android:gravity="center|center_vertical"
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
     </FrameLayout>
 
     <FrameLayout
@@ -134,7 +134,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/darkblue"
+        android:background="@color/bluetheme"
         android:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
@@ -145,7 +145,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:text="@string/doublef_digit"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/double_d_v"
@@ -155,7 +155,7 @@
             android:gravity="center|center_vertical"
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
     </FrameLayout>
 
     <FrameLayout
@@ -166,7 +166,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/darkblue"
+        android:background="@color/bluetheme"
         android:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
@@ -177,7 +177,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:text="@string/triple_digit"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/triple_d_v"
@@ -187,7 +187,7 @@
             android:gravity="center|center_vertical"
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
     </FrameLayout>
 
     <FrameLayout
@@ -198,7 +198,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/darkblue"
+        android:background="@color/bluetheme"
         android:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
@@ -208,7 +208,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:text="@string/half_sangam"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/half_s_v"
@@ -218,7 +218,7 @@
             android:gravity="center"
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
     </FrameLayout>
 
     <FrameLayout
@@ -229,7 +229,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/darkblue"
+        android:background="@color/bluetheme"
         android:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
@@ -239,7 +239,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:text="@string/full_sangam"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/full_s_v"
@@ -249,7 +249,7 @@
             android:gravity="center|center_vertical"
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/golden" />
     </FrameLayout>
 
     <com.google.android.material.card.MaterialCardView

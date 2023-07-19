@@ -2,11 +2,7 @@ package com.app.kalyanbazar.model.response
 
 import com.google.gson.annotations.SerializedName
 
-/*data class ResponseDashBoardList(
 
-	@field:SerializedName("ResponseDashBoardList")
-	val responseDashBoardList: ArrayList<ResponseDashBoardListItem> = ArrayList()
-)*/
 
 data class ResponseDashBoardListItem(
 
@@ -27,6 +23,8 @@ data class ResponseDashBoardListItem(
 
 	@field:SerializedName("market_code")
 	val marketCode: String? = null,
+	@field:SerializedName("market_type")
+	val marketType: String? = null,
 
 	@field:SerializedName("market_status")
 	val marketStatus: Boolean? = null,

@@ -109,6 +109,7 @@ class Constants {
         const val TrackingStatus = "0"
         const val reportID = " reportID"
         const val marketID = " marketId"
+        const val marketType = " marketType"
         const val clientName = "clientName"
         const val SELECT_TYPE = "selectType"
         const val SINGLE = "single"

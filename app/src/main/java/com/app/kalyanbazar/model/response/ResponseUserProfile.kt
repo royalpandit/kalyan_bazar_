@@ -24,6 +24,8 @@ data class ResponseUserProfile(
 
 	@field:SerializedName("phone_number")
 	val phoneNumber: String? = null,
+	@field:SerializedName("referral_id")
+	val referralId: String? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,

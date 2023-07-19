@@ -2,6 +2,8 @@ package com.app.kalyanbazar.adapter
 
 import android.app.Activity
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,30 +11,29 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.app.kalyanbazar.R
 import com.app.kalyanbazar.activity.ActivityChart
- import com.app.kalyanbazar.databinding.AdapterHomeBinding
+import com.app.kalyanbazar.databinding.AdapterHomeBinding
+import com.app.kalyanbazar.databinding.AdapterStarlineBinding
 import com.app.kalyanbazar.model.response.ResponseDashBoardListItem
 import com.romainpiel.shimmer.Shimmer
 import com.romainpiel.shimmer.ShimmerTextView
 
-//
-class AdapterHome(
+ class AdapterStarline (
     private val activity: Activity,
     var list: ArrayList<ResponseDashBoardListItem>,
     private val onClick: onClicklistBazar,
-) : RecyclerView.Adapter<AdapterHome.ViewResource>() {
+) : RecyclerView.Adapter<AdapterStarline.ViewResource>() {
     interface onClicklistBazar {
-      fun onItemClickBazar(position: ResponseDashBoardListItem, rlhead: RelativeLayout)
-     }
+        fun onItemClickBazar(position: ResponseDashBoardListItem, rlhead: RelativeLayout)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewResource {
         val view =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.adapter_home, parent, false)
+                .inflate(R.layout.adapter_starline, parent, false)
         return ViewResource(view)
     }
 
@@ -43,26 +44,16 @@ class AdapterHome(
 
         holder.binding.eventNumber.text = list[position].marketCode
         holder.binding.openingTime.text = list[position].marketOpeningTime
-        holder.binding.closingTime.text = list[position].marketClosingTime
-        holder.binding.eventType.text = list[position].marketName
+
         val shimmer = Shimmer()
 
-        shimmer.start<ShimmerTextView>( holder.binding.eventType)
-        if (list[position].marketStatus!!.equals(true)){
+         if (list[position].marketStatus!!.equals(true)){
             val rotate = AnimationUtils.loadAnimation(activity, R.anim.round)
             holder.binding.eventStatus.startAnimation(rotate)
             holder.binding.eventStatus.setImageResource(R.drawable.play)
-            holder.binding.marketOpen.visibility=View.VISIBLE
-            holder.binding.marketOpen.setText("Market is Running")
-            holder.binding.marketOpen.setBackgroundColor(ContextCompat.getColor(activity, R.color.white))
-            holder.binding.marketOpen.setTextColor(ContextCompat.getColor(activity, R.color.greendark))
-        }else{
-            holder.binding.marketOpen.visibility=View.VISIBLE
-            holder.binding.eventStatus.setImageResource(R.drawable.close)
-            holder.binding.marketOpen.setText("Market Closed")
-            holder.binding.marketOpen.setBackgroundColor(ContextCompat.getColor(activity, R.color.white))
-            holder.binding.marketOpen.setTextColor(ContextCompat.getColor(activity, R.color.red_200))
-        }
+              }else{
+             holder.binding.eventStatus.setImageResource(R.drawable.close)
+                }
         val animation = AnimationUtils.loadAnimation(activity, R.anim.dd)
         holder.binding.eventNumber.setAnimation(animation)
 
@@ -71,11 +62,7 @@ class AdapterHome(
             onClick.onItemClickBazar(list[position],holder.binding.rlhead)
 
         }
-        holder.binding.chartTable.setOnClickListener {
-            //
-            val chartTable = Intent(activity, ActivityChart::class.java)
-            activity.startActivity(chartTable)
-        }
+
     }
 
     override fun getItemCount(): Int {
@@ -87,7 +74,7 @@ class AdapterHome(
     ) {
 
 
-        var binding: AdapterHomeBinding = DataBindingUtil.bind(itemView!!)!!
+        var binding: AdapterStarlineBinding = DataBindingUtil.bind(itemView!!)!!
 
     }
 

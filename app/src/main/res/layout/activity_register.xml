@@ -57,6 +57,8 @@
                     android:id="@+id/edit_first"
                     android:layout_width="match_parent"
                     android:maxLength="20"
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"
                     android:textColor="@color/golden"
                     android:textColorHint="@color/golden"
                     android:layout_height="wrap_content" />
@@ -77,6 +79,8 @@
                     android:id="@+id/edit_lastname"
                     android:maxLength="20"
                     android:layout_width="match_parent"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
                     android:textColor="@color/golden"
                     android:textColorHint="@color/golden"
                     android:layout_height="wrap_content" />
@@ -97,6 +101,8 @@
                     android:id="@+id/edit_email"
                     android:inputType="textEmailAddress"
                     android:layout_width="match_parent"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
                     android:textColor="@color/golden"
                     android:textColorHint="@color/golden"
                     android:layout_height="wrap_content" />
@@ -118,6 +124,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"
                     android:textColor="@color/golden"
                     android:textColorHint="@color/golden"
                     android:maxLength="10"/>
@@ -138,7 +146,9 @@
                     android:id="@+id/edit_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
                     android:textColor="@color/golden"
+                    android:singleLine="true"
                     android:textColorHint="@color/golden"
                     android:inputType="textPassword"/>
 

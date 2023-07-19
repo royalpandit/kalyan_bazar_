@@ -77,8 +77,8 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                 RequestCreateBid(
                     pana = inputD.text.toString(),
                     marketInsideId = marketId,
-                    // userId = MyApplication.tinyDB.getInt(Constants.SharedPref.OWNER_ID, -1),
-                    userId = userId,
+                   userId = MyApplication.tinyDB.getInt(Constants.SharedPref.OWNER_ID, -1),
+                  //  userId = userId,
                     panaDate = chooseDate.text.toString(),
                     session = false,
                     points = inputCoins.text.toString().toInt(),

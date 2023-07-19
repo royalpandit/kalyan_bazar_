@@ -1,26 +1,37 @@
 package com.app.kalyanbazar.activity
 
  import android.content.Intent
-import android.net.Uri
-import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import com.app.kalyanbazar.BuildConfig
+ import android.net.Uri
+ import android.util.Log
+ import android.view.MenuItem
+ import android.view.View
+ import android.widget.TextView
+ import android.widget.Toast
+ import androidx.activity.viewModels
+ import androidx.appcompat.app.ActionBarDrawerToggle
+ import androidx.core.view.GravityCompat
+ import androidx.fragment.app.Fragment
+ import androidx.fragment.app.FragmentTransaction
+ import androidx.lifecycle.Observer
+ import com.app.kalyanbazar.BuildConfig
  import com.app.kalyanbazar.R
+ import com.app.kalyanbazar.data.network.Resource
  import com.app.kalyanbazar.databinding.ActivityHomeDashboardBinding
  import com.app.kalyanbazar.fragment.HomeFragment
  import com.app.kalyanbazar.utils.BaseActivity
-import com.google.android.material.navigation.NavigationView
-import dagger.hilt.android.AndroidEntryPoint
+ import com.app.kalyanbazar.utils.Constants
+ import com.app.kalyanbazar.utils.MyApplication
+ import com.app.kalyanbazar.utils.handleApiError
+ import com.app.kalyanbazar.viewModel.HomeViewModel
+ import com.google.android.material.navigation.NavigationView
+ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(){
+    private val viewModel by viewModels<HomeViewModel>()
     var fragment: Fragment? = null
+    var refrelID: String = ""
     lateinit var toggle: ActionBarDrawerToggle
 
     override fun getLayoutResId(): Int = R.layout.activity_home_dashboard
@@ -33,10 +44,11 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(){
                 this@HomeDashboardActivity, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
             dataBinding.drawerLayout.addDrawerListener(toggle)
            // toggle.syncState()
-            dataBinding.navigationView.setItemIconTintList(null)
+             dataBinding.navigationView.setItemIconTintList(null)
 
 
             confToolbar()
+            profile()
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             fragment = HomeFragment()
             val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
@@ -61,7 +73,7 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(){
      }
     private fun confToolbar() {
        // var fragment: Fragment? = null
-
+        profile()
         dataBinding.toolbar.setNavigationOnClickListener(View.OnClickListener { v: View? ->
             dataBinding.drawerLayout.openDrawer(
                 GravityCompat.START
@@ -80,10 +92,9 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(){
                     dataBinding.drawerLayout.closeDrawers()
                 }
                 R.id.seeFullProfile -> {
-                    Toast.makeText(this, "logout", Toast.LENGTH_SHORT).show()
 
-                    /* val profile = Intent(this@sixthAttemptEleven, easyFour::class.java)
-                     startActivity(profile)*/
+                    val profile = Intent(this@HomeDashboardActivity, ActivityProfile::class.java)
+                     startActivity(profile)
                 }
                 R.id.addFunds -> {
                     Toast.makeText(this, "logout", Toast.LENGTH_SHORT).show()
@@ -129,7 +140,7 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(){
                 R.id.shareWithFriends -> {
                     val sendIntent = Intent()
                     sendIntent.action = Intent.ACTION_SEND
-                    sendIntent.putExtra(
+                 /*   sendIntent.putExtra(
                         Intent.EXTRA_TEXT,
                         """
                         Hello there !!
@@ -138,6 +149,15 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(){
                         
                         https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}
                         """.trimIndent()
+                    )*/
+                    sendIntent.putExtra(
+                        Intent.EXTRA_TEXT,""" Hi! I'm inviting you to use Paytm. it's simple and secure way to make satta  """+""""""+
+                        """
+                        or click my link below to get an exclsive welcome reward when you make your first UPI Payment via Add fund
+                        Switch to india's highest rated  and most trusted Kalyan Bazar
+                        
+                        https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}
+                        """.trimIndent()+""+"""use my refrel Code"""+"-"+refrelID
                     )
                     sendIntent.type = "text/plain"
                     startActivity(sendIntent)
@@ -166,6 +186,11 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(){
                 }
                 R.id.logout -> {
                    // LogOutDialog()
+                    MyApplication.tinyDB.clear()
+                    val contactUs = Intent(this@HomeDashboardActivity, ActivityLogin::class.java)
+                    startActivity(contactUs)
+                    finish()
+
                     dataBinding.drawerLayout.closeDrawers()
                 }
             }
@@ -240,4 +265,54 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(){
             super.onBackPressed()
         }
     }
+
+    fun profile() {
+
+
+        viewModel.RequestProfile.observe(this, Observer {
+            MyApplication.ProgressBar(this, it is Resource.Loading)
+            when (it) {
+                is Resource.Success -> {
+
+                    if (it.value.status) {
+                        Log.e("Success==>>>tokenqq", "suceess")
+
+                       // MyApplication.tinyDB.putString(Constants.SharedPref.ACCESS_TOKEN, it.value.accessToken)
+                        val tvUserName =   dataBinding.navigationView.getHeaderView(0).findViewById<TextView>(R.id.tvusername)
+                        val tvemail =   dataBinding.navigationView.getHeaderView(0).findViewById<TextView>(R.id.tvemail)
+                        tvUserName.text=it.value.data.firstName+""+it.value.data.lastName
+                        tvemail.text=it.value.data.email
+                        refrelID=it.value.data.referralId.toString()
+                        MyApplication.tinyDB.putInt(Constants.SharedPref.OWNER_ID, it.value.data.id!!)
+                        MyApplication.tinyDB.putString(Constants.SharedPref.MOBILE, it.value.data.phoneNumber.toString()!!)
+                        MyApplication.tinyDB.putString(Constants.SharedPref.EMAIL, it.value.data.email.toString()!!)
+                        MyApplication.tinyDB.putString(Constants.SharedPref.USER_NAME, it.value.data.firstName.toString()!!+" "+it.value.data.lastName.toString()!!)
+
+                        // dataBinding.navigationView.getHeaderView(0).findViewById<MaterialTextView>(R.id.tvusername)
+                       // dataBinding.navigationView.
+                       //  dataBinding.navigationView.getHeaderView(0).findViewById<MaterialTextView>(R.id.tvemail)
+
+                    }
+                }
+                is Resource.Failure -> handleApiError(
+                    it,
+                    dataBinding.root,
+                    activity = this, retry = {
+
+                    }
+                )
+            }
+        })
+
+
+        dataBinding.apply {
+            viewModel.RequestProfile(
+
+            )
+
+        }
+
+
+    }
  }
+

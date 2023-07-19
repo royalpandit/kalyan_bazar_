@@ -100,6 +100,7 @@ dependencies {
    // implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
 
     // EasyUpiPayment Library
+
     implementation 'dev.shreyaspatil.EasyUpiPayment:EasyUpiPayment:3.0.3'
 
     //Paytm Intent Upi

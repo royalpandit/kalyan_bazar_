@@ -18,11 +18,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_100sdp"
             app:tint="#f8cf40" />
+
         <ImageView
-android:layout_centerInParent="true"
-            android:src="@drawable/transparent"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_200sdp"/>
+            android:layout_height="@dimen/_200sdp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/transparent" />
 
         <ImageView
             android:layout_alignParentBottom="true"

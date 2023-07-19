@@ -1,18 +1,24 @@
 package com.app.kalyanbazar.activity
 
-import android.widget.LinearLayout
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.kalyanbazar.R
 import com.app.kalyanbazar.adapter.AdapterBidHistory
+import com.app.kalyanbazar.data.network.Resource
 import com.app.kalyanbazar.databinding.ActivityBidHistoryBinding
-import com.app.kalyanbazar.model.User
+import com.app.kalyanbazar.model.response.ResponseGetBid
 import com.app.kalyanbazar.utils.BaseActivity
 import com.app.kalyanbazar.utils.Helper
+import com.app.kalyanbazar.utils.MyApplication
+import com.app.kalyanbazar.utils.handleApiError
+import com.app.kalyanbazar.viewModel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ActivityBidHistory : BaseActivity<ActivityBidHistoryBinding>() {
-
+class ActivityBidHistory : BaseActivity<ActivityBidHistoryBinding>(),AdapterBidHistory.onClicklistUser {
+    private val viewModel by viewModels<HomeViewModel>()
+    var bidhistory: ArrayList<ResponseGetBid> = ArrayList()
     var strHistory: Int = 0
     override fun getLayoutResId(): Int = R.layout.activity_bid_history
 
@@ -32,9 +38,9 @@ class ActivityBidHistory : BaseActivity<ActivityBidHistoryBinding>() {
                 onBackPressed()
             }
 
-            fromDate.text=Helper.getCurrentDate()
-            toDate.text=Helper.getCurrentDate()
-
+            fromDate.text=Helper.getCurrentDateYMD()
+            toDate.text=Helper.getCurrentDateYMD()
+            getBidHIstory(fromDate.text.toString(),toDate.text.toString())
 
             fromDate.setOnClickListener {
                 Helper.DatePickerDialogBoxAll(
@@ -45,16 +51,19 @@ class ActivityBidHistory : BaseActivity<ActivityBidHistoryBinding>() {
                 toDate.setOnClickListener {
                     Helper.DatePickerDialogBoxAll(
                         this@ActivityBidHistory, this@ActivityBidHistory,
-                        dataBinding.fromDate
+                        dataBinding.toDate
                     )
             }
+swipeRefLyt.setOnRefreshListener {
+    getBidHIstory(fromDate.text.toString(), toDate.text.toString())
 
+}
 
             submitbidhistory.setOnClickListener {
+                getBidHIstory(fromDate.text.toString(), toDate.text.toString())
 
-                setAdapter()
             }
-           /* */
+
         }
     }
 
@@ -62,7 +71,7 @@ class ActivityBidHistory : BaseActivity<ActivityBidHistoryBinding>() {
     override fun setupViewsOnResume() {
      }
 
-    fun setAdapter(){
+  /*  fun setAdapter(){
         dataBinding.recyclerView.layoutManager = LinearLayoutManager(this@ActivityBidHistory, LinearLayout.VERTICAL, false)
 
 
@@ -82,4 +91,48 @@ class ActivityBidHistory : BaseActivity<ActivityBidHistoryBinding>() {
         dataBinding.recyclerView.adapter = adapter
 
     }
+*/
+
+
+    private fun getBidHIstory(from: String, toDate: String) {
+dataBinding.swipeRefLyt.isRefreshing=true
+        viewModel.getBid.observe(this, Observer {
+            MyApplication.ProgressBar(this, it is Resource.Loading)
+            when (it) {
+                is Resource.Success -> {
+                    if (it.value.status) {
+                        dataBinding.swipeRefLyt.isRefreshing=false
+                        //  dataBinding.rvHome.hideShimmer()
+                        //       dataBinding.rvHome.hideShimmerAdapter()
+                        bidhistory = ArrayList()
+                        bidhistory = it.value.data
+
+                        setHomeUserAdapter()
+                    }
+                }
+                is Resource.Failure -> handleApiError(it,
+                    dataBinding.root,
+                    activity = this@ActivityBidHistory,
+                    retry = { getBidHIstory(from, toDate) })
+            }
+        })
+        viewModel.getBid(
+            startDate = from,
+            endDate = toDate
+        )
+    }
+
+    private fun setHomeUserAdapter() {
+
+        val adapter = AdapterBidHistory(this, bidhistory, this)
+        dataBinding.recyclerView.setHasFixedSize(true)
+        dataBinding.recyclerView.adapter = adapter
+        dataBinding.recyclerView.layoutManager = LinearLayoutManager(this)
+
+    }
+
+    override fun onItemClickUser(position: ResponseGetBid) {
+
+    }
+
 }

@@ -1,9 +1,11 @@
 package com.app.kalyanbazar.activity
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.app.kalyanbazar.R
@@ -14,7 +16,9 @@ import com.app.kalyanbazar.model.request.RequestLogin
 import com.app.kalyanbazar.model.request.RequestRegister
 import com.app.kalyanbazar.utils.BaseActivity
 import com.app.kalyanbazar.utils.Constants
+import com.app.kalyanbazar.utils.Helper.Companion.isValidEmail
 import com.app.kalyanbazar.utils.MyApplication
+import com.app.kalyanbazar.utils.MyApplication.Companion.toast
 import com.app.kalyanbazar.utils.handleApiError
 import com.app.kalyanbazar.viewModel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +33,13 @@ class ActivityRegister : BaseActivity<ActivityRegisterBinding>(){
 
     override fun setupViews() {
         dataBinding.apply {
+            editFirst.requestFocus()
+            val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(editFirst, InputMethodManager.SHOW_IMPLICIT)
+
+
+
+
             tvalreadylogin.setOnClickListener {
                 val intent = Intent(this@ActivityRegister, ActivityLogin::class.java)
                 startActivity(intent)
@@ -45,6 +56,9 @@ class ActivityRegister : BaseActivity<ActivityRegisterBinding>(){
                 } else if (editEmail.text.toString().isEmpty()) {
                     editEmail.requestFocus()
                     editEmail.error = "Enter Email"
+                }else if (!isValidEmail(editEmail.text.toString())) {
+                    editEmail.requestFocus()
+                    editEmail.error = "Please Enter Valid Email"
                 } else if (editPhonenumber.text.toString().isEmpty()) {
                     editPhonenumber.requestFocus()
                     editPhonenumber.error = "Enter Phone Number"
@@ -58,10 +72,6 @@ class ActivityRegister : BaseActivity<ActivityRegisterBinding>(){
 
             }
 
-          /*  btnsignup.setOnClickListener {
-                val intent = Intent(this@ActivityRegister, HomeDashboardActivity::class.java)
-                startActivity(intent)
-            }*/
         }
 
      }
@@ -77,10 +87,9 @@ class ActivityRegister : BaseActivity<ActivityRegisterBinding>(){
             MyApplication.ProgressBar(this, it is Resource.Loading)
             when (it) {
                 is Resource.Success -> {
-                    Log.e("Success==>>>qq", "suceess")
 
                     if (it.value.status) {
-
+                        toast("Register Succefull")
                         MyApplication.tinyDB.putString(Constants.SharedPref.ACCESS_TOKEN, it.value.accessToken)
 
                         Log.e("Token==>>>", it.value.accessToken)

@@ -13,6 +13,7 @@ import com.app.kalyanbazar.model.response.ResponseInDashBoard
 import com.app.kalyanbazar.utils.BaseActivity
 import com.app.kalyanbazar.utils.Constants
 import com.app.kalyanbazar.utils.MyApplication
+import com.app.kalyanbazar.utils.MyApplication.Companion.toast
 import com.app.kalyanbazar.utils.handleApiError
 import com.app.kalyanbazar.viewModel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,12 +54,12 @@ class ActivityIndashboard : BaseActivity<ActivityIndashboardBinding>(), AdapterI
             when (it) {
                 is Resource.Success -> {
                     if (it.value.status) {
-                        //  dataBinding.rvHome.hideShimmer()
-                        //       dataBinding.rvHome.hideShimmerAdapter()
 
                         arrUser = ArrayList()
                         arrUser = it.value.data
                         setHomeUserAdapter()
+                    }else{
+                        toast("BadRequest")
                     }
                 }
                 is Resource.Failure -> handleApiError(it,
