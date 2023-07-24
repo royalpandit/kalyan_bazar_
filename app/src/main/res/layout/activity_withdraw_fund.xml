@@ -30,14 +30,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/rl_tool"
-            android:background="@color/light_green"
+            android:background="@color/white_opacity"
             android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/light_green"
-                tools:ct=".easy.easyEleven">
+                 tools:ct=".easy.easyEleven">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -61,18 +60,18 @@
                             android:layout_marginBottom="1dp"
                             android:text="@string/lkh"
                             android:textAllCaps="true"
-                            android:textColor="@color/black_dark"
+                            android:textColor="@color/bluetheme"
                             android:textStyle="bold" />
 
                         <LinearLayout
+                            android:weightSum="4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:baselineAligned="false"
-                            android:orientation="horizontal">
+                             android:orientation="horizontal">
 
                             <androidx.cardview.widget.CardView
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginVertical="5dp"
                                 android:layout_marginStart="5dp"
@@ -84,15 +83,14 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
-                                    android:paddingVertical="8dp"
-                                    tools:ignore="UsingOnClickInXml">
+                                    android:background="@color/white"
+                                    android:paddingVertical="8dp">
 
                                     <LinearLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_centerHorizontal="true"
-                                        android:baselineAligned="false"
-                                        android:gravity="center"
+                                         android:gravity="center"
                                         android:orientation="vertical">
 
                                         <ImageView
@@ -105,8 +103,8 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="5dp"
                                             android:gravity="center"
-                                            android:text="@string/ass_bank_details"
-                                            android:textColor="@color/black_dark"
+                                            android:text="Bank"
+                                            android:textColor="@color/bluetheme"
                                             android:textStyle="bold"
                                             app:autoSizeMaxTextSize="18sp"
                                             app:autoSizeMinTextSize="10dp"
@@ -116,7 +114,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <androidx.cardview.widget.CardView
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginVertical="5dp"
                                 android:layout_marginStart="5dp"
@@ -129,6 +127,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
+                                    android:background="@color/white"
                                     tools:ignore="UsingOnClickInXml">
 
                                     <LinearLayout
@@ -151,7 +150,7 @@
                                             android:layout_marginTop="5dp"
                                             android:gravity="center"
                                             android:text="@string/phonepeass"
-                                            android:textColor="@color/black_dark"
+                                            android:textColor="@color/bluetheme"
                                             android:textStyle="bold"
                                             app:autoSizeMaxTextSize="18sp"
                                             app:autoSizeMinTextSize="10dp"
@@ -161,7 +160,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <androidx.cardview.widget.CardView
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginVertical="5dp"
                                 android:layout_marginStart="5dp"
@@ -174,6 +173,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
+                                    android:background="@color/white"
                                     tools:ignore="UsingOnClickInXml">
 
                                     <LinearLayout
@@ -195,7 +195,7 @@
                                             android:layout_centerHorizontal="true"
                                             android:layout_marginTop="5dp"
                                             android:text="@string/assgoogle_pay"
-                                            android:textColor="@color/black_dark"
+                                            android:textColor="@color/bluetheme"
                                             android:textStyle="bold"
                                             app:autoSizeMaxTextSize="18sp"
                                             app:autoSizeMinTextSize="10dp"
@@ -205,7 +205,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <androidx.cardview.widget.CardView
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="5dp"
                                 android:layout_marginVertical="5dp"
@@ -218,6 +218,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
+                                    android:background="@color/white"
                                     tools:ignore="UsingOnClickInXml">
 
                                     <LinearLayout
@@ -239,7 +240,7 @@
                                             android:layout_centerHorizontal="true"
                                             android:layout_marginTop="5dp"
                                             android:text="@string/asspaytm"
-                                            android:textColor="@color/black_dark"
+                                            android:textColor="@color/bluetheme"
                                             android:textStyle="bold"
                                             app:autoSizeMaxTextSize="18sp"
                                             app:autoSizeMinTextSize="10dp"
@@ -360,7 +361,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:text="@string/ddd"
-                            android:textColor="@color/black_dark"
+                            android:textColor="@color/bluetheme"
                             android:textStyle="bold" />
 
                         <com.google.android.material.textview.MaterialTextView
@@ -370,13 +371,12 @@
                             android:layout_marginStart="0dp"
                             android:layout_marginEnd="0dp"
                             android:background="@drawable/white_border"
-                            android:backgroundTint="@color/white_opacity"
-                            android:drawableEnd="@drawable/dropdown"
+                             android:drawableEnd="@drawable/dropdown"
                             android:gravity="center"
                             android:paddingHorizontal="10dp"
                             android:paddingVertical="4dp"
                             android:text="@string/sgbv"
-                            android:textColor="@color/black_dark"
+                            android:textColor="@color/bluetheme"
                             tools:ignore="UsingOnClickInXml" />
 
                         <RelativeLayout
@@ -390,8 +390,8 @@
                                 android:layout_height="45dp"
                                 android:layout_marginTop="0dp"
                                 android:background="@drawable/white_border"
-                                android:backgroundTint="@color/white_opacity"
-                                android:hint="@string/wfede"
+                                 android:hint="@string/wfede"
+                                android:textColorHint="@color/seme_transparent"
                                 android:inputType="number"
                                 android:maxLength="9"
                                 android:paddingHorizontal="40dp"

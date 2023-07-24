@@ -1,10 +1,7 @@
 package com.app.kalyanbazar.data.network
 
 import com.app.kalyanbazar.data.repositry.BaseModel
-import com.app.kalyanbazar.model.request.RequestBankAccountDetails
-import com.app.kalyanbazar.model.request.RequestCreateBid
-import com.app.kalyanbazar.model.request.RequestLogin
-import com.app.kalyanbazar.model.request.RequestRegister
+import com.app.kalyanbazar.model.request.*
 import com.app.kalyanbazar.model.response.*
 import retrofit2.http.*
 
@@ -38,6 +35,9 @@ interface ApiInterface {
 
     @POST("user-bank-account-details-create/")
     suspend fun RequestUserBankAccountDetails(@Body model: RequestBankAccountDetails): BaseModel<*>
+
+    @POST("add-fund/")
+    suspend fun AddFund(@Body model: RequestAddFund): BaseModel<*>
 
     @GET("chart-pdf-get/")
     suspend fun ChartPdfGet(): BaseModel<ArrayList<ResponseChartPdfGetItem>>

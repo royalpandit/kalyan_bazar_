@@ -1,10 +1,7 @@
 package com.app.kalyanbazar.data.repositry
 
 import com.app.kalyanbazar.data.network.ApiInterface
-import com.app.kalyanbazar.model.request.RequestBankAccountDetails
-import com.app.kalyanbazar.model.request.RequestCreateBid
-import com.app.kalyanbazar.model.request.RequestLogin
-import com.app.kalyanbazar.model.request.RequestRegister
+import com.app.kalyanbazar.model.request.*
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(
@@ -37,6 +34,9 @@ class UserRepository @Inject constructor(
 
     suspend fun RequestUserBankAccountDetails(data: RequestBankAccountDetails) =
         safeApiCall { api.RequestUserBankAccountDetails(data) }
+
+    suspend fun AddFund(data: RequestAddFund) =
+        safeApiCall { api.AddFund(data) }
 
     suspend fun ChartPdfGet() =
         safeApiCall { api.ChartPdfGet( ) }

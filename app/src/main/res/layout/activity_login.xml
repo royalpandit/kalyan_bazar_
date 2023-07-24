@@ -49,17 +49,20 @@
                         android:id="@+id/filledTextemail"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
                         app:hintTextColor="@color/golden"
-                        app:shapeAppearance="@style/Rounded"
+
+                         app:shapeAppearance="@style/Rounded"
                         app:boxStrokeColor="@color/golden"
-                        android:hint="Enter Email">
+                         android:hint="Enter Email">
                         <!--this is the actual edit text which takes the input-->
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edit_email"
                             android:textColor="@color/golden"
+android:singleLine="true"
+android:imeOptions="actionNext"
                             android:textColorHint="@color/golden"
                              android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
@@ -79,7 +82,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edit_pwd"
                             android:textColor="@color/golden"
-
+android:singleLine="true"
+                            android:imeOptions="actionDone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 

@@ -101,7 +101,7 @@ dependencies {
 
     // EasyUpiPayment Library
 
-    implementation 'dev.shreyaspatil.EasyUpiPayment:EasyUpiPayment:3.0.3'
+  implementation 'dev.shreyaspatil.EasyUpiPayment:EasyUpiPayment:3.0.3'
 
     //Paytm Intent Upi
    // implementation 'com.paytm.intentupi:paytmintentupi:1.1.2'

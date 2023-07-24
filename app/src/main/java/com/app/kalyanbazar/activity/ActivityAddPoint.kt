@@ -8,11 +8,15 @@ import android.net.Uri
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import com.app.kalyanbazar.R
+import com.app.kalyanbazar.data.network.Resource
 import com.app.kalyanbazar.databinding.ActivityAddPointBinding
-import com.app.kalyanbazar.utils.BaseActivity
-import com.app.kalyanbazar.utils.Helper
+import com.app.kalyanbazar.model.request.RequestAddFund
+import com.app.kalyanbazar.utils.*
 import com.app.kalyanbazar.utils.MyApplication.Companion.toast
+import com.app.kalyanbazar.viewModel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import dev.shreyaspatil.easyupipayment.EasyUpiPayment
 import dev.shreyaspatil.easyupipayment.listener.PaymentStatusListener
@@ -21,20 +25,21 @@ import dev.shreyaspatil.easyupipayment.model.TransactionStatus
 
 
 @AndroidEntryPoint
-class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(),PaymentStatusListener {
+class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusListener {
+    private val viewModel by viewModels<HomeViewModel>()
     private lateinit var easyUpiPayment: EasyUpiPayment
     var amonut: Int = 0
     var GOOGLE_PAY_PACKAGE_NAME = "com.google.android.apps.nbu.paisa.user"
     var PAYTM_PAY_PACKAGE_NAME = "net.one97.paytm"
     var PHONE_PAY_PACKAGE_NAME = "com.phonepe.app"
     var UPI_PAY_PACKAGE_NAME = "in.org.npci.upiapp"
-
-    var hgj = "TID" + System.currentTimeMillis()
-     override fun getLayoutResId(): Int = R.layout.activity_add_point
+    var transactionIdd = "TID" + System.currentTimeMillis()
+    var transactionRefIdd = transactionIdd + "_" + System.currentTimeMillis()
+    override fun getLayoutResId(): Int = R.layout.activity_add_point
     internal val UPI_PAYMENT = 0
     override fun setupViews() {
         dataBinding.apply {
-            toolbar.tvTitle.text="Add Point"
+            toolbar.tvTitle.text = "Add Point"
             toolbar.ivBack.setOnClickListener {
                 onBackPressed()
             }
@@ -47,19 +52,19 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(),PaymentStatusLi
             }
             amount1000.setOnClickListener {
                 inputCoins.setText("1000")
-               // submitCoins()
+                // submitCoins()
             }
             amount2000.setOnClickListener {
                 inputCoins.setText("2000")
-               // submitCoins()
+                // submitCoins()
             }
             amount5000.setOnClickListener {
                 inputCoins.setText("5000")
-              //  submitCoins()
+                //  submitCoins()
             }
             amount10000.setOnClickListener {
                 inputCoins.setText("10000")
-              //  submitCoins()
+                //  submitCoins()
             }
         }
     }
@@ -89,122 +94,116 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(),PaymentStatusLi
             return
         }
 
-Log.e(">>>>>>>>>>>SubmitedTransaction","$hgj")
+        Log.e(">>>>>>>>>>>SubmitedTransaction", "$transactionRefIdd")
         //TID1689419163129
-       // pay()
-        payUsingUpi()
+        pay()
+        // payUsingUpi()
     }
 
     override fun onTransactionCancelled() {
-        Log.e("===>>>Submited","Cancelled by user")
+        Log.e("===>>>Submited", "Cancelled by user")
         // Payment Cancelled by User
         toast("Cancelled by user")
     }
 
     override fun onTransactionCompleted(transactionDetails: TransactionDetails) {
 
-if (transactionDetails.transactionStatus==TransactionStatus.SUCCESS){
-    toast("SUCESSS")
-    onTransactionSuccess(transactionDetails)
-}else if (transactionDetails.transactionStatus==TransactionStatus.FAILURE){
-    toast("FAILED")
-    Log.e("===>>>Submited","FAILED")
-    onTransactionFailed()
-}else if (transactionDetails.transactionStatus==TransactionStatus.SUBMITTED){
-    toast("SUBMITED")
-    Log.e("===>>>Submited","SUBMITED")
-    onTransactionSubmitted()
-}else{
-    toast("SUCESSS")
-    Log.e("===>>>Submited","SUCESSS")
+        if (transactionDetails.transactionStatus == TransactionStatus.SUCCESS) {
+            toast("SUCESSS")
+            onTransactionSuccess(transactionDetails)
+        } else if (transactionDetails.transactionStatus == TransactionStatus.FAILURE) {
+            toast("FAILED")
+            Log.e("===>>>Submited", "FAILED")
+            onTransactionFailed()
+        } else if (transactionDetails.transactionStatus == TransactionStatus.SUBMITTED) {
+            toast("SUBMITED")
+            Log.e("===>>>Submited", "SUBMITED")
+            onTransactionSubmitted()
 
-    onTransactionSuccess(transactionDetails)
-}
+        } else {
+            toast("SUCESSS")
+            Log.e("===>>>Submited", "SUCESSS")
+
+            onTransactionSuccess(transactionDetails)
+        }
 
 
-     }
+    }
+
     private fun onTransactionFailed() {
         // Payment Failed
-        Log.e("===>>>Submited","Failed")
+        Log.e("===>>>Submited", "Failed")
 
         toast("Failed")
     }
 
     private fun onTransactionSubmitted() {
         // Payment Pending
-        Log.e("===>>>Submited","Pending | Submitted")
+
+        Log.e("===>>>Submited", "Pending | Submitted")
         toast("Pending | Submitted")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-       // easyUpiPayment.removePaymentStatusListener()
+        // easyUpiPayment.removePaymentStatusListener()
     }
+
     private fun onTransactionSuccess(td: TransactionDetails) {
+
+        AddFund(
+            td.amount,
+            td.transactionId,
+            td.transactionRefId,
+            td.transactionStatus,
+            td.transactionId,
+            td.transactionRefId,
+            td.approvalRefNo,
+            td.transactionStatus
+        )
         // Payment Success
         toast("Success")
-        toast("Success"+td.amount+td.transactionId+td.transactionStatus+td.component1()
-                + td.component2()+ td.component3()+ td.component3()+ td.component4()+ td.component5()+ td.component6())
+        toast(
+            "Success" + td.amount + td.transactionId + td.transactionStatus + td.component1()
+                    + td.component2() + td.component3() + td.component3() + td.component4() + td.component5() + td.component6()
+        )
 
-        Log.e("===>>>Tag",""+td.amount+td.transactionId+td.transactionStatus)
-        Log.e(" getAmount ","" + td.amount)
-        Log.e(" getTransactionId ",""  + td.transactionId)
-        Log.e(" getTransactionStatus " ,"" + td.transactionStatus)
-        Log.e(" getTransactionRefId ",""  + td.transactionRefId)
-        Log.e(" component1 " ,"" + td.component1())
-        Log.e(" component2 ",""  + td.component2())
-        Log.e(" component3 " ,"" + td.component3())
-        Log.e(" component4 ",""  + td.component4())
-        Log.e(" component5 ",""  + td.component5())
-        Log.e(" component6 " ,"" + td.component6())
-        Log.e(" getApprovalRefNo " ,"" + td.approvalRefNo)
-        Log.e(" getResponseCode " ,"" + td.responseCode)
-    //    addCoinMethod(this, td.amount, "paid with upi")
+        Log.e("===>>>Tag", "" + td.amount + td.transactionId + td.transactionStatus)
+        Log.e(" getAmount ", "" + td.amount)
+        Log.e(" getTransactionId ", "" + td.transactionId)
+        Log.e(" getTransactionStatus ", "" + td.transactionStatus)
+        Log.e(" getTransactionRefId ", "" + td.transactionRefId)
+        Log.e(" component1 ", "" + td.component1())
+        Log.e(" component2 ", "" + td.component2())
+        Log.e(" component3 ", "" + td.component3())
+        Log.e(" component4 ", "" + td.component4())
+        Log.e(" component5 ", "" + td.component5())
+        Log.e(" component6 ", "" + td.component6())
+        Log.e(" getApprovalRefNo ", "" + td.approvalRefNo)
+        Log.e(" getResponseCode ", "" + td.responseCode)
+        //    addCoinMethod(this, td.amount, "paid with upi")
     }
-    private fun pay() {
-      /*  val payeeVpa = "8502019579@ibl"
-        val payeeName = "Riya Sharma"
-        val transactionId = field_transaction_id.text.toString()
-        val transactionRefId = field_transaction_ref_id.text.toString()
-        val payeeMerchantCode = field_payee_merchant_code.text.toString()
-        val description = field_description.text.toString()
-        val amount = field_amount.text.toString()
-        val paymentAppChoice = radioAppChoice*/
 
-       /* val paymentApp = when (paymentAppChoice.checkedRadioButtonId) {
-            R.id.app_default -> PaymentApp.ALL
-            R.id.app_amazonpay -> PaymentApp.AMAZON_PAY
-            R.id.app_bhim_upi -> PaymentApp.BHIM_UPI
-            R.id.app_google_pay -> PaymentApp.GOOGLE_PAY
-            R.id.app_phonepe -> PaymentApp.PHONE_PE
-            R.id.app_paytm -> PaymentApp.PAYTM
-            else -> throw IllegalStateException("Unexpected value: " + paymentAppChoice.id)
-        }*/
+    private fun pay() {
+        easyUpiPayment = EasyUpiPayment(this@ActivityAddPoint) {
+            paymentApp = paymentApp
+            payeeVpa = "Merchant1195774.augp@aubank"
+            //payeeVpa = "7289056741@paytm"
+           // payeeVpa = "obie9166@ybl"
+            payeeName = "7289056741@paytm"
+            transactionId = transactionIdd
+            transactionRefId = transactionRefIdd
+            payeeMerchantCode = ""
+            description = R.string.app_name.toString()
+            amount = dataBinding.inputCoins.getText().toString() + ".00"
+        }
 //SubmitedTransaction: TID1689415379839
         try {
-            // START PAYMENT INITIALIZATION
-            easyUpiPayment = EasyUpiPayment(this@ActivityAddPoint) {
-                this.paymentApp = paymentApp
-           //   this.payeeVpa = "obie9166@ybl"
-             // this.payeeVpa = "8107116566@paytm"
-              this.payeeVpa = "7777777777@paytm"
-             // this.payeeVpa = "8502019579@ibl"
-             //   this.payeeVpa = "7289056741@paytm"
-                //this.payeeVpa = payeeVpa
-                this.payeeName = "Abhishek Punia"
-                this.transactionId = hgj
-                this.transactionRefId = hgj
-                 this.payeeMerchantCode = "12345"
-                this.description = R.string.app_name.toString()
-                this.amount = dataBinding.inputCoins.getText().toString() + ".0"
-            }
-            // END INITIALIZATION
 
-            // Register Listener for Events
             easyUpiPayment.setPaymentStatusListener(this)
 
 
-            // Start payment / transaction
+
             easyUpiPayment.startPayment()
 
         } catch (e: Exception) {
@@ -212,17 +211,18 @@ if (transactionDetails.transactionStatus==TransactionStatus.SUCCESS){
             toast("Error: ${e.message}")
         }
     }
+
     fun payUsingUpi() {
 
         val uri = Uri.parse("upi://pay").buildUpon()
-      //  val uri = Uri.parse("net.one97.paytm").buildUpon()
+            //  val uri = Uri.parse("net.one97.paytm").buildUpon()
             .appendQueryParameter("pa", "obie9166@ybl")
             .appendQueryParameter("pn", "Abhishek")
             .appendQueryParameter("tn", R.string.app_name.toString())
             .appendQueryParameter("am", dataBinding.inputCoins.getText().toString() + ".0")
             .appendQueryParameter("cu", "INR")
-            .appendQueryParameter("transactionId", hgj)
-            .appendQueryParameter("transactionRefId", hgj)
+            .appendQueryParameter("transactionId", transactionIdd)
+            .appendQueryParameter("transactionRefId", transactionRefIdd)
             .build()
 
 //TID1689422369810
@@ -233,10 +233,14 @@ if (transactionDetails.transactionStatus==TransactionStatus.SUCCESS){
         val chooser = Intent.createChooser(upiPayIntent, "Pay with")
 
         // check if intent resolves
-         if (null != chooser.resolveActivity(packageManager)) {
+        if (null != chooser.resolveActivity(packageManager)) {
             startActivityForResult(chooser, UPI_PAYMENT)
         } else {
-            Toast.makeText(this@ActivityAddPoint, "No UPI app found, please install one to continue", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this@ActivityAddPoint,
+                "No UPI app found, please install one to continue",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
     }
@@ -259,13 +263,17 @@ if (transactionDetails.transactionStatus==TransactionStatus.SUCCESS){
                     upiPaymentDataOperation(dataList)
                 }
             } else {
-                Log.e(">>>>>>>>UPI", "onActivityResult: " + "Return data is null") //when user simply back without payment
+                Log.e(
+                    ">>>>>>>>UPI",
+                    "onActivityResult: " + "Return data is null"
+                ) //when user simply back without payment
                 val dataList = ArrayList<String>()
                 dataList.add("nothing")
                 upiPaymentDataOperation(dataList)
             }
         }
     }
+
     private fun upiPaymentDataOperation(data: ArrayList<String>) {
         if (isConnectionAvailable(this@ActivityAddPoint)) {
             var str: String? = data[0]
@@ -277,8 +285,9 @@ if (transactionDetails.transactionStatus==TransactionStatus.SUCCESS){
             var logsd = ""
             val response = str.split("&".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
             for (i in response.indices) {
-                val equalStr = response[i].split("=".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-                Log.e(">>>>>>>>equalStr==>>>","$equalStr")
+                val equalStr =
+                    response[i].split("=".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                Log.e(">>>>>>>>equalStr==>>>", "$equalStr")
                 if (equalStr.size >= 2) {
                     if (equalStr[0].toLowerCase() == "Status".toLowerCase()) {
                         status = equalStr[1].toLowerCase()
@@ -292,30 +301,104 @@ if (transactionDetails.transactionStatus==TransactionStatus.SUCCESS){
 
             if (status == "success") {
                 //Code to handle successful transaction here.
-                Toast.makeText(this@ActivityAddPoint, "Transaction successful.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ActivityAddPoint, "Transaction successful.", Toast.LENGTH_SHORT)
+                    .show()
                 Log.e(">>>>>>>>UPI", "responseStr: $approvalRefNo")
             } else if ("Payment cancelled by user." == paymentCancel) {
-                Toast.makeText(this@ActivityAddPoint, "Payment cancelled by user.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@ActivityAddPoint,
+                    "Payment cancelled by user.",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
-                Toast.makeText(this@ActivityAddPoint, "Transaction failed.Please try again", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@ActivityAddPoint,
+                    "Transaction failed.Please try again",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         } else {
-            Toast.makeText(this@ActivityAddPoint, "Internet connection is not available. Please check and try again", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this@ActivityAddPoint,
+                "Internet connection is not available. Please check and try again",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
+
     companion object {
 
         fun isConnectionAvailable(context: Context): Boolean {
-            val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val connectivityManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             if (connectivityManager != null) {
                 val netInfo = connectivityManager.activeNetworkInfo
                 if (netInfo != null && netInfo.isConnected
                     && netInfo.isConnectedOrConnecting
-                    && netInfo.isAvailable) {
+                    && netInfo.isAvailable
+                ) {
                     return true
                 }
             }
             return false
         }
+    }
+
+
+    fun AddFund(
+        amount: String?,
+        transactionId: String?,
+        transactionRefId: String?,
+        transactionStatus: TransactionStatus,
+        componentId: String?,
+        componentRefId: String?,
+        approvalRefNo: String?,
+        componentStatus: TransactionStatus
+    ) {
+
+
+        viewModel.AddFund.observe(this, Observer {
+            MyApplication.ProgressBar(this, it is Resource.Loading)
+            when (it) {
+                is Resource.Success -> {
+                    Log.e("Success==>>>qq", "suceess")
+
+                    if (it.value.status) {
+
+                        finish()
+
+                    }
+                }
+                is Resource.Failure -> handleApiError(
+                    it,
+                    dataBinding.root,
+                    activity = this, retry = {
+
+                    }
+                )
+            }
+        })
+
+
+        dataBinding.apply {
+            viewModel.AddFund(
+                RequestAddFund(
+
+                    amount = amount,
+                    transactionId = transactionId,
+                    transactionReferralId = transactionRefId,
+                    transactionStatus = transactionStatus.equals(true),
+                    componentId = componentId,
+                    componentRefId = componentRefId,
+                    approvalNumber = approvalRefNo,
+                    componentStatus = componentStatus.equals(true),
+                    userId = MyApplication.tinyDB.getInt(Constants.SharedPref.OWNER_ID, -1),
+
+
+                    )
+            )
+
+        }
+
     }
 }
