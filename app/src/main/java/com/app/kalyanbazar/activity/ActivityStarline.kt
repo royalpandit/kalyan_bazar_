@@ -1,6 +1,5 @@
 package com.app.kalyanbazar.activity
 
-
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Build
@@ -10,15 +9,13 @@ import android.os.VibratorManager
 import android.util.Log
 import android.widget.RelativeLayout
 import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.app.kalyanbazar.R
-import com.app.kalyanbazar.adapter.AdapterHome
 import com.app.kalyanbazar.adapter.AdapterStarline
 import com.app.kalyanbazar.data.network.Resource
 import com.app.kalyanbazar.databinding.ActivityStarlineBinding
-import com.app.kalyanbazar.model.response.ResponseDashBoardListItem
+import com.app.kalyanbazar.model.response.ResponseStarline
 import com.app.kalyanbazar.utils.BaseActivity
 import com.app.kalyanbazar.utils.Constants
 import com.app.kalyanbazar.utils.MyApplication
@@ -29,46 +26,51 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ActivityStarline : BaseActivity<ActivityStarlineBinding>(), AdapterStarline.onClicklistBazar {
     private val viewModel by viewModels<HomeViewModel>()
-    var arr: ArrayList<ResponseDashBoardListItem> = ArrayList()
+    var arr: ArrayList<ResponseStarline> = ArrayList()
+    var showAll: String = ""
     override fun getLayoutResId(): Int = R.layout.activity_starline
 
     override fun setupViews() {
+        showAll = intent.getStringExtra(Constants.showALl).toString()
+        Log.e("showOpen", "showOpen==>>showAll:" + showAll)
         dataBinding.apply {
-
             toolbar.tvTitle.text = "Starline"
             toolbar.ivBack.setOnClickListener {
                 onBackPressed()
             }
-            getDashboardList()
 
+            getUserList()
             starlinebidhistory.setOnClickListener {
                 //ActivityBidHistory
                 startActivity(
                     Intent(
                         this@ActivityStarline,
                         ActivityBidHistory::class.java
-                    ).putExtra(getString(R.string.history), 200)
+                    ).putExtra(getString(R.string.history), 300).putExtra("marketType", "Starline")
                 )
+            }
+            chart.setOnClickListener {
+                val chartTable = Intent(this@ActivityStarline, ActivityChart::class.java).putExtra("market_name","starline")
 
+               startActivity(chartTable)
             }
             starlinewinhistory.setOnClickListener {
                 startActivity(
                     Intent(
                         this@ActivityStarline,
                         ActivityBidHistory::class.java
-                    ).putExtra(getString(R.string.history), 100)
+                    ).putExtra(getString(R.string.history), 400).putExtra("marketType", "Starline")
                 )
-
             }
         }
     }
 
     override fun setupViewsOnResume() {
+        getUserList()
     }
 
     private fun getDashboardList() {
-
-        viewModel.RequestDashBoardList.observe(this, Observer {
+        viewModel.RequestDashBoardStarlineList.observe(this, Observer {
             MyApplication.ProgressBar(this@ActivityStarline, it is Resource.Loading)
             when (it) {
                 is Resource.Success -> {
@@ -81,27 +83,33 @@ class ActivityStarline : BaseActivity<ActivityStarlineBinding>(), AdapterStarlin
                         setHomeUserAdapter()
                     }
                 }
+
                 is Resource.Failure -> handleApiError(it,
                     dataBinding.root,
                     activity = this@ActivityStarline,
                     retry = { getDashboardList() })
             }
         })
-        viewModel.RequestDashBoardList(
+        viewModel.RequestDashBoardStarlineList(
             marketType = "starline"
         )
     }
 
     private fun setHomeUserAdapter() {
+        /*
 
-        val adapter = AdapterStarline(this@ActivityStarline, arr, this)
-        dataBinding.rvstarline.setHasFixedSize(true)
+                val adapter = AdapterStarline(this@ActivityStarline, arr, this)
+                dataBinding.rvstarline.setHasFixedSize(true)
+                dataBinding.rvstarline.adapter = adapter
+                dataBinding.rvstarline.layoutManager = LinearLayoutManager(this@ActivityStarline)
+        */
+        val adapter = AdapterStarline(this, arr, this)
+        dataBinding.rvstarline.layoutManager = GridLayoutManager(this, 2)
         dataBinding.rvstarline.adapter = adapter
-        dataBinding.rvstarline.layoutManager = LinearLayoutManager(this@ActivityStarline)
 
     }
 
-    override fun onItemClickBazar(position: ResponseDashBoardListItem, rlhead: RelativeLayout) {
+    override fun onItemClickBazar(position: ResponseStarline, rlhead: RelativeLayout) {
         if (position.marketStatus!!.equals(true)) {
             Log.e("not==>>", "not")
             // ActivityIndashboard
@@ -110,8 +118,8 @@ class ActivityStarline : BaseActivity<ActivityStarlineBinding>(), AdapterStarlin
                     Constants.marketID,
                     position.id
                 ).putExtra(Constants.marketType, position.marketType)
+                    .putExtra(Constants.showALl, "starline")
             )
-
 
         } else {
             Log.e("notvibrate==>>", "not")
@@ -150,5 +158,32 @@ class ActivityStarline : BaseActivity<ActivityStarlineBinding>(), AdapterStarlin
             @Suppress("DEPRECATION")
             vib.vibrate(500)
         }
+    }
+
+    private fun getUserList() {
+        viewModel.getUserList.observe(this, Observer {
+            MyApplication.ProgressBar(this@ActivityStarline, it is Resource.Loading)
+            when (it) {
+                is Resource.Success -> {
+                    if (it.value.status) {
+                        //  dataBinding.rvHome.hideShimmer()
+                        //       dataBinding.rvHome.hideShimmerAdapter()
+                        //   dataBinding.toolbar.setTitle(it.value.data.totalAmount.toString())
+                        dataBinding.toolbar.tvcois.text = it.value.data.totalAmount.toString()
+
+                        getDashboardList()
+                    }
+                }
+
+                is Resource.Failure -> handleApiError(it,
+                    dataBinding.root,
+                    activity = this@ActivityStarline,
+                    retry = { getUserList() })
+            }
+        })
+        viewModel.getUserList(
+            userID = MyApplication.tinyDB.getInt(Constants.SharedPref.OWNER_ID, -1)
+        )
+
     }
 }

@@ -1,0 +1,101 @@
+
+]kotlin:S1172ï
+"=Use "_" instead of this unused lambda parameter "timePicker".(ÄƒÌ–8¢”¤ŞÓ1
+@kotlin:S6615×" Remove this useless initializer.(Õ¨Éí8¥”¤ŞÓ1
+@kotlin:S6615Ö" Remove this useless initializer.(·Ë´¾8¥”¤ŞÓ1
+?kotlin:S6615Õ" Remove this useless initializer.(Ü°İs8¥”¤ŞÓ1
+@kotlin:S6615" Remove this useless initializer.(Õ¨Éí8¥”¤ŞÓ1
+@kotlin:S6615Œ" Remove this useless initializer.(·Ë´¾8¥”¤ŞÓ1
+?kotlin:S6615‹" Remove this useless initializer.(Ü°İs8¥”¤ŞÓ1
+@kotlin:S6615…" Remove this useless initializer.(œú™ò8¦”¤ŞÓ1
+@kotlin:S6615•" Remove this useless initializer.(œú™ò8¦”¤ŞÓ1
+@kotlin:S6615¦" Remove this useless initializer.(œú™ò8¦”¤ŞÓ1
+Bkotlin:S125R"Remove this commented out code.(ÎĞØıÿÿÿÿ8«”¤ŞÓ1
+Ckotlin:S125”"Remove this commented out code.(ŸŠü´ùÿÿÿÿ8«”¤ŞÓ1
+Ckotlin:S125ª"Remove this commented out code.(ŸŠü´ùÿÿÿÿ8«”¤ŞÓ1
+Ckotlin:S125"Remove this commented out code.(Ô¨İ„ıÿÿÿÿ8«”¤ŞÓ1
+Ckotlin:S125‰"Remove this commented out code.(®»Ëùÿÿÿÿ8«”¤ŞÓ1
+=kotlin:S125‹"Remove this commented out code.(ô°£}8¬”¤ŞÓ1
+>kotlin:S125‘"Remove this commented out code.(½Ç¹8¬”¤ŞÓ1
+>kotlin:S125˜"Remove this commented out code.(åÁìì8¬”¤ŞÓ1
+>kotlin:S125š"Remove this commented out code.(©éüî8¬”¤ŞÓ1
+=kotlin:S125Ÿ"Remove this commented out code.(·İç'8¬”¤ŞÓ1
+Ckotlin:S125¢"Remove this commented out code.(Â¾ùéşÿÿÿÿ8¬”¤ŞÓ1
+Ckotlin:S125¦"Remove this commented out code.(ËŠ¹›ùÿÿÿÿ8¬”¤ŞÓ1
+Ckotlin:S125«"Remove this commented out code.(É€Ù‚ÿÿÿÿÿ8­”¤ŞÓ1
+>kotlin:S125È"Remove this commented out code.(³±Ë8­”¤ŞÓ1
+Ckotlin:S125Ä"Remove this commented out code.(±ïüıÿÿÿÿ8­”¤ŞÓ1
+Ckotlin:S125Õ"Remove this commented out code.(±ïüıÿÿÿÿ8­”¤ŞÓ1
+Ckotlin:S125ç"Remove this commented out code.(±ïüıÿÿÿÿ8­”¤ŞÓ1
+Ckotlin:S125ø"Remove this commented out code.(±ïüıÿÿÿÿ8­”¤ŞÓ1
+Ckotlin:S125Õ"Remove this commented out code.(šÿ¨ÿÿÿÿÿ8®”¤ŞÓ1
+Ckotlin:S125£"Remove this commented out code.(æÀŞ±ıÿÿÿÿ8¯”¤ŞÓ1
+>kotlin:S125¹"Remove this commented out code.(şÁ¹ì8¯”¤ŞÓ1
+>kotlin:S125á"Remove this commented out code.(íî±ä8¯”¤ŞÓ1
+>kotlin:S125‚	"Remove this commented out code.(íî±ä8°”¤ŞÓ1
+>kotlin:S125Ô	"Remove this commented out code.(­Òå8ßÍßÓ1
+Ckotlin:S125¡
+"Remove this commented out code.(ıø«Çøÿÿÿÿ8°”¤ŞÓ1
+>kotlin:S125¸
+"Remove this commented out code.(÷—ñÊ8°”¤ŞÓ1
+Škotlin:S4144õ	"eUpdate this function so that its implementation is not identical to "dateFormateZHyphn" on line 1152.(ğş’‚ÿÿÿÿÿ8·”¤ŞÓ1
+mkotlin:S117»"NRename this parameter to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(’Üİ8½”¤ŞÓ1
+rkotlin:S117¢"NRename this parameter to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(ÔÌïûúÿÿÿÿ8½”¤ŞÓ1
+mkotlin:S117¬"NRename this parameter to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(ƒ æô8½”¤ŞÓ1
+wkotlin:S117ö"SRename this local variable to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(åÎÉ¢şÿÿÿÿ8½”¤ŞÓ1
+wkotlin:S117÷"SRename this local variable to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(‰í·öøÿÿÿÿ8½”¤ŞÓ1
+wkotlin:S117ı"SRename this local variable to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(Œ˜Ôõıÿÿÿÿ8½”¤ŞÓ1
+wkotlin:S117—"SRename this local variable to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(Å†Öêÿÿÿÿÿ8½”¤ŞÓ1
+Nkotlin:S58696"*Remove duplicates in this character class.(×÷Öÿÿÿÿÿ8Ê”¤ŞÓ1
+Okotlin:S5869Š"*Remove duplicates in this character class.(×÷Öÿÿÿÿÿ8Ê”¤ŞÓ1
+Okotlin:S5869ş"*Remove duplicates in this character class.(×÷Öÿÿÿÿÿ8Ê”¤ŞÓ1
+Rkotlin:S1481È"-Remove this unused "calendar" local variable.(¬Û¼€øÿÿÿÿ8×”¤ŞÓ1
+Mkotlin:S1481"(Remove this unused "min" local variable.(ã»˜éşÿÿÿÿ8×”¤ŞÓ1
+Mkotlin:S1481¦"(Remove this unused "min" local variable.(ã»˜éşÿÿÿÿ8×”¤ŞÓ1
+Rkotlin:S1481è"2Remove this unused "todayAsString" local variable.(¹¥É´8×”¤ŞÓ1
+Rkotlin:S1481"2Remove this unused "todayAsString" local variable.(¹¥É´8×”¤ŞÓ1
+Rkotlin:S1481"2Remove this unused "todayAsString" local variable.(¹¥É´8×”¤ŞÓ1
+Rkotlin:S1481"2Remove this unused "todayAsString" local variable.(¹¥É´8×”¤ŞÓ1
+Nkotlin:S1481ô")Remove this unused "size" local variable.(÷®ø•úÿÿÿÿ8×”¤ŞÓ1
+Gkotlin:S1481½"'Remove this unused "tz" local variable.(ìÛóô8×”¤ŞÓ1
+>kotlin:S1128"Remove this unused import.(¦È ¦üÿÿÿÿ8ç”¤ŞÓ1
+>kotlin:S1128"Remove this unused import.(æõşîşÿÿÿÿ8ç”¤ŞÓ1
+9kotlin:S1128"Remove this unused import.(ÚÄ™8ç”¤ŞÓ1
+>kotlin:S1128"Remove this unused import.(ÖğÀÄıÿÿÿÿ8ç”¤ŞÓ1
+‰kotlin:S11926"eDefine a constant instead of duplicating this literal "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" 3 times.(×÷Öÿÿÿÿÿ8ê”¤ŞÓ1
+kotlin:S11928"`Define a constant instead of duplicating this literal "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" 3 times.(Ì¥şÊ8ê”¤ŞÓ1
+„kotlin:S1192;"`Define a constant instead of duplicating this literal "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" 3 times.(÷ÑÊ’üÿÿÿÿ8ê”¤ŞÓ1
+lkotlin:S1192 "LDefine a constant instead of duplicating this literal "dd/MM/yyyy" 17 times.(¹ æÔ8ê”¤ŞÓ1
+qkotlin:S1192°"LDefine a constant instead of duplicating this literal "yyyy-MM-dd" 18 times.(ĞÇñÓıÿÿÿÿ8ê”¤ŞÓ1
+mkotlin:S1192À"HDefine a constant instead of duplicating this literal "dd/MMMM" 3 times.(Óƒšªúÿÿÿÿ8ë”¤ŞÓ1
+kkotlin:S1192Ú"KDefine a constant instead of duplicating this literal "dd-MM-yyyy" 5 times.(ãµÉ¾8ë”¤ŞÓ1
+gkotlin:S1192ƒ"HDefine a constant instead of duplicating this literal "hh:mm a" 5 times.(ËÎÖ>8ë”¤ŞÓ1
+{kotlin:S1192Ù"VDefine a constant instead of duplicating this literal "yyyy-MM-dd'T'HH:mm:ss" 4 times.(Œ£¬şşÿÿÿÿ8ë”¤ŞÓ1
+~kotlin:S1192ò"YDefine a constant instead of duplicating this literal "yyyy-MM-dd'T'HH:mm:ss'Z'" 4 times.(±¶æ»ÿÿÿÿÿ8ë”¤ŞÓ1
+Hkotlin:S1874í"#Deprecated code should not be used.(¼íçöúÿÿÿÿ8ğ”¤ŞÓ1
+Bkotlin:S1874ï"#Deprecated code should not be used.(ŸÃm8ğ”¤ŞÓ1
+Ckotlin:S1874ƒ"#Deprecated code should not be used.(ƒÁ—Ë8ğ”¤ŞÓ1
+Gkotlin:S1874"#Deprecated code should not be used.(¬÷ÖÚûÿÿÿÿ8ğ”¤ŞÓ1
+Vkotlin:S6529¥"1Replace collection size check with "isNotEmpty()"(ßûëïûÿÿÿÿ8ü”¤ŞÓ1
+Vkotlin:S6529¯"1Replace collection size check with "isNotEmpty()"(ßûëïûÿÿÿÿ8ü”¤ŞÓ1
+Pkotlin:S6529¶"1Replace collection size check with "isNotEmpty()"(¨öÑ8ü”¤ŞÓ1
+hkotlin:S6529¬"CReplace null check and collection size check with "isNullOrEmpty()"(»ŠÔûÿÿÿÿ8ü”¤ŞÓ1
+Nkotlin:S6529¸".Replace collection size check with "isEmpty()"(È”É’8ü”¤ŞÓ1
+ckotlin:S6529¸"CReplace null check and collection size check with "isNullOrEmpty()"(È”É’8ü”¤ŞÓ1
+fkotlin:S6510‡"AMove "return" statements from all branches before "if" statement.(ò×Ú„şÿÿÿÿ8„•¤ŞÓ1
+fkotlin:S6510”"AMove "return" statements from all branches before "if" statement.(›—ÒÔûÿÿÿÿ8„•¤ŞÓ1
+fkotlin:S6510§"AMove "return" statements from all branches before "if" statement.(ßÙåàşÿÿÿÿ8„•¤ŞÓ1
+fkotlin:S6510ô"AMove "return" statements from all branches before "if" statement.(Éú±Ñúÿÿÿÿ8„•¤ŞÓ1
+fkotlin:S6510¤"AMove "return" statements from all branches before "if" statement.(ÅŞÿ«ıÿÿÿÿ8…•¤ŞÓ1
+Kkotlin:S6518ë",Replace function call with indexed accessor.(²ìŒ[8ˆ•¤ŞÓ1
+Lkotlin:S6518¯",Replace function call with indexed accessor.(Âôª®8ˆ•¤ŞÓ1
+Lkotlin:S6518ğ
+",Replace function call with indexed accessor.(¯°»ñ8‰•¤ŞÓ1
+Lkotlin:S6518ñ
+",Replace function call with indexed accessor.(å êŠ8‰•¤ŞÓ1
+Qkotlin:S6518ò
+",Replace function call with indexed accessor.(şë«‰ıÿÿÿÿ8‰•¤ŞÓ1
+Lkotlin:S6518û
+",Replace function call with indexed accessor.(¸îó¸8‰•¤ŞÓ1
+Qkotlin:S6518ü
+",Replace function call with indexed accessor.(Ôôèóşÿÿÿÿ8‰•¤ŞÓ1

@@ -22,10 +22,15 @@
             android:id="@+id/toolbar"
             layout="@layout/header" />
     </RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:layout_below="@+id/rl_tool"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <RelativeLayout
         android:background="@color/white"
-        android:layout_below="@+id/rl_tool"
-        android:layout_width="match_parent"
+         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.google.android.material.card.MaterialCardView
@@ -55,6 +60,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:id="@+id/llfromdate"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="12dp"
@@ -66,7 +72,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:text="@string/from_date"
-                            android:textColor="@color/golden"
+                            android:textColor="@color/white"
                             android:textStyle="bold" />
 
                         <com.google.android.material.textview.MaterialTextView
@@ -79,10 +85,12 @@
                             android:onClick="fromDate"
                             android:paddingHorizontal="10dp"
                             android:paddingVertical="10dp"
+
                             android:textColor="@color/black_dark" />
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/lltodate"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
@@ -94,7 +102,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:text="@string/to_date"
-                            android:textColor="@color/golden"
+                            android:textColor="@color/white"
                             android:textStyle="bold" />
 
                         <com.google.android.material.textview.MaterialTextView
@@ -119,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:backgroundTint="@color/golden"
+                    android:backgroundTint="@color/red"
                     android:gravity="center"
                     android:onClick="submitWinHistory"
                     android:paddingHorizontal="30dp"
@@ -132,7 +140,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/golden" />
+                    android:background="@color/red" />
             </LinearLayout>
 
         </LinearLayout>
@@ -143,7 +151,17 @@
     android:layout_marginHorizontal="20dp"
 
     android:layout_height="match_parent">
-
+    <TextView
+        android:visibility="gone"
+        android:gravity="center"
+        android:id="@+id/tvNotFound"
+        android:textColor="@color/black"
+android:textStyle="bold"
+        android:textSize="@dimen/_15sdp"
+        android:layout_centerInParent="true"
+        android:text="History Is Not Available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_ref_lyt"
         android:layout_width="match_parent"
@@ -151,8 +169,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-
-            android:layout_width="match_parent"
+             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/adapter_bid_history"
               />
@@ -171,6 +188,6 @@
 </RelativeLayout>
 
     </RelativeLayout>
-
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 </layout>

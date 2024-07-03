@@ -26,434 +26,623 @@
 
         </RelativeLayout>
 
-        <ScrollView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/rl_tool"
-            android:background="@color/white_opacity"
-            android:orientation="vertical">
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_5sdp">
 
-            <RelativeLayout
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                 tools:ct=".easy.easyEleven">
+                android:layout_below="@+id/rl_tool"
+                android:background="@color/white_opacity"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:orientation="vertical">
-
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="1dp"
-                            android:text="@string/lkh"
-                            android:textAllCaps="true"
-                            android:textColor="@color/bluetheme"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:weightSum="4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                             android:orientation="horizontal">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginVertical="5dp"
-                                android:layout_marginStart="5dp"
-                                android:layout_weight="1"
-                                app:cardCornerRadius="20dp">
-
-                                <RelativeLayout
-                                    android:id="@+id/bank"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_vertical"
-                                    android:background="@color/white"
-                                    android:paddingVertical="8dp">
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerHorizontal="true"
-                                         android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="40dp"
-                                            android:layout_height="40dp"
-                                            android:src="@drawable/bank" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="5dp"
-                                            android:gravity="center"
-                                            android:text="Bank"
-                                            android:textColor="@color/bluetheme"
-                                            android:textStyle="bold"
-                                            app:autoSizeMaxTextSize="18sp"
-                                            app:autoSizeMinTextSize="10dp"
-                                            app:autoSizeTextType="uniform" />
-                                    </LinearLayout>
-                                </RelativeLayout>
-                            </androidx.cardview.widget.CardView>
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginVertical="5dp"
-                                android:layout_marginStart="5dp"
-                                android:layout_weight="1"
-                                app:cardCornerRadius="20dp">
-
-                                <RelativeLayout
-                                    android:id="@+id/rlphonepay"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_vertical"
-                                    android:padding="8dp"
-                                    android:background="@color/white"
-                                    tools:ignore="UsingOnClickInXml">
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerHorizontal="true"
-                                        android:baselineAligned="false"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="40dp"
-                                            android:layout_height="40dp"
-                                            android:src="@drawable/phonepayround" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerHorizontal="true"
-                                            android:layout_marginTop="5dp"
-                                            android:gravity="center"
-                                            android:text="@string/phonepeass"
-                                            android:textColor="@color/bluetheme"
-                                            android:textStyle="bold"
-                                            app:autoSizeMaxTextSize="18sp"
-                                            app:autoSizeMinTextSize="10dp"
-                                            app:autoSizeTextType="uniform" />
-                                    </LinearLayout>
-                                </RelativeLayout>
-                            </androidx.cardview.widget.CardView>
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginVertical="5dp"
-                                android:layout_marginStart="5dp"
-                                android:layout_weight="1"
-                                app:cardCornerRadius="20dp">
-
-                                <RelativeLayout
-                                    android:id="@+id/rlgpay"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_vertical"
-                                    android:padding="8dp"
-                                    android:background="@color/white"
-                                    tools:ignore="UsingOnClickInXml">
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerHorizontal="true"
-                                        android:baselineAligned="false"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="40dp"
-                                            android:layout_height="40dp"
-                                            android:src="@drawable/gpayround" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerHorizontal="true"
-                                            android:layout_marginTop="5dp"
-                                            android:text="@string/assgoogle_pay"
-                                            android:textColor="@color/bluetheme"
-                                            android:textStyle="bold"
-                                            app:autoSizeMaxTextSize="18sp"
-                                            app:autoSizeMinTextSize="10dp"
-                                            app:autoSizeTextType="uniform" />
-                                    </LinearLayout>
-                                </RelativeLayout>
-                            </androidx.cardview.widget.CardView>
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="5dp"
-                                android:layout_marginVertical="5dp"
-                                android:layout_weight="1"
-                                app:cardCornerRadius="20dp">
-
-                                <RelativeLayout
-                                    android:id="@+id/rlpaytm"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_vertical"
-                                    android:padding="8dp"
-                                    android:background="@color/white"
-                                    tools:ignore="UsingOnClickInXml">
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerHorizontal="true"
-                                        android:baselineAligned="false"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="40dp"
-                                            android:layout_height="40dp"
-                                            android:src="@drawable/paytmround" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerHorizontal="true"
-                                            android:layout_marginTop="5dp"
-                                            android:text="@string/asspaytm"
-                                            android:textColor="@color/bluetheme"
-                                            android:textStyle="bold"
-                                            app:autoSizeMaxTextSize="18sp"
-                                            app:autoSizeMinTextSize="10dp"
-                                            app:autoSizeTextType="uniform" />
-                                    </LinearLayout>
-                                </RelativeLayout>
-                            </androidx.cardview.widget.CardView>
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="15dp"
-                            android:baselineAligned="false"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                app:cardCornerRadius="20dp">
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_vertical"
-                                    android:onClick="Bank"
-                                    android:padding="8dp"
-                                    tools:ignore="UsingOnClickInXml">
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerHorizontal="true"
-                                        android:baselineAligned="false"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="40dp"
-                                            android:layout_height="40dp"
-                                            android:src="@drawable/singledigit" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerHorizontal="true"
-                                            android:text="@string/assgoogle_pay"
-                                            android:textColor="@color/black_dark"
-                                            android:textStyle="bold"
-                                            app:autoSizeMaxTextSize="18sp"
-                                            app:autoSizeMinTextSize="10dp"
-                                            app:autoSizeTextType="uniform" />
-                                    </LinearLayout>
-                                </RelativeLayout>
-                            </androidx.cardview.widget.CardView>
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                app:cardCornerRadius="20dp">
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_vertical"
-                                    android:onClick="Bank"
-                                    android:padding="8dp"
-                                    tools:ignore="UsingOnClickInXml">
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerHorizontal="true"
-                                        android:baselineAligned="false"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="40dp"
-                                            android:layout_height="40dp"
-                                            android:src="@drawable/singledigit" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerHorizontal="true"
-                                            android:text="@string/asspaytm"
-                                            android:textColor="@color/black_dark"
-                                            android:textStyle="bold"
-                                            app:autoSizeMaxTextSize="18sp"
-                                            app:autoSizeMinTextSize="10dp"
-                                            app:autoSizeTextType="uniform" />
-                                    </LinearLayout>
-                                </RelativeLayout>
-                            </androidx.cardview.widget.CardView>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
+                    android:layout_height="match_parent"
+                    tools:ct=".easy.easyEleven">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:layout_marginBottom="20dp"
                         android:orientation="vertical">
 
-                        <com.google.android.material.textview.MaterialTextView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:text="@string/ddd"
-                            android:textColor="@color/bluetheme"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/selectPayMethod"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="0dp"
-                            android:layout_marginEnd="0dp"
-                            android:background="@drawable/white_border"
-                             android:drawableEnd="@drawable/dropdown"
                             android:gravity="center"
-                            android:paddingHorizontal="10dp"
-                            android:paddingVertical="4dp"
-                            android:text="@string/sgbv"
-                            android:textColor="@color/bluetheme"
-                            tools:ignore="UsingOnClickInXml" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/inputWithdrawPoints"
-                                android:layout_width="wrap_content"
-                                android:layout_height="45dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/white_border"
-                                 android:hint="@string/wfede"
-                                android:textColorHint="@color/seme_transparent"
-                                android:inputType="number"
-                                android:maxLength="9"
-                                android:paddingHorizontal="40dp"
-                                android:paddingVertical="5dp"
-                                android:singleLine="true"
-                                android:textColor="@color/black_dark"
-                                tools:ignore="TouchTargetSizeCheck" />
+                            android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="45dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginEnd="0dp"
-                                android:layout_toEndOf="@+id/inputWithdrawPoints"
-                                android:background="@drawable/white_border"
-                                android:backgroundTint="@color/yellowdark"
+                                android:layout_height="wrap_content"
+                                android:text="Withdrawal Points"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_20sdp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/textviewcontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_15sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginRight="@dimen/_15sdp"
                                 android:gravity="center"
-                                android:paddingHorizontal="8dp"
-                                android:paddingVertical="4dp"
-                                android:text="@string/pd"
-                                android:textAllCaps="true"
-                                android:textColor="@color/white_opacity"
+                                android:padding="8dp"
+                                android:text=""
+                                android:textColor="@color/bluetheme"
                                 android:textStyle="bold"
-                                app:autoSizeMaxTextSize="18sp"
-                                app:autoSizeMinTextSize="10dp"
-                                app:autoSizeTextType="uniform"
-                                tools:ignore="UsingOnClickInXml,TouchTargetSizeCheck" />
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="vertical">
+
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="1dp"
+                                android:text="@string/lkh"
+                                android:textAllCaps="true"
+                                android:textColor="@color/bluetheme"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:weightSum="4">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_5sdp"
+                                    android:layout_weight="1"
+                                    app:cardCornerRadius="10dp">
+
+                                    <RelativeLayout
+
+                                        android:id="@+id/bank"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/white"
+                                        android:gravity="center_vertical">
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerHorizontal="true"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="@dimen/_30sdp"
+                                                android:layout_height="@dimen/_30sdp"
+                                                android:src="@drawable/bank" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginBottom="@dimen/_2sdp"
+                                                android:gravity="center"
+                                                android:text="Bank"
+                                                android:textColor="@color/bluetheme"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textStyle="bold"
+                                                app:autoSizeMaxTextSize="18sp"
+                                                app:autoSizeMinTextSize="10dp"
+                                                app:autoSizeTextType="uniform" />
+                                        </LinearLayout>
+                                    </RelativeLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_5sdp"
+                                    android:layout_weight="1"
+                                    app:cardCornerRadius="10dp">
+
+                                    <RelativeLayout
+                                        android:id="@+id/rlphonepay"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/white"
+                                        android:gravity="center_vertical"
+                                        tools:ignore="UsingOnClickInXml">
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerHorizontal="true"
+                                            android:baselineAligned="false"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="@dimen/_30sdp"
+                                                android:layout_height="@dimen/_30sdp"
+                                                android:src="@drawable/phonepayround" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerHorizontal="true"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginBottom="@dimen/_2sdp"
+                                                android:gravity="center"
+                                                android:text="@string/phonepeass"
+                                                android:textColor="@color/bluetheme"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textStyle="bold"
+                                                app:autoSizeMaxTextSize="18sp"
+                                                app:autoSizeMinTextSize="10dp"
+                                                app:autoSizeTextType="uniform" />
+                                        </LinearLayout>
+                                    </RelativeLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_5sdp"
+                                    android:layout_weight="1"
+                                    app:cardCornerRadius="10dp">
+
+                                    <RelativeLayout
+                                        android:id="@+id/rlgpay"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/white"
+                                        android:gravity="center_vertical"
+                                        tools:ignore="UsingOnClickInXml">
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerHorizontal="true"
+                                            android:baselineAligned="false"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="@dimen/_30sdp"
+                                                android:layout_height="@dimen/_30sdp"
+                                                android:src="@drawable/gpayround" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerHorizontal="true"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginBottom="@dimen/_2sdp"
+                                                android:text="@string/assgoogle_pay"
+                                                android:textColor="@color/bluetheme"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textStyle="bold"
+                                                app:autoSizeMaxTextSize="18sp"
+                                                app:autoSizeMinTextSize="10dp"
+                                                app:autoSizeTextType="uniform" />
+                                        </LinearLayout>
+                                    </RelativeLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_5sdp"
+                                    android:layout_weight="1"
+                                    app:cardCornerRadius="10dp">
+
+                                    <RelativeLayout
+                                        android:id="@+id/rlpaytm"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/white"
+                                        android:gravity="center_vertical"
+                                        tools:ignore="UsingOnClickInXml">
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerHorizontal="true"
+                                            android:baselineAligned="false"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="@dimen/_30sdp"
+                                                android:layout_height="@dimen/_30sdp"
+                                                android:src="@drawable/paytmround" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerHorizontal="true"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginBottom="@dimen/_2sdp"
+                                                android:text="@string/asspaytm"
+                                                android:textColor="@color/bluetheme"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textStyle="bold"
+                                                app:autoSizeMaxTextSize="18sp"
+                                                app:autoSizeMinTextSize="10dp"
+                                                app:autoSizeTextType="uniform" />
+                                        </LinearLayout>
+                                    </RelativeLayout>
+                                </androidx.cardview.widget.CardView>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="15dp"
+                                android:baselineAligned="false"
+                                android:orientation="horizontal"
+                                android:visibility="gone">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    app:cardCornerRadius="20dp">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:onClick="Bank"
+                                        android:padding="8dp"
+                                        tools:ignore="UsingOnClickInXml">
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerHorizontal="true"
+                                            android:baselineAligned="false"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="40dp"
+                                                android:layout_height="40dp"
+                                                android:src="@drawable/singledigit" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerHorizontal="true"
+                                                android:text="@string/assgoogle_pay"
+                                                android:textColor="@color/black_dark"
+                                                android:textStyle="bold"
+                                                app:autoSizeMaxTextSize="18sp"
+                                                app:autoSizeMinTextSize="10dp"
+                                                app:autoSizeTextType="uniform" />
+                                        </LinearLayout>
+                                    </RelativeLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    app:cardCornerRadius="20dp">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:onClick="Bank"
+                                        android:padding="8dp"
+                                        tools:ignore="UsingOnClickInXml">
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerHorizontal="true"
+                                            android:baselineAligned="false"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="40dp"
+                                                android:layout_height="40dp"
+                                                android:src="@drawable/singledigit" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerHorizontal="true"
+                                                android:text="@string/asspaytm"
+                                                android:textColor="@color/black_dark"
+                                                android:textStyle="bold"
+                                                app:autoSizeMaxTextSize="18sp"
+                                                app:autoSizeMinTextSize="10dp"
+                                                app:autoSizeTextType="uniform" />
+                                        </LinearLayout>
+                                    </RelativeLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_15ssp"
+                                android:layout_marginBottom="5dp"
+                                android:text="@string/ddd"
+                                android:textAllCaps="true"
+                                android:textColor="@color/bluetheme"
+                                android:textStyle="bold" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone">
+
+                                <EditText
+                                    android:id="@+id/selectPayMethod"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_marginStart="0dp"
+                                    android:layout_marginEnd="0dp"
+                                    android:background="@drawable/white_border"
+                                    android:clickable="false"
+                                    android:drawableEnd="@drawable/dropdown"
+                                    android:focusable="false"
+                                    android:gravity="center"
+                                    android:hint="@string/sgbv"
+                                    android:paddingHorizontal="10dp"
+                                    android:paddingVertical="4dp"
+                                    android:textColor="@color/bluetheme"
+                                    tools:ignore="UsingOnClickInXml" />
+
+                                <androidx.appcompat.widget.AppCompatSpinner
+                                    android:id="@+id/spinner"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_alignParentRight="true" />
+                            </RelativeLayout>
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp">
+
+                                <EditText
+                                    android:id="@+id/inputWithdrawPoints"
+                                    android:layout_width="@dimen/_170sdp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@drawable/white_border"
+                                    android:hint="@string/wfede"
+                                    android:inputType="number"
+                                    android:maxLength="9"
+                                    android:paddingVertical="5dp"
+                                    android:paddingStart="@dimen/_10sdp"
+
+                                    android:singleLine="true"
+                                    android:textColor="@color/black_dark"
+                                    android:textColorHint="@color/seme_transparent"
+                                    tools:ignore="TouchTargetSizeCheck" />
+
+                                <TextView
+                                    android:id="@+id/tvSubmit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="45dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="0dp"
+                                    android:layout_toEndOf="@+id/inputWithdrawPoints"
+                                    android:background="@drawable/white_border"
+                                    android:backgroundTint="@color/red"
+                                    android:gravity="center"
+                                    android:paddingHorizontal="8dp"
+                                    android:paddingVertical="4dp"
+                                    android:text="@string/pd"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/white_opacity"
+                                    android:textStyle="bold"
+                                    app:autoSizeMaxTextSize="18sp"
+                                    app:autoSizeMinTextSize="10dp"
+                                    app:autoSizeTextType="uniform"
+                                    tools:ignore="UsingOnClickInXml,TouchTargetSizeCheck" />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginBottom="5sp"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="1dp"
+                                android:text="How To Withdrawl Points"
+                                android:textAllCaps="true"
+                                android:textColor="@color/bluetheme"
+                                android:textSize="@dimen/_15ssp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginBottom="1dp"
+                                android:text="Step 1 : Make Sure Your Bank Account Details / UPI-ID Must Be Added ."
+                                android:textAllCaps="false"
+                                android:textColor="@color/bluetheme"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="1dp"
+                                android:text="Step 2 : Select The Option Where You Want Money ."
+                                android:textAllCaps="false"
+                                android:textColor="@color/bluetheme"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="1dp"
+                                android:text="Step 2 : Enter Amount How Much You Want to Withdrawl ."
+                                android:textAllCaps="false"
+                                android:textColor="@color/bluetheme"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="1dp"
+                                android:text="Step 3 : After Following All Process Click On Submit Button ."
+                                android:textAllCaps="false"
+                                android:textColor="@color/bluetheme"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:visibility="gone"
+                            android:id="@+id/rlwhatsup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvregister"
+                            android:layout_centerInParent="true"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/ivWhatsupp"
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:src="@drawable/whatsups"
+                                android:tint="@color/green"
+                                tools:ignore="UseAppTint" />
+
+                            <TextView
+                                android:id="@+id/tvsupport"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ivWhatsupp"
+                                android:text="Support"
+                                android:textColor="@color/black" />
+
+
                         </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/textunable"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Unable to Withdraw Points?"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvunable"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginHorizontal="20dp"
+                                android:background="@drawable/white_border"
+                                android:backgroundTint="@color/red"
+                                android:gravity="center"
+                                android:text="Contact Admin"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:visibility="visible"
+                                app:cornerRadius="8dp"
+                                tools:ignore="UsingOnClickInXml" />
+
+
+                        </LinearLayout>
+
+                        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                            android:id="@+id/swipe_ref_lyt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recyclerView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="20dp" />
+                            </RelativeLayout>
+
+                        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
                     </LinearLayout>
 
-                    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                        android:id="@+id/swipe_ref_lyt"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/recyclerView"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="20dp" />
-                        </RelativeLayout>
-
-                    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-                </LinearLayout>
-
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:visibility="gone" />
-            </RelativeLayout>
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:visibility="gone" />
+                </RelativeLayout>
 
 
-        </ScrollView>
-
+            </ScrollView>
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 </layout>

@@ -21,4 +21,9 @@
         <item name="cornerSize">16dp</item>
     </style>
 
+    <style name="PFLockScreenButtonStyle" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:background">@drawable/touch_selector_pf</item>
+    </style>
 </resources>

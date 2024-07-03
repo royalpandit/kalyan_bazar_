@@ -2,8 +2,7 @@ package com.app.kalyanbazar.adapter
 
 import android.app.Activity
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,14 +10,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.app.kalyanbazar.R
 import com.app.kalyanbazar.databinding.AdapterBidHistoryBinding
-import com.app.kalyanbazar.databinding.AdapterWalletStatementBinding
-import com.app.kalyanbazar.model.User
 import com.app.kalyanbazar.model.response.ResponseGetBid
+import com.app.kalyanbazar.utils.Helper
 
-class AdapterBidHistory (
+class AdapterBidHistory(
     private val activity: Activity,
     var list: ArrayList<ResponseGetBid> = ArrayList(),
-    private val onClick:  onClicklistUser,
+    private val onClick: onClicklistUser,
+    private val markeTYpe: String,
 ) : RecyclerView.Adapter<AdapterBidHistory.ViewResource>() {
     interface onClicklistUser {
         fun onItemClickUser(position: ResponseGetBid)
@@ -36,11 +35,18 @@ class AdapterBidHistory (
 
         // holder.binding.labourName.text = list[position].name
         holder.binding.gameName.text = list[position].marketName+"("+list[position].marketInsideName+")"
-        if (list[position].session==true){
-            holder.binding.gameSession.text="Session Open"
+Log.e("MArketAd","MarkeAdapet==>>>"+markeTYpe)
+        if (markeTYpe.equals("STARLINE")){
+            holder.binding.gameSession.text=""
+
         }else{
-            holder.binding.gameSession.text="Session Close"
+            if (list[position].session==true){
+                holder.binding.gameSession.text="Session Open"
+            }else{
+                holder.binding.gameSession.text="Session Close"
+            }
         }
+
         if (list[position].isWon==true){
             holder.binding.bidPoints.setTextColor(Color.parseColor("#025B00"))
             holder.binding.bidPoints.text = "+"+list[position].points.toString()
@@ -49,8 +55,10 @@ class AdapterBidHistory (
             holder.binding.bidPoints.text = "-"+list[position].points.toString()
          }
        // holder.binding.gameSession.text = list[position].closeMarket
-        holder.binding.gameDate.text = list[position].panaDate
-        holder.binding.bidPoints.text = list[position].points.toString()
+
+         //holder.binding.gameDate.text = Helper.dateFormateConverter(list[position].panaDate.toString())
+         holder.binding.gameDate.text = Helper.dateFormateConverter(list[position].createdAt.toString())
+         holder.binding.bidPoints.text = list[position].points.toString()
         holder.binding.gameNumberOpen.text = list[position].pana
 //SubmitedTransaction: TID1689589642265
     }

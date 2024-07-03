@@ -38,7 +38,7 @@ data class ResponseGetBid(
 	val id: Int? = null,
 
 	@field:SerializedName("points")
-	val points: Int? = null,
+	val points: Float? = null,
 
 	@field:SerializedName("status")
 	val status: Boolean? = null

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+     android:background="@drawable/bg_radius"
+     android:layout_height="wrap_content">
+
+<androidx.cardview.widget.CardView
+
+    app:cardBackgroundColor="@color/white"
+     android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+ android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+
+    <ImageView
+         android:id="@+id/photo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:src="@drawable/trueicon" />
+
+    <TextView
+        android:id="@+id/succesfull"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/photo"
+         android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="Successfull"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp" />
+
+    <TextView
+        android:id="@+id/placed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/succesfull"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+         android:gravity="center"
+        android:text="Your Bid is Succesfully Placed"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp" />
+
+    <Button
+        android:id="@+id/playagainbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/placed"
+        android:layout_marginStart="30dp"
+         android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/white"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/bg_red_grey"
+        android:text="Play Again" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+</RelativeLayout>

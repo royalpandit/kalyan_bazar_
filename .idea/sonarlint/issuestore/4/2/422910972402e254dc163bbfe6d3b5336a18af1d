@@ -1,0 +1,9 @@
+
+\kotlin:S5527B"?Enable server hostname verification on this SSL/TLS connection.(Œ·ËËøÿÿÿÿ
+]kotlin:S4830"@Enable server certificate validation on this SSL/TLS connection.(”àÍ¢ýÿÿÿÿ
+]kotlin:S4830 "@Enable server certificate validation on this SSL/TLS connection.(¹ì‡óøÿÿÿÿ
+6kotlin:S125"Remove this commented out code.(í„³©
+Ikotlin:S4423)",Change this code to use a stronger protocol.(õù¤ˆùÿÿÿÿ
+ikotlin:S6516A"LReplace explicit functional interface implementation with lambda expression.(Ë¢ö›ýÿÿÿÿ
+wkotlin:S1186"ZAdd a nested comment explaining why this function is empty or complete the implementation.(”àÍ¢ýÿÿÿÿ
+wkotlin:S1186 "ZAdd a nested comment explaining why this function is empty or complete the implementation.(¹ì‡óøÿÿÿÿ

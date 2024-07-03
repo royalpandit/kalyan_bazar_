@@ -41,7 +41,7 @@ class AdapterInDashboard (
 
 
         holder.binding.textView.text = list[position].name
-        Glide.with(activity).load(list[position].imageUrl).into(holder.binding.salesimg);
+     Glide.with(activity).load(list[position].imageUrl).into(holder.binding.salesimg);
 
 
         holder.itemView.setOnClickListener {

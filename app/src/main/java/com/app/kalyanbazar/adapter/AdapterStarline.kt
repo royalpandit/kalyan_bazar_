@@ -18,16 +18,17 @@ import com.app.kalyanbazar.activity.ActivityChart
 import com.app.kalyanbazar.databinding.AdapterHomeBinding
 import com.app.kalyanbazar.databinding.AdapterStarlineBinding
 import com.app.kalyanbazar.model.response.ResponseDashBoardListItem
+import com.app.kalyanbazar.model.response.ResponseStarline
 import com.romainpiel.shimmer.Shimmer
 import com.romainpiel.shimmer.ShimmerTextView
 
  class AdapterStarline (
-    private val activity: Activity,
-    var list: ArrayList<ResponseDashBoardListItem>,
-    private val onClick: onClicklistBazar,
+     private val activity: Activity,
+     var list: ArrayList<ResponseStarline>,
+     private val onClick: onClicklistBazar,
 ) : RecyclerView.Adapter<AdapterStarline.ViewResource>() {
     interface onClicklistBazar {
-        fun onItemClickBazar(position: ResponseDashBoardListItem, rlhead: RelativeLayout)
+        fun onItemClickBazar(position: ResponseStarline, rlhead: RelativeLayout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewResource {
@@ -42,15 +43,20 @@ import com.romainpiel.shimmer.ShimmerTextView
 
         Log.e("MarketPoint==>",""+list[position].marketName)
 
-        holder.binding.eventNumber.text = list[position].marketCode
-        holder.binding.openingTime.text = list[position].marketOpeningTime
+        holder.binding.eventNumber.text = list[position].openPanaResult
+        holder.binding.openingTime.text = list[position].marketName
 
-        val shimmer = Shimmer()
 
          if (list[position].marketStatus!!.equals(true)){
-            val rotate = AnimationUtils.loadAnimation(activity, R.anim.round)
-            holder.binding.eventStatus.startAnimation(rotate)
-            holder.binding.eventStatus.setImageResource(R.drawable.play)
+             if (list[position].openingStatus!!.equals(true)) {
+                 val rotate = AnimationUtils.loadAnimation(activity, R.anim.round)
+                 holder.binding.eventStatus.startAnimation(rotate)
+                 holder.binding.eventStatus.setImageResource(R.drawable.play)
+                 holder.itemView.setOnClickListener {
+                     onClick.onItemClickBazar(list[position],holder.binding.rlhead)
+
+                 }
+             }
               }else{
              holder.binding.eventStatus.setImageResource(R.drawable.close)
                 }
@@ -58,10 +64,7 @@ import com.romainpiel.shimmer.ShimmerTextView
         holder.binding.eventNumber.setAnimation(animation)
 
 
-        holder.itemView.setOnClickListener {
-            onClick.onItemClickBazar(list[position],holder.binding.rlhead)
 
-        }
 
     }
 

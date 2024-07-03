@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">kalyanbazar</string>
+    <string name="app_name">Kalyan Bazar</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
     <string name="dev_name">Dev</string>
@@ -7,6 +7,7 @@
     <string name="mail">Mail</string>
     <string name="email_subject">email</string>
     <string name="login">Login</string>
+    <string name="reset">Reset</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="confirm_password">Confirm Password</string>
@@ -19,6 +20,7 @@
     <string name="single_digit">Single Digit</string>
     <string name="jodi_digit">Jodi Digit</string>
     <string name="single_pana">Single Panna</string>
+    <string name="pana">Panna</string>
     <string name="doublef_digit">Double Panna</string>
     <string name="triple_digit">Triple Panna</string>
     <string name="half_sangam">Half Sangam</string>
@@ -28,7 +30,9 @@
     <string name="to_date">To Date</string>
     <string name="enter_your_mobile">Enter your mobile number</string>
     <string name="notaccount">Don\'t have an account? REGISTER</string>
+    <string name="notaccount_register">Register Now</string>
     <string name="alreadyaccount">Already have an account? LOGIN</string>
+    <string name="alreadyaccount_login">Login</string>
     <string name="wallet">Wallet</string>
     <string name="home">Home</string>
     <string name="see_full_profile">See Full Profile</string>
@@ -38,8 +42,9 @@
     <string name="game_rates">Game Rates</string>
     <string name="bid_history">Bid History</string>
     <string name="information">Information</string>
-    <string name="add_funds">Add Funds</string>
-    <string name="withdraw_funds">Withdraw Funds</string>
+    <string name="how_to_play">How To Play</string>
+    <string name="add_funds">Add Points</string>
+    <string name="withdraw_funds">Withdrawal Points</string>
     <string name="share_point">Share Point</string>
     <string name="support">Support</string>
     <string name="share_with_friends">Share With Friends</string>
@@ -56,8 +61,9 @@
     <string name="cf1bhoose_session">Choose Session</string>
     <string name="opef1bn">Open</string>
     <string name="closf1be">Close</string>
-    <string name="digf1bits">Digits</string>
-    <string name="enterf1b_digits">Enter Digits</string>
+    <string name="digf1bits">Digit</string>
+    <string name="enterf1b_digits">Enter Digit</string>
+    <string name="enter_pana">Enter Pana</string>
     <string name="pof1bints">Amount</string>
     <string name="enterpoints">Enter Points</string>
     <string name="prf1boceed">Proceed</string>
@@ -70,10 +76,10 @@
     <string name="phonepeass">PhonePe</string>
     <string name="asspaytm">PayTM</string>
     <string name="assrazorpay">Razorpay</string>
-    <string name="ddd">Withdraw Funds</string>
+    <string name="ddd">Withdrawal Point</string>
     <string name="wfede">Enter Amount</string>
     <string name="sgbv">Select Payment Method</string>
-    <string name="lkh">Add Withdraw Payment Method</string>
+    <string name="lkh">Add Withdrawal Payment Method</string>
     <string name="holdername">Account Holder Name</string>
     <string name="enter_your_name">Enter your name</string>
     <string name="gasselect_gateway">Select Payment Gateway</string>
@@ -105,12 +111,40 @@
     <string name="cc">Points</string>
     <string name="pd">Submit</string>
     <string name="cv">Search</string>
-    <string name="withdraw_open_time">Withdraw Open time</string>
-    <string name="withdraw_close_time">Withdraw Close time</string>
+    <string name="withdraw_open_time">Withdrawal Open time</string>
+    <string name="withdraw_close_time">Withdrawal Close time</string>
     <string name="minimum_withdrawal_points">Minimum withdrawal points</string>
     <string name="history">History</string>
     <string name="whatsupp">Whatsupp</string>
     <string name="go">Go</string>
     <string name="choose_date">Choose Date</string>
     <string name="chart">CHART</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="clr">CLR</string>
+    <string name="_0">0</string>
+    <string name="delete">DEL</string>
+    <string name="fp">fp</string>
+    <string name="reset_pin">Reset Pin</string>
+    <string name="play_icon">Play Icon</string>
+
+    <string name="please_enter_your_security_pin">Please Enter your Security Pin</string>
+    <string name="enter_your_upi_id">Enter Your UPI ID</string>
+    <string name="transfer_fund">Transfer Points</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="enter_your_query_here">Enter Your Query Here</string>
+
+    <string-array name="Languages">
+        <item>Bank</item>
+        <item>Paytm</item>
+        <item>Phone Pay</item>
+        <item>Gpay</item>
+    </string-array>
 </resources>

@@ -7,140 +7,183 @@
 
     </data>
 
-<RelativeLayout
-     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bluetheme"
-    >
-
-    <ImageView
-        android:layout_alignParentTop="true"
-        android:scaleType="fitXY"
-        android:src="@drawable/group_top"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_100sdp"
-        android:id="@+id/img1"
-        app:tint="#f8cf40" />
-
-    <androidx.core.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/img1">
-        <LinearLayout
+        android:background="@color/white">
 
-            android:orientation="vertical"
-             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/group_top"
+            android:visibility="gone"
+            app:tint="@color/red" />
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/img1">
 
             <LinearLayout
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/transparent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_120sdp"/>
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_120sdp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/kalyanbazar_logo" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/filledTextemail"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        app:hintTextColor="@color/golden"
+                        android:hint="Enter Mobile Number"
 
-                         app:shapeAppearance="@style/Rounded"
-                        app:boxStrokeColor="@color/golden"
-                         android:hint="Enter Email">
+                        app:boxStrokeColor="@color/red"
+                        app:hintTextColor="@color/red"
+                        app:shapeAppearance="@style/Rounded">
                         <!--this is the actual edit text which takes the input-->
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edit_email"
-                            android:textColor="@color/golden"
-android:singleLine="true"
-android:imeOptions="actionNext"
-                            android:textColorHint="@color/golden"
-                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Mobile Number"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="10"
+                            android:singleLine="true"
+                            android:textColor="@color/red"
+                            android:textColorHint="@color/grey" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/filledTextpwd"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                         android:layout_width="match_parent"
-                        app:hintTextColor="@color/golden"
-                        app:shapeAppearance="@style/Rounded"
-                        app:boxStrokeColor="@color/golden"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Password">
+
+                        android:hint="Enter Password"
+                        app:boxStrokeColor="@color/red"
+                        app:hintTextColor="@color/red"
+                        app:shapeAppearance="@style/Rounded">
                         <!--this is the actual edit text which takes the input-->
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edit_pwd"
-                            android:textColor="@color/golden"
-android:singleLine="true"
-                            android:imeOptions="actionDone"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Password"
+                            android:imeOptions="actionDone"
+                            android:singleLine="true"
+                            android:textColor="@color/red"
+                            android:textColorHint="@color/grey" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
 
+                    <TextView
+                        android:id="@+id/tvforgot_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+
+                        android:padding="@dimen/_10sdp"
+                        android:text="Forgot Password"
+                        android:textColor="@color/red" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/login"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="@color/red"
+                        android:paddingVertical="13dp"
+                        android:text="@string/login"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:cornerRadius="20dp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvregister"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:onClick="registerClick"
+                            android:paddingVertical="@dimen/_10sdp"
+                            android:text="@string/notaccount_register"
+                            android:textAllCaps="false"
+                            android:textColor="@color/red"
+                            android:textStyle="bold"
+                            app:cornerRadius="@dimen/_8sdp" />
+
+                        <RelativeLayout
+                            android:id="@+id/rlwhatsup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvregister"
+                            android:layout_centerInParent="true"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/ivWhatsupp"
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:src="@drawable/whatsups"
+                                android:tint="@color/green"
+                                tools:ignore="UseAppTint" />
+
+                            <TextView
+                                android:id="@+id/tvsupport"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_toRightOf="@+id/ivWhatsupp"
+                                android:text="For Support"
+                                android:textColor="@color/red" />
 
 
+                        </RelativeLayout>
+                    </RelativeLayout>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:background="?attr/selectableItemBackground"
-                    android:onClick="forPass"
-                     android:padding="@dimen/_10sdp"
-                    android:text="Forgot Password"
-                    android:textColor="@color/golden" />
+                </LinearLayout>
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:backgroundTint="@color/golden"
-                    android:paddingVertical="13dp"
-                    android:text="@string/login"
-                    android:id="@+id/login"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:cornerRadius="20dp" />
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:id="@+id/tvregister"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content"
-                     android:onClick="registerClick"
-                    android:paddingVertical="@dimen/_10sdp"
-                    android:text="@string/notaccount"
-                    android:textAllCaps="false"
-                    android:textColor="@color/golden"
-                    app:cornerRadius="@dimen/_8sdp" />
 
             </LinearLayout>
 
+        </androidx.core.widget.NestedScrollView>
 
-        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/group_bottom"
+            android:visibility="gone"
+            app:tint="@color/red" />
 
-    </androidx.core.widget.NestedScrollView>
-
-    <ImageView
-       android:layout_alignParentBottom="true"
-        android:scaleType="fitXY"
-        android:src="@drawable/group_bottom"
-        android:layout_width="match_parent"
-        app:tint="#f8cf40"
-        android:layout_height="@dimen/_100sdp"/>
-
-</RelativeLayout>
+    </RelativeLayout>
 </layout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "18054899364",
+    "project_id": "kalyanbazar-34dac",
+    "storage_bucket": "kalyanbazar-34dac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18054899364:android:f78bac09c10c088f3da831",
+        "android_client_info": {
+          "package_name": "com.app.kalyanbazar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChlRCGRjtoJt_sIlESF_RFZKvo_F-tTIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

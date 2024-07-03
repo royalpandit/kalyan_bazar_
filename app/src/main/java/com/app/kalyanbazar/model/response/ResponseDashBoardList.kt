@@ -15,6 +15,12 @@ data class ResponseDashBoardListItem(
 	@field:SerializedName("market_opening_time")
 	val marketOpeningTime: String? = null,
 
+	@field:SerializedName("open_pana_result")
+	val openPanaResult: String? = null,
+
+	@field:SerializedName("close_pana_result")
+	val closePanaResult: String? = null,
+
 	@field:SerializedName("created_at")
 	val createdAt: String? = null,
 
@@ -28,6 +34,14 @@ data class ResponseDashBoardListItem(
 
 	@field:SerializedName("market_status")
 	val marketStatus: Boolean? = null,
+
+
+	@field:SerializedName("opening_status")
+	val openingStatus: Boolean? = null,
+
+
+	@field:SerializedName("active")
+	val active: Boolean? = null,
 
 	@field:SerializedName("market_name")
 	val marketName: String? = null

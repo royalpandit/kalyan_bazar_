@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainrelay"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/welcometxt"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_baseline_lock_244"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/welcometxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/scrtolld"
+        android:layout_centerHorizontal="true"
+        android:text="Welcome User"
+        android:textColor="@color/black" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrtolld"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:id="@+id/somell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title_text_view"
+                style="?pf_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/please_enter_your_security_pin"
+                android:textColor="@android:color/black" />
+
+            <com.app.kalyanbazar.utils.PFCodeView
+                android:id="@+id/code_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:clickable="false"
+                android:touchscreenBlocksFocus="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/securityscreendesign"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/button_1"
+                            style="?pf_key_button"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:text="@string/_1"
+                            android:textColor="@android:color/white"
+                            android:textSize="17sp"
+                            android:theme="@style/PFLockScreenButtonStyle" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/button_2"
+                            style="?pf_key_button"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:text="@string/_2"
+                            android:textColor="@android:color/white"
+                            android:textSize="17sp"
+                            android:theme="@style/PFLockScreenButtonStyle" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/button_3"
+                            style="?pf_key_button"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:text="@string/_3"
+                            android:textColor="@android:color/white"
+                            android:textSize="17sp"
+                            android:theme="@style/PFLockScreenButtonStyle" />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="20dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/button_4"
+                            style="?pf_key_button"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:text="@string/_4"
+                            android:textColor="@android:color/white"
+                            android:textSize="17sp"
+                            android:theme="@style/PFLockScreenButtonStyle" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/button_5"
+                            style="?pf_key_button"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:text="@string/_5"
+                            android:textColor="@android:color/white"
+                            android:textSize="17sp"
+                            android:theme="@style/PFLockScreenButtonStyle" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/button_6"
+                            style="?pf_key_button"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:text="@string/_6"
+                            android:textColor="@android:color/white"
+                            android:textSize="17sp"
+                            android:theme="@style/PFLockScreenButtonStyle" />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="20dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/button_7"
+                            style="?pf_key_button"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:text="@string/_7"
+                            android:textColor="@android:color/white"
+                            android:textSize="17sp"
+                            android:theme="@style/PFLockScreenButtonStyle" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/button_8"
+                            style="?pf_key_button"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:text="@string/_8"
+                            android:textColor="@android:color/white"
+                            android:textSize="17sp"
+                            android:theme="@style/PFLockScreenButtonStyle" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/button_9"
+                            style="?pf_key_button"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:text="@string/_9"
+                            android:textColor="@android:color/white"
+                            android:textSize="17sp"
+                            android:theme="@style/PFLockScreenButtonStyle" />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="20dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/button_left"
+                            style="?pf_hint"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:text="@string/clr"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp"
+                            android:theme="@style/PFLockScreenButtonStyle"
+                            android:visibility="gone" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/button_0"
+                            style="?pf_key_button"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:text="@string/_0"
+                            android:textColor="@android:color/white"
+                            android:textSize="17sp"
+                            android:theme="@style/PFLockScreenButtonStyle" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/button_right"
+                            style="?pf_key_button"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:text="DEL"
+                            android:textColor="@android:color/white"
+                            android:textSize="17sp"
+                            android:theme="@style/PFLockScreenButtonStyle" />
+
+                        <ImageView
+                            android:id="@+id/button_delete"
+                            style="?pf_delete_button"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@android:color/white"
+                            android:gravity="center"
+                            android:text="@string/fp" />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                     android:layout_marginTop="40dp"
+                    android:layout_marginBottom="25dp">
+
+                    <TextView
+                        android:id="@+id/tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/reset_pin"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"></TextView>
+
+                    <RelativeLayout
+
+                        android:id="@+id/rl1"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv1"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                             android:layout_toStartOf="@+id/tvnumber"
+                            android:src="@drawable/whatsups"
+                            app:tint="@color/green" />
+
+                        <TextView
+                            android:id="@+id/tvnumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginEnd="20dp"
+                            android:gravity="center"
+                            android:text=""
+                            android:visibility="gone"
+                            android:textColor="@android:color/white"
+                            android:textSize="12sp"
+                            tools:ignore="RelativeOverlap" />
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

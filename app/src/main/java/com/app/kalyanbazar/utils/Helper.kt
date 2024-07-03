@@ -50,6 +50,16 @@ import java.util.*
  * Created by dheerajpandey on 6/22/18.
  */
 class Helper {
+    val EMAIL_ADDRESS_PATTERN = Pattern.compile(
+        "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                "\\@" +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                "(" +
+                "\\." +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                ")+"
+    )
+
     fun getDurationString(seconds: Int): String {
         //   int hours = seconds / 3600;
         var seconds = seconds
@@ -1006,6 +1016,39 @@ class Helper {
                 Log.e(ContentValues.TAG, "printHashKey()", e)
             }
         }
+/*------------------xxxxxxlxxx-----------------------------*/
+fun isValidEmail(str: String): Boolean{
+    val EMAIL_ADDRESS_PATTERN = Pattern.compile(
+        "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                "\\@" +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                "(" +
+                "\\." +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                ")+"
+    )
+    return EMAIL_ADDRESS_PATTERN.matcher(str).matches()
+}
+
+        val EMAIL_ADDRESS_PATTERN = Pattern.compile(
+            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                    "\\@" +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                    "(" +
+                    "\\." +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                    ")+"
+        )
+
+
+        fun isMobileValid(str: String): Boolean {
+            // 11 digit number start with 011 or 010 or 015 or 012
+            // then [0-9]{8} any numbers from 0 to 9 with length 8 numbers
+            if(!Pattern.matches("(9|8|7|6)[0-9]{10}", str)) {
+                return false
+            }
+            return true
+        }
 
         /*-------------------------------------xxxxxxxxxxxxxxxxxx----------------------------------------------------------------------*/
         fun checkWhatsAppInstalledOrNot(activity: Activity): Boolean {
@@ -1200,8 +1243,10 @@ class Helper {
         @JvmStatic
         fun dateFormateConverter(data: String): String? {
 
-            val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-            val dateFormat1 = SimpleDateFormat("dd-MM-yyyy")
+           // val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+         //   val dateFormat = SimpleDateFormat("dd/MM/yyyy hh:mm:ss.SSS")
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")
+            val dateFormat1 = SimpleDateFormat("dd-MM-yyyy hh:mm a")
 
             try {
                 val d = dateFormat.parse(data)
@@ -1215,23 +1260,24 @@ class Helper {
 
         @SuppressLint("NewApi")
         @JvmStatic
+        fun dateFormateampm(data: String): String? {
+
+
+            val dateFormat = SimpleDateFormat("hh:mm")
+            val dateFormat1 = SimpleDateFormat("hh:mm a")
+
+            try {
+                val d = dateFormat.parse(data)
+                return dateFormat1.format(d).toString()
+            } catch (e: ParseException) {
+                e.printStackTrace()
+            }
+            return null
+        }
+        @SuppressLint("NewApi")
+        @JvmStatic
         fun dateFormateYYYYMMDD(data: String): String? {
 
-            /*val secondApiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
-            val timestamp = data.toLong() // timestamp in Long
-
-
-            val timestampAsDateString = java.time.format.DateTimeFormatter.ISO_INSTANT
-                .format(java.time.Instant.ofEpochSecond(timestamp))
-
-            Log.e("parseTesting", timestampAsDateString) // prints 2019-08-07T20:27:45Z
-
-
-            val date = LocalDate.parse(timestampAsDateString, secondApiFormat)
-
-            Log.e("parseTesting", date.dayOfWeek.toString()) // prints Wednesday
-            Log.e("parseTesting", date.month.toString()) // prints August
-*/
 
             val dateFormat = SimpleDateFormat("yyyy-MM-dd")
             val dateFormat1 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
@@ -1274,8 +1320,8 @@ class Helper {
             dialog.setContentView(dialogBinding.root)
             dialog.setCancelable(true)
 
-       //dialogBinding.datePicker1.maxDate = System.currentTimeMillis()
-            dialogBinding.datePicker1.setMaxDate(System.currentTimeMillis())
+   //  dialogBinding.datePicker1.maxDate = System.currentTimeMillis()
+          //  dialogBinding.datePicker1.setMaxDate(System.currentTimeMillis())
 
             dialogBinding.tvCancel.setOnClickListener {
                 alertIsBeingShown = false
@@ -1284,8 +1330,8 @@ class Helper {
             }
             dialogBinding.tvOkay.setOnClickListener {
                 alertIsBeingShown = false
-                eText.text =
-                    dialogBinding.datePicker1.dayOfMonth.toString() + "-" + (dialogBinding.datePicker1.month + 1) + "-" + dialogBinding.datePicker1.year
+eText.text = dialogBinding.datePicker1.year.toString() + "-" + (dialogBinding.datePicker1.month + 1) + "-" + dialogBinding.datePicker1.dayOfMonth.toString()
+               // eText.text = dialogBinding.datePicker1.dayOfMonth.toString() + "-" + (dialogBinding.datePicker1.month + 1) + "-" + dialogBinding.datePicker1.year
                 Log.e("==>startsss", "" + eText.toString())
 
                 dialog.dismiss()
@@ -1371,7 +1417,12 @@ class Helper {
             }
         }
 
-
+        fun getTimeAmPm(hr: Int, min: Int): String? {
+            val tme = Time(hr, min, 0) //seconds by default set to zero
+            val formatter: Format
+            formatter = SimpleDateFormat("h:mm a")
+            return formatter.format(tme)
+        }
 
 
     }
@@ -1381,12 +1432,7 @@ class Helper {
     }
 
 
-    fun getTimeAmPm(hr: Int, min: Int): String? {
-        val tme = Time(hr, min, 0) //seconds by default set to zero
-        val formatter: Format
-        formatter = SimpleDateFormat("h:mm a")
-        return formatter.format(tme)
-    }
+
 
 
 }

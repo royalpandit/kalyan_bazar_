@@ -1,0 +1,29 @@
+
+Jkotlin:S1172 "2Use "_" instead of these unused lambda parameters.(–Â¹
+Jkotlin:S1172¼"2Use "_" instead of these unused lambda parameters.(–Â¹
+Nkotlin:S1172¦"5Use "_" instead of this unused lambda parameter "id".(•©·û
+Wkotlin:S6619£">Remove this useless non-null assertion !!, it always succeeds.(—‚°Ó
+5kotlin:S125J"Remove this commented out code.(íÇü1
+;kotlin:S125O"Remove this commented out code.(ûíæŒþÿÿÿÿ
+;kotlin:S125T"Remove this commented out code.(„Æ†–úÿÿÿÿ
+<kotlin:S125É"Remove this commented out code.(þ™„üøÿÿÿÿ
+7kotlin:S125í"Remove this commented out code.(„ØÅÖ
+fkotlin:S117•"NRename this parameter to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(ˆåÜö
+fkotlin:S117³"NRename this parameter to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(ˆåÜö
+Mkotlin:S1144€"4Remove this unused private "takeToPlaystore" method.(ÍÎ§“
+Ekotlin:S108C")Either remove or fill this block of code.(¶»†¬ÿÿÿÿÿ
+Fkotlin:S108¬")Either remove or fill this block of code.(ÍÖ¥ºÿÿÿÿÿ
+Fkotlin:S108Î")Either remove or fill this block of code.(ÍÖ¥ºÿÿÿÿÿ
+Dkotlin:S1481Ó"&Remove this unused "x" local variable.(‹Îð÷úÿÿÿÿ
+2kotlin:S1128"Remove this unused import.(ö®¿Ô
+2kotlin:S1128"Remove this unused import.(ÁÈÚø
+7kotlin:S1128"Remove this unused import.(ÊÒÅ­ùÿÿÿÿ
+xkotlin:S1186â"ZAdd a nested comment explaining why this function is empty or complete the implementation.(ü‚Îµøÿÿÿÿ
+skotlin:S1186è"ZAdd a nested comment explaining why this function is empty or complete the implementation.(¹âƒ°
+xkotlin:S1186é"ZAdd a nested comment explaining why this function is empty or complete the implementation.(£šéÝþÿÿÿÿ
+skotlin:S1186ê"ZAdd a nested comment explaining why this function is empty or complete the implementation.(ù’÷–
+skotlin:S1186ë"ZAdd a nested comment explaining why this function is empty or complete the implementation.(œû›ù
+xkotlin:S1186ò"ZAdd a nested comment explaining why this function is empty or complete the implementation.(çô´äûÿÿÿÿ
+xkotlin:S1186ó"ZAdd a nested comment explaining why this function is empty or complete the implementation.(·Ì›—úÿÿÿÿ
+Gkotlin:S1066¤".Merge this "if" statement with the nested one.(ÿ—«€
+Gkotlin:S1066Ç".Merge this "if" statement with the nested one.(ü Ìû

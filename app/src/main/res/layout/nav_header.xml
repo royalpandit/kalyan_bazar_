@@ -5,39 +5,65 @@
     <data>
 
     </data>
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/_140sdp"
-    android:background="@color/bluetheme"
-    android:gravity="bottom"
-     android:padding="@dimen/_10sdp">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:contentDescription="@string/nav_header_desc"
-        android:paddingTop="@dimen/_2sdp"
-        app:srcCompat="@drawable/transparent" />
-
-    <TextView
-        android:id="@+id/tvusername"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:textColor="@color/golden"
-        android:text="@string/nav_header_title" />
+        android:layout_height="@dimen/_80sdp"
+        android:background="@color/red"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp">
 
-    <TextView
+        <LinearLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
 
-        android:id="@+id/tvemail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/golden"
-        android:text="@string/nav_header_subtitle" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_weight="1"
+                android:contentDescription="@string/nav_header_desc"
+                android:paddingTop="@dimen/_2sdp"
+                app:srcCompat="@drawable/kalyanbazar_logo" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:id="@+id/tvusername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:text="@string/nav_header_title"
+                    android:textColor="@color/white" />
+
+                <TextView
+android:visibility="gone"
+                    android:id="@+id/tvemail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nav_header_subtitle"
+                    android:textColor="@color/white" />
+
+                <TextView
+
+                    android:id="@+id/tvphone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="000-000-0000"
+                    android:textColor="@color/white" />
 
 
+            </LinearLayout>
+        </LinearLayout>
 
-</LinearLayout>
+
+    </LinearLayout>
 </layout>

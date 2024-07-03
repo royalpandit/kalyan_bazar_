@@ -10,13 +10,13 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_images"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_150sdp"
+        android:layout_height="@dimen/_120sdp"
         app:cardCornerRadius="@dimen/_5sdp"
          app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <ImageView
-android:src="@color/golden"
+android:src="@color/red"
             android:id="@+id/iv_images"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

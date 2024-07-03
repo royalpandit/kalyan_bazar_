@@ -6,201 +6,278 @@
     <data>
 
     </data>
+
     <LinearLayout
-        android:orientation="vertical"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bluetheme"
-        >
+        android:background="@color/white"
+        android:orientation="vertical">
 
-    <ImageView
-        android:layout_alignParentTop="true"
-        android:scaleType="fitXY"
-        android:src="@drawable/group_top"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_100sdp"
-        android:id="@+id/img1"
-        app:tint="#f8cf40" />
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_below="@+id/img1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:orientation="vertical"
-             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_centerInParent="true"
-                android:src="@drawable/transparent"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_120sdp"/>
-
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/filledTextfirst"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hintTextColor="@color/golden"
-                app:shapeAppearance="@style/Rounded"
-                app:boxStrokeColor="@color/golden"
-                android:layout_marginTop="@dimen/_10sdp"
-
-                android:hint="Enter First Name">
-                <!--this is the actual edit text which takes the input-->
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_first"
-                    android:layout_width="match_parent"
-                    android:maxLength="20"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:textColor="@color/golden"
-                    android:textColorHint="@color/golden"
-                    android:layout_height="wrap_content" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/filledTextname"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hintTextColor="@color/golden"
-                app:shapeAppearance="@style/Rounded"
-                app:boxStrokeColor="@color/golden"
-                android:hint="Enter Last Name">
-                <!--this is the actual edit text which takes the input-->
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_lastname"
-                    android:maxLength="20"
-                    android:layout_width="match_parent"
-                    android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textColor="@color/golden"
-                    android:textColorHint="@color/golden"
-                    android:layout_height="wrap_content" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/filledTextemail"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hintTextColor="@color/golden"
-                app:shapeAppearance="@style/Rounded"
-                app:boxStrokeColor="@color/golden"
-                android:hint="Enter Email">
-                <!--this is the actual edit text which takes the input-->
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_email"
-                    android:inputType="textEmailAddress"
-                    android:layout_width="match_parent"
-                    android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textColor="@color/golden"
-                    android:textColorHint="@color/golden"
-                    android:layout_height="wrap_content" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/filledTphonenumber"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hintTextColor="@color/golden"
-                app:shapeAppearance="@style/Rounded"
-                app:boxStrokeColor="@color/golden"
-                android:hint="Enter Phone Number">
-                <!--this is the actual edit text which takes the input-->
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_phonenumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:textColor="@color/golden"
-                    android:textColorHint="@color/golden"
-                    android:maxLength="10"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/filledTextpassword"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hintTextColor="@color/golden"
-                app:shapeAppearance="@style/Rounded"
-                app:boxStrokeColor="@color/golden"
-                android:hint="Enter Password">
-                <!--this is the actual edit text which takes the input-->
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionDone"
-                    android:textColor="@color/golden"
-                    android:singleLine="true"
-                    android:textColorHint="@color/golden"
-                    android:inputType="textPassword"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:visibility="gone"
-                android:background="?attr/selectableItemBackground"
-                android:onClick="forPass"
-                android:padding="@dimen/_10sdp"
-                android:text="Forgot Password"
-                android:textColor="@color/black" />
-
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:id="@+id/btnsignup"
-                android:backgroundTint="@color/yellowdark"
-                android:onClick="SignUpBtn"
-                android:paddingVertical="13dp"
-                android:text="@string/signup"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:cornerRadius="20dp" />
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvalreadylogin"
-                 android:onClick="loginClick"
-                android:paddingVertical="@dimen/_10sdp"
-                android:text="@string/alreadyaccount"
-                android:textAllCaps="false"
-                android:textColor="@color/golden"
-                app:cornerRadius="@dimen/_8sdp" />
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
         <ImageView
+            android:visibility="gone"
+            android:id="@+id/img1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/group_top"
+            app:tint="@color/red" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/kalyanbazar_logo" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/filledTextfirst"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:hint="Enter First Name"
+                    app:boxStrokeColor="@color/red"
+                    app:hintTextColor="@color/red"
+
+                    app:shapeAppearance="@style/Rounded">
+                    <!--this is the actual edit text which takes the input-->
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_first"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter First Name"
+                        android:imeOptions="actionNext"
+                        android:maxLength="20"
+                        android:singleLine="true"
+                        android:textColor="@color/red"
+                        android:textColorHint="@color/grey" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <!--
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/filledTextname"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:hintTextColor="@color/red"
+                                app:shapeAppearance="@style/Rounded"
+                                app:boxStrokeColor="@color/red"
+                                android:hint="Enter Last Name">
+                                &lt;!&ndash;this is the actual edit text which takes the input&ndash;&gt;
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_lastname"
+                                    android:maxLength="20"
+                                    android:layout_width="match_parent"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="@color/red"
+                                    android:textColorHint="@color/red"
+                                    android:layout_height="wrap_content" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                -->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/filledTextemail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Email"
+                    android:visibility="gone"
+                    app:boxStrokeColor="@color/red"
+                    app:hintTextColor="@color/red"
+                    app:shapeAppearance="@style/Rounded">
+                    <!--this is the actual edit text which takes the input-->
+
+                    <EditText
+                        android:id="@+id/edit_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Email"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:singleLine="true"
+                        android:textColor="@color/red"
+                        android:textColorHint="@color/grey" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/filledTphonenumber"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Phone Number"
+                    app:boxStrokeColor="@color/red"
+                    app:hintTextColor="@color/red"
+                    app:shapeAppearance="@style/Rounded">
+                    <!--this is the actual edit text which takes the input-->
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_phonenumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Phone Number"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:singleLine="true"
+                        android:textColor="@color/red"
+                        android:textColorHint="@color/grey" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/filledTextpassword"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Password"
+                    app:boxStrokeColor="@color/red"
+                    app:hintTextColor="@color/red"
+                    app:shapeAppearance="@style/Rounded">
+                    <!--this is the actual edit text which takes the input-->
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Password"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:singleLine="true"
+                        android:textColor="@color/red"
+                        android:textColorHint="@color/grey" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/filledTextPin"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter MPIN"
+                    app:boxStrokeColor="@color/red"
+                    app:hintTextColor="@color/red"
+                    app:shapeAppearance="@style/Rounded">
+                    <!--this is the actual edit text which takes the input-->
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_pin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter MPIN"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:singleLine="true"
+                        android:textColor="@color/red"
+                        android:textColorHint="@color/grey" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:background="?attr/selectableItemBackground"
+                    android:onClick="forPass"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Forgot Password"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnsignup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/red"
+                    android:onClick="SignUpBtn"
+                    android:paddingVertical="13dp"
+                    android:text="@string/signup"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:cornerRadius="20dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvalreadylogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:onClick="loginClick"
+                        android:paddingVertical="@dimen/_10sdp"
+
+                        android:text="@string/alreadyaccount_login"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
+                        android:textColor="@color/red"
+                        app:cornerRadius="@dimen/_8sdp" />
+
+                    <RelativeLayout
+                        android:id="@+id/rlwhatsup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvalreadylogin"
+                        android:layout_centerInParent="true"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/ivWhatsupp"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:src="@drawable/whatsups"
+                            android:tint="@color/green"
+                            tools:ignore="UseAppTint" />
+
+                        <TextView
+                            android:id="@+id/tvsupport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_toRightOf="@+id/ivWhatsupp"
+                            android:text="For Support"
+                            android:textColor="@color/red" />
+
+
+                    </RelativeLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
             android:layout_alignParentBottom="true"
             android:scaleType="fitXY"
             android:src="@drawable/group_bottom"
-            android:layout_width="match_parent"
-            app:tint="#f8cf40"
-            android:layout_height="@dimen/_100sdp"/>
+            android:visibility="gone"
+            app:tint="@color/red" />
 
     </LinearLayout>
 </layout>

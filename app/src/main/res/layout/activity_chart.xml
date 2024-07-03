@@ -23,6 +23,12 @@
             android:id="@+id/toolbar"
             layout="@layout/header" />
     </RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:layout_below="@+id/rl_tool"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <RelativeLayout
         android:background="@color/white"
         android:layout_below="@+id/rl_tool"
@@ -32,8 +38,11 @@
             android:id="@+id/webview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:scrollbars="none"
              />
     </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 </layout>

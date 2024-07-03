@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/button_gradient"
+        android:background="@color/red"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -26,232 +26,244 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/rl_tool"
-            android:background="@color/white_opacity">
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_5sdp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@color/bluetheme"
-                    android:elevation="5dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="10dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/bluetheme"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="10dp"
-                        android:paddingStart="20dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_5sdp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                 android:paddingLeft="@dimen/_10sdp"
-                                android:text="Single Digit"
-                                android:textColor="@color/golden" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="right"
-                                android:paddingRight="@dimen/_10sdp"
-                                android:text="10-100"
-                                android:textColor="@color/golden"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_5sdp"
-                            android:layout_marginTop="@dimen/_3sdp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-
-                                android:paddingLeft="@dimen/_10sdp"
-                                android:text="Single Pana"
-                                android:textColor="@color/golden" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="right"
-                                android:paddingRight="@dimen/_10sdp"
-                                android:text="10-1500"
-                                android:textColor="@color/golden"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_5sdp"
-                            android:layout_marginTop="@dimen/_3sdp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-
-                                android:paddingLeft="@dimen/_10sdp"
-                                android:text="Double Pana"
-                                android:textColor="@color/golden" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="right"
-                                android:paddingRight="@dimen/_10sdp"
-                                android:text="10-3000"
-                                android:textColor="@color/golden"
-
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_5sdp"
-                            android:layout_marginTop="@dimen/_3sdp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-
-                                android:paddingLeft="@dimen/_10sdp"
-                                android:text="Triple Pana"
-                                android:textColor="@color/golden" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="right"
-                                android:paddingRight="@dimen/_10sdp"
-                                android:text="10-7000"
-                                android:textColor="@color/golden"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/chart"
-                            android:layout_width="@dimen/_100sdp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:background="@drawable/bg_red_grey"
-                            android:backgroundTint="@color/yellowdark"
-                            android:gravity="center"
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="6dp"
-                            android:text="@string/chart"
-                            android:textColor="@color/white_opacity"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-
-                </androidx.cardview.widget.CardView>
+                android:layout_height="match_parent"
+                android:layout_below="@+id/rl_tool"
+                android:background="@color/white_opacity">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
+                    android:orientation="vertical">
 
-                    android:weightSum="2">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/starlinebidhistory"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_margin="@dimen/_5sdp"
-                        android:background="@drawable/bg_red_grey"
-                        android:backgroundTint="@color/yellowdark"
-                        android:gravity="center"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="6dp"
-                        android:text="@string/bid_history"
-                        android:textColor="@color/white_opacity"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/starlinewinhistory"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_margin="@dimen/_5sdp"
-                        android:background="@drawable/bg_red_grey"
-                        android:backgroundTint="@color/bluetheme"
-                        android:gravity="center"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="6dp"
-                        android:text="@string/win_history"
-                        android:textColor="@color/white_opacity"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <RelativeLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvstarline"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        tools:listitem="@layout/adapter_starline" />
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginVertical="10dp"
+                        android:elevation="5dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="10dp">
 
-                </RelativeLayout>
-            </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/red"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="10dp"
+                            android:paddingStart="20dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:paddingLeft="@dimen/_10sdp"
+                                    android:text="Single Digit"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="right"
+                                    android:paddingRight="@dimen/_10sdp"
+                                    android:text="10-100"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+
+                                    android:paddingLeft="@dimen/_10sdp"
+                                    android:text="Single Pana"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="right"
+                                    android:paddingRight="@dimen/_10sdp"
+                                    android:text="10-1500"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+
+                                    android:paddingLeft="@dimen/_10sdp"
+                                    android:text="Double Pana"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="right"
+                                    android:paddingRight="@dimen/_10sdp"
+                                    android:text="10-3000"
+                                    android:textColor="@color/white"
+
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+
+                                    android:paddingLeft="@dimen/_10sdp"
+                                    android:text="Triple Pana"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="right"
+                                    android:paddingRight="@dimen/_10sdp"
+                                    android:text="10-7000"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
 
 
-        </RelativeLayout>
+                        </LinearLayout>
 
+
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+
+                        android:weightSum="3">
+
+                        <TextView
+                            android:id="@+id/starlinebidhistory"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_red_grey"
+                            android:backgroundTint="@color/red"
+
+                            android:gravity="center"
+                            android:paddingVertical="6dp"
+                            android:text="@string/bid_history"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white_opacity"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/chart"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_red_grey"
+                            android:backgroundTint="@color/red"
+
+                            android:gravity="center"
+                            android:paddingVertical="6dp"
+                            android:text="@string/chart"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white_opacity"
+                            android:textStyle="bold"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/starlinewinhistory"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:layout_weight="1"
+
+                            android:background="@drawable/bg_red_grey"
+                            android:backgroundTint="@color/red"
+                            android:gravity="center"
+
+                            android:paddingVertical="6dp"
+                            android:text="@string/win_history"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white_opacity"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvstarline"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                             tools:listitem="@layout/adapter_starline" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 </layout>

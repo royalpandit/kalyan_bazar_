@@ -22,6 +22,12 @@
             android:id="@+id/toolbar"
             layout="@layout/header" />
     </RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:layout_below="@+id/rl_tool"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <RelativeLayout
             android:layout_below="@+id/rl_tool"
             android:background="@color/white"
@@ -66,6 +72,6 @@
             </androidx.core.widget.NestedScrollView>
 
         </RelativeLayout>
-
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 </layout>

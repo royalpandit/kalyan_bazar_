@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_13sdp"
                     android:text="Set Date"
-                    android:textColor="@color/greendark"
+                    android:textColor="@color/red"
                     android:textSize="@dimen/_13sdp"
                     android:textStyle="bold" />
 
@@ -39,8 +39,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_above="@+id/tv_cancel"
-                    android:background="@color/greendark"
-                    android:backgroundTint="@color/greendark" />
+                    android:background="@color/red"
+                    android:backgroundTint="@color/red" />
 
 
                 <DatePicker
@@ -57,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1.5dp"
                     android:layout_above="@+id/tv_cancel"
-                    android:background="@color/greendark" />
+                    android:background="@color/red" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                         android:layout_width="@dimen/_1sdp"
                         android:layout_height="match_parent"
                         android:layout_above="@+id/tv_cancel"
-                        android:background="@color/greendark" />
+                        android:background="@color/red" />
 
                     <TextView
                         android:id="@+id/tvOkay"
@@ -89,7 +89,7 @@
                         android:layout_weight="5"
                         android:gravity="center"
                         android:text="Okay"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/green" />
 
 
                 </LinearLayout>

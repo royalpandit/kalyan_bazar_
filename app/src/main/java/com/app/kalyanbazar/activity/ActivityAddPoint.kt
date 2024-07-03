@@ -14,20 +14,26 @@ import com.app.kalyanbazar.R
 import com.app.kalyanbazar.data.network.Resource
 import com.app.kalyanbazar.databinding.ActivityAddPointBinding
 import com.app.kalyanbazar.model.request.RequestAddFund
-import com.app.kalyanbazar.utils.*
+import com.app.kalyanbazar.utils.BaseActivity
+import com.app.kalyanbazar.utils.Constants
+import com.app.kalyanbazar.utils.Helper
+import com.app.kalyanbazar.utils.MyApplication
 import com.app.kalyanbazar.utils.MyApplication.Companion.toast
+import com.app.kalyanbazar.utils.handleApiError
 import com.app.kalyanbazar.viewModel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import dev.shreyaspatil.easyupipayment.EasyUpiPayment
 import dev.shreyaspatil.easyupipayment.listener.PaymentStatusListener
 import dev.shreyaspatil.easyupipayment.model.TransactionDetails
 import dev.shreyaspatil.easyupipayment.model.TransactionStatus
-
+import java.net.URLEncoder
+import java.util.Locale
 
 @AndroidEntryPoint
 class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusListener {
     private val viewModel by viewModels<HomeViewModel>()
     private lateinit var easyUpiPayment: EasyUpiPayment
+    var phoneNumber: String = ""
     var amonut: Int = 0
     var GOOGLE_PAY_PACKAGE_NAME = "com.google.android.apps.nbu.paisa.user"
     var PAYTM_PAY_PACKAGE_NAME = "net.one97.paytm"
@@ -35,20 +41,45 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
     var UPI_PAY_PACKAGE_NAME = "in.org.npci.upiapp"
     var transactionIdd = "TID" + System.currentTimeMillis()
     var transactionRefIdd = transactionIdd + "_" + System.currentTimeMillis()
+    var minFund: Int = 0
+    var maxFund: Int = 0
+    var addUpi: String = ""
+    var MerchantUpiAddress: String = ""
     override fun getLayoutResId(): Int = R.layout.activity_add_point
     internal val UPI_PAYMENT = 0
     override fun setupViews() {
         dataBinding.apply {
+            getUserList()
+            getAppSetting()
+            getInformation()
+            getContactUs()
             toolbar.tvTitle.text = "Add Point"
             toolbar.ivBack.setOnClickListener {
                 onBackPressed()
+            }
+            rlwhatsup.setOnClickListener {
+                whatsAppBtn()
+            }
+            tvunable.setOnClickListener {
+                val contactUs = Intent(this@ActivityAddPoint, ActivityContactUs::class.java)
+                startActivity(contactUs)
+            }
+            tvaddpoints.setOnClickListener {
+                val UPI =
+                    "upi://pay?pa=7289056741@paytm&pn=Ankit%20Yadav&am=1&tn=IT6327466272&tr=IT6327466272"
+                val intent = Intent()
+                intent.action = Intent.ACTION_VIEW
+                intent.data = Uri.parse(UPI)
+                val chooser = Intent.createChooser(intent, "UPI Transfer With")
+                startActivityForResult(chooser, UPI_PAYMENT, null)
+
+                //phonepe://pay?pa=7289056741@paytm&pn=Ankit%20Yadav&am=1&tn=IT6327466272&tr=IT6327466272
             }
             tvaddpoint.setOnClickListener {
                 submitCoins()
             }
             amount500.setOnClickListener {
                 inputCoins.setText("500")
-
             }
             amount1000.setOnClickListener {
                 inputCoins.setText("1000")
@@ -72,11 +103,34 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
     override fun setupViewsOnResume() {
     }
 
+    private fun getUserList() {
+        viewModel.getUserList.observe(this, Observer {
+            MyApplication.ProgressBar(this@ActivityAddPoint, it is Resource.Loading)
+            when (it) {
+                is Resource.Success -> {
+                    if (it.value.status) {
+                        //  dataBinding.rvHome.hideShimmer()
+                        //       dataBinding.rvHome.hideShimmerAdapter()
+                        //   dataBinding.toolbar.setTitle(it.value.data.totalAmount.toString())
+                        dataBinding.toolbar.tvcois.text = it.value.data.totalAmount.toString()
+                    }
+                }
+
+                is Resource.Failure -> handleApiError(it,
+                    dataBinding.root,
+                    activity = this@ActivityAddPoint,
+                    retry = { getUserList() })
+            }
+        })
+        viewModel.getUserList(
+            userID = MyApplication.tinyDB.getInt(Constants.SharedPref.OWNER_ID, -1)
+        )
+
+    }
 
     fun submitCoins() {
-
         Helper.hideKeyboard(this@ActivityAddPoint)
-        val mString: String = dataBinding.inputCoins.getText().toString()
+        val mString: String = dataBinding.inputCoins.text.toString()
         if (mString.length > 0) {
             amonut = mString.toInt()
         }
@@ -85,19 +139,19 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
             return
         }
         //   if (uhkf < Integer.parseInt(fifthAttemptThree.getMaxMinObject(this, fifthAttemptThree.AI))) {
-        if (amonut < 1) {
-            toast("Minimum Amount must be greater then " + " " + "500")
+        if (amonut < minFund) {
+            toast("Minimum Amount must be greater then " + " " + minFund)
             return
         }
-        if (amonut > 500) {
-            toast("Maximum Amount must be less then" + " " + "500")
+        if (amonut > maxFund) {
+            toast("Maximum Amount must be less then" + " " + maxFund)
             return
         }
 
-        Log.e(">>>>>>>>>>>SubmitedTransaction", "$transactionRefIdd")
+        Log.e(">>>>>>>>>>>Submitedtion", "$transactionRefIdd")
         //TID1689419163129
-        pay()
-        // payUsingUpi()
+         pay()
+         //  payUsingUpi()
     }
 
     override fun onTransactionCancelled() {
@@ -107,7 +161,6 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
     }
 
     override fun onTransactionCompleted(transactionDetails: TransactionDetails) {
-
         if (transactionDetails.transactionStatus == TransactionStatus.SUCCESS) {
             toast("SUCESSS")
             onTransactionSuccess(transactionDetails)
@@ -127,7 +180,6 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
             onTransactionSuccess(transactionDetails)
         }
 
-
     }
 
     private fun onTransactionFailed() {
@@ -139,18 +191,11 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
 
     private fun onTransactionSubmitted() {
         // Payment Pending
-
         Log.e("===>>>Submited", "Pending | Submitted")
         toast("Pending | Submitted")
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        // easyUpiPayment.removePaymentStatusListener()
-    }
-
     private fun onTransactionSuccess(td: TransactionDetails) {
-
         AddFund(
             td.amount,
             td.transactionId,
@@ -187,19 +232,21 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
     private fun pay() {
         easyUpiPayment = EasyUpiPayment(this@ActivityAddPoint) {
             paymentApp = paymentApp
-            payeeVpa = "Merchant1195774.augp@aubank"
+         //   payeeVpa = "7289056741@paytm"
+          //  payeeVpa = "HSbimopad.ym529805-02SOb0000013683@sbi"
+            payeeVpa = MerchantUpiAddress
             //payeeVpa = "7289056741@paytm"
-           // payeeVpa = "obie9166@ybl"
-            payeeName = "7289056741@paytm"
+            // payeeVpa = "obie9166@ybl"
+            //    payeeName = "7289056741@paytm"
+            payeeName = "Kalyan"
             transactionId = transactionIdd
             transactionRefId = transactionRefIdd
             payeeMerchantCode = ""
             description = R.string.app_name.toString()
-            amount = dataBinding.inputCoins.getText().toString() + ".00"
+            amount = dataBinding.inputCoins.text.toString() + ".00"
         }
 //SubmitedTransaction: TID1689415379839
         try {
-
             easyUpiPayment.setPaymentStatusListener(this)
 
 
@@ -213,25 +260,22 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
     }
 
     fun payUsingUpi() {
-
         val uri = Uri.parse("upi://pay").buildUpon()
             //  val uri = Uri.parse("net.one97.paytm").buildUpon()
-            .appendQueryParameter("pa", "obie9166@ybl")
-            .appendQueryParameter("pn", "Abhishek")
+            .appendQueryParameter("pa", "7289056741@paytm")
+            // .appendQueryParameter("pa", "merchant482402.augp@aubank")
+            .appendQueryParameter("pn", "Add Point")
             .appendQueryParameter("tn", R.string.app_name.toString())
-            .appendQueryParameter("am", dataBinding.inputCoins.getText().toString() + ".0")
+            .appendQueryParameter("am", dataBinding.inputCoins.text.toString() + ".0")
             .appendQueryParameter("cu", "INR")
             .appendQueryParameter("transactionId", transactionIdd)
             .appendQueryParameter("transactionRefId", transactionRefIdd)
             .build()
-
 //TID1689422369810
         val upiPayIntent = Intent(Intent.ACTION_VIEW)
         upiPayIntent.data = uri
-
         // will always show a dialog to user to choose an app
         val chooser = Intent.createChooser(upiPayIntent, "Pay with")
-
         // check if intent resolves
         if (null != chooser.resolveActivity(packageManager)) {
             startActivityForResult(chooser, UPI_PAYMENT)
@@ -255,12 +299,14 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
                     Log.e(">>>>>>>>>UPI", "onActivityResult: $trxt")
                     val dataList = ArrayList<String>()
                     dataList.add(trxt.toString())
-                    upiPaymentDataOperation(dataList)
+                    //   upiPaymentDataOperation(dataList)
+                    upiPaymentDataOperations(dataList)
                 } else {
                     Log.e(">>>>>>>>UPI", "onActivityResult: " + "Return data is null")
                     val dataList = ArrayList<String>()
                     dataList.add("nothing")
-                    upiPaymentDataOperation(dataList)
+                    //upiPaymentDataOperation(dataList)
+                    upiPaymentDataOperations(dataList)
                 }
             } else {
                 Log.e(
@@ -269,7 +315,8 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
                 ) //when user simply back without payment
                 val dataList = ArrayList<String>()
                 dataList.add("nothing")
-                upiPaymentDataOperation(dataList)
+                //   upiPaymentDataOperation(dataList)
+                upiPaymentDataOperations(dataList)
             }
         }
     }
@@ -289,9 +336,13 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
                     response[i].split("=".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
                 Log.e(">>>>>>>>equalStr==>>>", "$equalStr")
                 if (equalStr.size >= 2) {
-                    if (equalStr[0].toLowerCase() == "Status".toLowerCase()) {
-                        status = equalStr[1].toLowerCase()
-                    } else if (equalStr[0].toLowerCase() == "ApprovalRefNo".toLowerCase() || equalStr[0].toLowerCase() == "txnRef".toLowerCase()) {
+                    if (equalStr[0].lowercase(Locale.getDefault()) == "Status".lowercase(Locale.getDefault())) {
+                        status = equalStr[1].lowercase(Locale.getDefault())
+                    } else if (equalStr[0].lowercase(Locale.getDefault()) == "ApprovalRefNo".lowercase(Locale.getDefault()) || equalStr[0].lowercase(
+                            Locale.getDefault()
+                        ) == "txnRef".lowercase(
+                            Locale.getDefault()
+                        )) {
                         approvalRefNo = equalStr[1]
                     }
                 } else {
@@ -326,8 +377,73 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
         }
     }
 
-    companion object {
+    private fun upiPaymentDataOperations(data: ArrayList<String>) {
+        if (isConnectionAvailable(this@ActivityAddPoint)) {
+            if (data.isEmpty()) {
+                Toast.makeText(this, "Payment Cancelled by User", Toast.LENGTH_SHORT).show()
+            } else {
+                var str: String? = data[0]
+                Log.d("UPIPAY", "upiPaymentDataOperation: " + str!!)
+                var paymentCancel = ""
+                if (str == null) str = "discard"
+                var status = ""
+                var approvalRefNo = ""
+                val response =
+                    str.split("&".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                for (i in response.indices) {
+                    val equalStr = response[i].split("=".toRegex()).dropLastWhile { it.isEmpty() }
+                        .toTypedArray()
+                    if (equalStr.size >= 2) {
+                        if (equalStr[0].lowercase(Locale.ROOT) == "Status".lowercase(Locale.ROOT)) {
+                            status = equalStr[1].lowercase(Locale.ROOT)
+                        } else if (equalStr[0].equals(
+                                "ApprovalRefNo",
+                                ignoreCase = true
+                            ) || equalStr[0].lowercase(
+                                Locale.ROOT
+                            ) == "txnRef".lowercase(Locale.ROOT)
+                        ) {
+                            approvalRefNo = equalStr[1]
+                        }
+                    } else {
+                        paymentCancel = "Payment cancelled by user."
+                    }
+                }
 
+                if (status == "success") {
+                    //Code to handle successful transaction here.
+                    // apiaddmoneyviaupi(transactionId!!)
+                    // apigetdepositlist()
+                    Toast.makeText(
+                        this@ActivityAddPoint,
+                        "Transaction successful.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Log.d("UPI", "responseStr: $approvalRefNo")
+                } else if ("Payment cancelled by user." == paymentCancel) {
+                    Toast.makeText(
+                        this@ActivityAddPoint,
+                        "Payment cancelled by user.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        this@ActivityAddPoint,
+                        "Transaction failed.Please try again",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        } else {
+            Toast.makeText(
+                this@ActivityAddPoint,
+                "Internet connection is not available. Please check and try again",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    companion object {
         fun isConnectionAvailable(context: Context): Boolean {
             val connectivityManager =
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -345,6 +461,9 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
     }
 
 
+
+
+
     fun AddFund(
         amount: String?,
         transactionId: String?,
@@ -355,8 +474,6 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
         approvalRefNo: String?,
         componentStatus: TransactionStatus
     ) {
-
-
         viewModel.AddFund.observe(this, Observer {
             MyApplication.ProgressBar(this, it is Resource.Loading)
             when (it) {
@@ -364,16 +481,16 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
                     Log.e("Success==>>>qq", "suceess")
 
                     if (it.value.status) {
-
+                        getUserList()
                         finish()
 
                     }
                 }
+
                 is Resource.Failure -> handleApiError(
                     it,
                     dataBinding.root,
                     activity = this, retry = {
-
                     }
                 )
             }
@@ -383,7 +500,6 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
         dataBinding.apply {
             viewModel.AddFund(
                 RequestAddFund(
-
                     amount = amount,
                     transactionId = transactionId,
                     transactionReferralId = transactionRefId,
@@ -393,11 +509,121 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
                     approvalNumber = approvalRefNo,
                     componentStatus = componentStatus.equals(true),
                     userId = MyApplication.tinyDB.getInt(Constants.SharedPref.OWNER_ID, -1),
-
-
                     )
             )
+        }
 
+    }
+
+    fun getAppSetting() {
+        viewModel.getAppSetting.observe(this, Observer {
+            MyApplication.ProgressBar(this, it is Resource.Loading)
+            when (it) {
+                is Resource.Success -> {
+                    Log.e("Success==>>>qq", "suceess")
+
+                    if (it.value.status) {
+                        minFund = it.value.data[0].minDeposit!!.toInt()
+                        maxFund = it.value.data[0].maxDeposit!!.toInt()
+                        MerchantUpiAddress = it.value.data[0].upiAddress.toString()
+
+                    }
+                }
+
+                is Resource.Failure -> handleApiError(
+                    it,
+                    dataBinding.root,
+                    activity = this, retry = {
+                    }
+                )
+            }
+        })
+
+
+        dataBinding.apply {
+            viewModel.getAppSetting(
+            )
+        }
+
+    }
+
+    fun getInformation() {
+        viewModel.getInformation.observe(this, Observer {
+            MyApplication.ProgressBar(this, it is Resource.Loading)
+            when (it) {
+                is Resource.Success -> {
+                    Log.e("Success==>>>qq", "suceess")
+
+                    if (it.value.status) {
+                        try {
+                            dataBinding.textviewcontent.text =
+                                it.value.data[0].information!!.addFundMessage!!.message
+
+                        } catch (ex: Exception) {
+                        }
+                        //   minFund=it.value.data[0].minDeposit!!.toInt()
+                        //   maxFund=it.value.data[0].maxDeposit!!.toInt()
+
+                    }
+                }
+
+                is Resource.Failure -> handleApiError(
+                    it,
+                    dataBinding.root,
+                    activity = this, retry = {
+                    }
+                )
+            }
+        })
+
+
+        dataBinding.apply {
+            viewModel.getInformation(
+            )
+        }
+
+    }
+
+    fun whatsAppBtn() {
+        val url =
+            "https://api.whatsapp.com/send?phone=" + "+91" + phoneNumber + "&text=" + URLEncoder.encode(
+                "",
+                "UTF-8"
+            )
+        val i = Intent(Intent.ACTION_VIEW)
+        i.data = Uri.parse(url)
+        startActivity(i)
+    }
+
+    fun getContactUs() {
+        viewModel.getContactUs.observe(this, Observer {
+            MyApplication.ProgressBar(this, it is Resource.Loading)
+            when (it) {
+                is Resource.Success -> {
+                    if (it.value.status) {
+                        try {
+                            phoneNumber = it.value.data.phoneNumber.toString()
+                        } catch (ex: Exception) {
+                        }
+                        //   minFund=it.value.data[0].minDeposit!!.toInt()
+                        //   maxFund=it.value.data[0].maxDeposit!!.toInt()
+
+                    }
+                }
+
+                is Resource.Failure -> handleApiError(
+                    it,
+                    dataBinding.root,
+                    activity = this, retry = {
+                    }
+                )
+            }
+        })
+
+
+        dataBinding.apply {
+            viewModel.getContactUs(
+            )
         }
 
     }

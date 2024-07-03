@@ -31,7 +31,7 @@ fun handleApiError(
             "Please check your internet connection", view,
             retry
         )
-        failure.errorCode == 400 -> {
+        failure.code == 400 -> {
             activity?.let {
                 Helper.hideKeyboard(it)
             }
@@ -40,12 +40,12 @@ fun handleApiError(
                 val error = jsonObject.getString("message")
                 snackbar(error, view)
             } catch (err: JSONException) {
-                Log.d("Error", err.toString())
+                Log.e("Error", "Error==>"+err.toString())
                 val error = "Bad Request"
                 snackbar(error, view)
             }
         }
-        failure.errorCode == 500 -> {
+        failure.code == 500 -> {
 
             activity?.let {
                 Helper.hideKeyboard(it)
@@ -62,7 +62,7 @@ fun handleApiError(
             }
 
         }
-        failure.errorCode == 401 -> {
+        failure.code == 401 -> {
             activity?.toast("Need to login again")
             MyApplication.tinyDB.clear()
             activity?.startNewActivity(ActivityLogin::class.java)

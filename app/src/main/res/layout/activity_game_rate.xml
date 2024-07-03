@@ -21,10 +21,21 @@
             android:id="@+id/toolbar"
             layout="@layout/header" />
     </RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:layout_below="@+id/rl_tool"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_below="@+id/rl_tool"
+            android:id="@+id/swipe_ref_lyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 <LinearLayout
     android:orientation="vertical"
     android:background="@color/white"
-    android:layout_below="@+id/rl_tool"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -36,7 +47,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/bluetheme"
+        android:background="@color/red"
         android:orientation="horizontal"
         android:visibility="visible">
 
@@ -49,12 +60,13 @@
 
             android:paddingVertical="8dp"
             android:text="@string/single_digit"
-            android:textColor="@color/golden" />
+            android:textColor="@color/white" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/single_d_v"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:layout_gravity="end|center_vertical"
             android:gravity="center|center_vertical"
             android:paddingHorizontal="10dp"
@@ -70,7 +82,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/bluetheme"
+        android:background="@color/red"
         android:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
@@ -81,7 +93,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:text="@string/jodi_digit"
-            android:textColor="@color/golden" />
+            android:textColor="@color/white" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/jodi_d_value"
@@ -102,7 +114,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/bluetheme"
+        android:background="@color/red"
         android:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
@@ -113,7 +125,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:text="@string/single_pana"
-            android:textColor="@color/golden" />
+            android:textColor="@color/white" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/single_p_v"
@@ -134,7 +146,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/bluetheme"
+        android:background="@color/red"
         android:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
@@ -145,7 +157,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:text="@string/doublef_digit"
-            android:textColor="@color/golden" />
+            android:textColor="@color/white" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/double_d_v"
@@ -166,7 +178,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/bluetheme"
+        android:background="@color/red"
         android:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
@@ -177,7 +189,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:text="@string/triple_digit"
-            android:textColor="@color/golden" />
+            android:textColor="@color/white" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/triple_d_v"
@@ -198,7 +210,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/bluetheme"
+        android:background="@color/red"
         android:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
@@ -208,7 +220,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:text="@string/half_sangam"
-            android:textColor="@color/golden" />
+            android:textColor="@color/white" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/half_s_v"
@@ -229,7 +241,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/bluetheme"
+        android:background="@color/red"
         android:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
@@ -239,7 +251,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:text="@string/full_sangam"
-            android:textColor="@color/golden" />
+            android:textColor="@color/white" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/full_s_v"
@@ -259,7 +271,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginVertical="20dp"
         android:visibility="visible"
-        app:cardBackgroundColor="@color/darkblue"
+        app:cardBackgroundColor="@color/red"
         app:cardCornerRadius="45dp">
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -267,7 +279,7 @@
             android:layout_height="90dp"
             android:layout_gravity="center"
             android:background="@color/darkblue"
-            android:src="@drawable/logoblacksplash" />
+            android:src="@drawable/kalyanbazar_logo" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -307,5 +319,8 @@
 
 
 </LinearLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.cardview.widget.CardView>
+
     </RelativeLayout>
 </layout>

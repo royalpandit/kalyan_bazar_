@@ -1,0 +1,49 @@
+
+g
+java:S1192œ"IDefine a constant instead of duplicating this literal "PinEnter" 3 times.(Ä÷‚ø8şûë­î1
+h
+java:S1192<"FDefine a constant instead of duplicating this literal "MyPrf" 3 times.(¹ÈØÅøÿÿÿÿ8ÚóÕ­î1
+J
+java:S1604n"(Make this anonymous inner class a lambda(ÿ¸óİıÿÿÿÿ8ÛóÕ­î1
+J
+java:S1604}"(Make this anonymous inner class a lambda(“Ùø·ÿÿÿÿÿ8ÛóÕ­î1
+K
+java:S1604†"(Make this anonymous inner class a lambda(£§Åÿıÿÿÿÿ8ÛóÕ­î1
+K
+java:S1604«"(Make this anonymous inner class a lambda(£ñ¤ïûÿÿÿÿ8ÛóÕ­î1
+K
+java:S1604½"(Make this anonymous inner class a lambda(ãÕ¬§ûÿÿÿÿ8ÛóÕ­î1
+K
+java:S1604Ø"(Make this anonymous inner class a lambda(çæ‡Ìûÿÿÿÿ8ÛóÕ­î1
+r	java:S116*"VRename this field "button_left" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ïØ´8ŒôÕ­î1
+x	java:S116+"WRename this field "security_pin" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŒÂùüÿÿÿÿ8ŒôÕ­î1
+C
+java:S1170'"!Make this final field static too.(Øì¼ûÿÿÿÿ8‘ôÕ­î1
+C
+java:S1659*"&Declare "tvnumber" on a separate line.(£ïØ´8“ôÕ­î1
+H
+java:S1659."+Declare "whatappnumber" on a separate line.(ä™«8“ôÕ­î1
+v
+java:S1450%"TRemove the "mCode" field and declare it as a local variable in the relevant methods.(Äª•ƒıÿÿÿÿ8“ôÕ­î1
+X
+java:S1874&"6Remove this use of "ProgressDialog"; it is deprecated.(ûÏàıÿÿÿÿ8—ôÕ­î1
+X	java:S1253"<This block of commented-out lines of code should be removed.(È—¾Ñ8šôÕ­î1
+X	java:S125E"<This block of commented-out lines of code should be removed.(ß“¤Ë8¡ôÕ­î1
+E	java:S108F")Either remove or fill this block of code.(å¥‡8¡ôÕ­î1
+U
+java:S1874K"8Remove this use of "VIBRATOR_SERVICE"; it is deprecated.(˜¯Ú¹8¢ôÕ­î1
+L
+java:S1874O"/Remove this use of "vibrate"; it is deprecated.(ˆÏòí8¢ôÕ­î1
+8
+java:S3626["Remove this redundant jump.(ûÁİ…8£ôÕ­î1
+]	java:S125Z"<This block of commented-out lines of code should be removed.(‘©£Äÿÿÿÿÿ8¤ôÕ­î1
+^	java:S125™"<This block of commented-out lines of code should be removed.(ú»×ëıÿÿÿÿ8°ôÕ­î1
+Y	java:S125¡"<This block of commented-out lines of code should be removed.(ƒØç”8·Õ€®î1
+F	java:S108¶")Either remove or fill this block of code.(å¥‡8¶ôÕ­î1
+¤
+java:S1186¿"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ğ¸™áúÿÿÿÿ8·ôÕ­î1
+F	java:S108Í")Either remove or fill this block of code.(å¥‡8»ôÕ­î1
+^	java:S125Ş"<This block of commented-out lines of code should be removed.(ò‹Å¥ûÿÿÿÿ8½ôÕ­î1
+X	java:S125ğ"<This block of commented-out lines of code should be removed.(Ø‹Û!8¿ôÕ­î1
+K
+java:S1068%")Remove this unused "mCode" private field.(Äª•ƒıÿÿÿÿ8ÁôÕ­î1

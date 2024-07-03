@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/button_gradient"
+        android:background="@color/red"
         android:orientation="vertical">
 
     <RelativeLayout
@@ -22,6 +22,12 @@
             android:id="@+id/toolbar"
             layout="@layout/header" />
     </RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:layout_below="@+id/rl_tool"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <RelativeLayout
             android:background="@color/white_opacity"
             android:layout_below="@+id/rl_tool"
@@ -64,21 +70,20 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/enter_your_mobile"
+                            android:text="@string/enter_your_upi_id"
                             android:textColor="@color/bluetheme"
                             android:textStyle="bold" />
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <EditText
                             android:id="@+id/in_txt_upi"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginVertical="15dp"
                             android:background="@drawable/white_border"
-                            android:hint="@string/enter_your_mobile"
-                            android:inputType="number"
-                            android:maxLength="10"
-                            android:paddingHorizontal="20dp"
+                            android:hint="@string/enter_your_upi_id"
+                             android:paddingHorizontal="20dp"
                             android:paddingVertical="12dp"
+                            android:textColorHint="@color/black"
                             android:textColor="@color/black_dark"
                             android:textSize="16sp" />
 
@@ -88,7 +93,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
                             android:background="@drawable/white_border"
-                            android:backgroundTint="@color/yellowdark"
+                            android:backgroundTint="@color/red"
                             android:gravity="center"
                             android:letterSpacing="0.05"
                             android:onClick="sUp"
@@ -99,13 +104,56 @@
                             android:textColor="@color/white_opacity"
                             android:textSize="16dp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:id="@+id/tvUpiID"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                             android:gravity="center"
+                            android:letterSpacing="0.05"
+                            android:onClick="sUp"
+                            android:paddingHorizontal="30dp"
+                            android:paddingVertical="12dp"
+                            android:text="UPI ID IS NOT ATTACHED"
+                             android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+                        <RelativeLayout
+                            android:visibility="gone"
+                            android:id="@+id/rlwhatsup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvregister"
+                            android:layout_centerInParent="true"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/ivWhatsupp"
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:src="@drawable/whatsups"
+                                android:tint="@color/green"
+                                tools:ignore="UseAppTint" />
+
+                            <TextView
+                                android:id="@+id/tvsupport"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ivWhatsupp"
+                                android:text="Support"
+                                android:textColor="@color/black" />
+
+
+                        </RelativeLayout>
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </RelativeLayout>
 
-
+        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 </layout>

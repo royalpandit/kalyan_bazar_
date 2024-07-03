@@ -1,0 +1,55 @@
+
+\kotlin:S1172€"7Use "_" instead of this unused lambda parameter "view".(ë—çõùÿÿÿÿ8¹ùªÃê1
+=kotlin:S125|"Remove this commented out code.(–±Ù8¾ùªÃê1
+>kotlin:S125"Remove this commented out code.(“ƒ8¾ùªÃê1
+>kotlin:S125£"Remove this commented out code.(¾Â±¯8¾ùªÃê1
+Ckotlin:S125²"Remove this commented out code.(ŞÍøèùÿÿÿÿ8¿ùªÃê1
+Ckotlin:S125æ"Remove this commented out code.(ÀÂùùÿÿÿÿ8¿ùªÃê1
+>kotlin:S125š"Remove this commented out code.(¸Ãé8¿ùªÃê1
+>kotlin:S125Í"Remove this commented out code.(¸Ãé8¿ùªÃê1
+Ckotlin:S125Ğ"Remove this commented out code.(…ÜØ…ùÿÿÿÿ8ÀùªÃê1
+>kotlin:S125²"Remove this commented out code.(¸Ãé8ÀùªÃê1
+Ckotlin:S125Ğ"Remove this commented out code.(Ïø¢÷ùÿÿÿÿ8ÀùªÃê1
+Ckotlin:S125Ö"Remove this commented out code.(Ò¨ˆãúÿÿÿÿ8ÁùªÃê1
+[kotlin:S1144÷"6Remove this unused private "successdialogElse" method.(öÏ¹úÿÿÿÿ8ÊùªÃê1
+Hkotlin:S108Ì")Either remove or fill this block of code.(å¥‡8ÏùªÃê1
+Hkotlin:S108ˆ")Either remove or fill this block of code.(å¥‡8ÎùªÃê1
+Mkotlin:S108ñ")Either remove or fill this block of code.(Î†üŒøÿÿÿÿ8—Ä­Ãê1
+Hkotlin:S108í")Either remove or fill this block of code.(á¢–¬8Ú‘¯Ãê1
+9kotlin:S1128$"Remove this unused import.(”×–8ØùªÃê1
+pkotlin:S1192¿"KDefine a constant instead of duplicating this literal "Open Digit" 4 times.(“¿Àèùÿÿÿÿ8®ä°Ãê1
+kkotlin:S1192À"LDefine a constant instead of duplicating this literal "Close Digit" 4 times.(ä‹µ48®ä°Ãê1
+hkotlin:S1192"HDefine a constant instead of duplicating this literal "Size==>" 4 times.(ıÚª£8ÚùªÃê1
+lkotlin:S1871Í"MThis branch's code block is the same as the block for the branch on line 312.(°€‘s8ÜùªÃê1
+rkotlin:S1871Æ"MThis branch's code block is the same as the block for the branch on line 319.(Œ„ñşÿÿÿÿ8ÜùªÃê1
+vkotlin:S3776P"RRefactor this method to reduce its Cognitive Complexity from 93 to the 15 allowed.(ÜšâÜúÿÿÿÿ8ŞùªÃê1
+kotlin:S1186„"ZAdd a nested comment explaining why this function is empty or complete the implementation.(¸Œ…‡şÿÿÿÿ8ãùªÃê1
+kotlin:S1186"ZAdd a nested comment explaining why this function is empty or complete the implementation.(ÄšËÔıÿÿÿÿ8ãùªÃê1
+bkotlin:S6511”"=Merge chained "if" statements into a single "when" statement.(üÄ¡ôşÿÿÿÿ8äùªÃê1
+bkotlin:S6511Ğ"=Merge chained "if" statements into a single "when" statement.(üÄ¡ôşÿÿÿÿ8äùªÃê1
+bkotlin:S6511š"=Merge chained "if" statements into a single "when" statement.(”ßÖ¤üÿÿÿÿ8…¼®Ãê1
+bkotlin:S6511¯"=Merge chained "if" statements into a single "when" statement.(‡¹—Ëúÿÿÿÿ8»ä°Ãê1
+Lkotlin:S6518·",Replace function call with indexed accessor.(Üºó¡8åùªÃê1
+Jkotlin:S6519c"+Replace "equals" with binary operator "==".(£³Ñ´8åùªÃê1
+Pkotlin:S6519“"+Replace "equals" with binary operator "==".(êĞ şÿÿÿÿ8åùªÃê1
+Pkotlin:S6519”"+Replace "equals" with binary operator "==".(üÄ¡ôşÿÿÿÿ8æùªÃê1
+Pkotlin:S6519Ğ"+Replace "equals" with binary operator "==".(üÄ¡ôşÿÿÿÿ8æùªÃê1
+Pkotlin:S6519"+Replace "equals" with binary operator "==".(Í‘åıøÿÿÿÿ8æùªÃê1
+Pkotlin:S6519Ù"+Replace "equals" with binary operator "==".(Í‘åıøÿÿÿÿ8æùªÃê1
+Pkotlin:S6519¤"+Replace "equals" with binary operator "==".(ıÕÂÓûÿÿÿÿ8æùªÃê1
+Pkotlin:S6519à"+Replace "equals" with binary operator "==".(ıÕÂÓûÿÿÿÿ8æùªÃê1
+Kkotlin:S6519«"+Replace "equals" with binary operator "==".(­ÔíÂ8•í¬Ãê1
+Kkotlin:S6519ç"+Replace "equals" with binary operator "==".(­ÔíÂ8¢¼®Ãê1
+Pkotlin:S6519²"+Replace "equals" with binary operator "==".(äÍ­—úÿÿÿÿ8¢¼®Ãê1
+Pkotlin:S6519î"+Replace "equals" with binary operator "==".(äÍ­—úÿÿÿÿ8£¼®Ãê1
+Pkotlin:S6519¹"+Replace "equals" with binary operator "==".(‘•ŞŸşÿÿÿÿ8£¼®Ãê1
+Pkotlin:S6519õ"+Replace "equals" with binary operator "==".(‘•ŞŸşÿÿÿÿ8£¼®Ãê1
+Pkotlin:S6519Ã"+Replace "equals" with binary operator "==".(Ú£¾Çÿÿÿÿÿ8£¼®Ãê1
+Pkotlin:S6519ÿ"+Replace "equals" with binary operator "==".(Ú£¾Çÿÿÿÿÿ8£¼®Ãê1
+Pkotlin:S6519¯"+Replace "equals" with binary operator "==".(‡¹—Ëúÿÿÿÿ8¾ä°Ãê1
+Pkotlin:S6519¸"+Replace "equals" with binary operator "==".(ÒñæÁúÿÿÿÿ8¾ä°Ãê1
+Pkotlin:S6519¿"+Replace "equals" with binary operator "==".(öí‹ÿÿÿÿÿ8¾ä°Ãê1
+Pkotlin:S6519Æ"+Replace "equals" with binary operator "==".(Œ„ñşÿÿÿÿ8¾ä°Ãê1
+Jkotlin:S6519Í"+Replace "equals" with binary operator "==".(°€‘s8¾ä°Ãê1
+Pkotlin:S6519Ô"+Replace "equals" with binary operator "==".(õêÛÇıÿÿÿÿ8¾ä°Ãê1
+Pkotlin:S6519à"+Replace "equals" with binary operator "==".(‘œş‹úÿÿÿÿ8¾ä°Ãê1

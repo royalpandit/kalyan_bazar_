@@ -1,0 +1,9 @@
+
+Bkotlin:S125R"Remove this commented out code.(ÀÂùùÿÿÿÿ8éí¢ûÜ1
+>kotlin:S125š"Remove this commented out code.(¸Ãé8êí¢ûÜ1
+>kotlin:S125Ÿ"Remove this commented out code.(Šæ”€8êí¢ûÜ1
+mkotlin:S117»"NRename this parameter to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(º‚‘Œ8îí¢ûÜ1
+9kotlin:S1128"Remove this unused import.(±Ğ½ø8ØšûÜ1
+~kotlin:S1186F"ZAdd a nested comment explaining why this function is empty or complete the implementation.(¸Œ…‡şÿÿÿÿ8ÛšûÜ1
+\kotlin:S6511*"=Merge chained "if" statements into a single "when" statement.(¾î™¤8ÛšûÜ1
+Kkotlin:S6519¦"+Replace "equals" with binary operator "==".(ÁÃÉÎ8¡Ëõ«İ1

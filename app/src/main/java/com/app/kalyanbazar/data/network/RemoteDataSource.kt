@@ -1,6 +1,7 @@
 package com.app.kalyanbazar.data.network
 
 import android.content.Context
+import android.util.Log
 import com.app.kalyanbazar.BuildConfig
 import com.app.kalyanbazar.utils.Constants
 import com.app.kalyanbazar.utils.MyApplication
@@ -38,7 +39,8 @@ fun <Api> buildApi(
 ): Api {
     val gson = GsonBuilder().setLenient().create()
     return Retrofit.Builder()
-        .baseUrl("http://16.170.7.195/v1/")
+        //.baseUrl("http://16.170.7.195/v1/")
+        .baseUrl("http://api.kalyanbazar.co.in/v1/")
         .client(httpClient)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
@@ -60,8 +62,7 @@ fun <Api> buildApi(
                 .readTimeout(1, TimeUnit.MINUTES)
                 .writeTimeout(1, TimeUnit.MINUTES)
             if (BuildConfig.DEBUG) {
-                val interceptor =
-                    HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+                val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
                 client.addInterceptor(interceptor)
             }
             //     MyApplication.instance?.let {client.addInterceptor( ChuckerInterceptor(it) )}
@@ -104,12 +105,15 @@ fun <Api> buildApi(
                 .addInterceptor(BasicAuthInterceptor("admin",     "Admin@123"))
             builder.addHeader("Accept", "application/json; charset=utf-8")
             val token = MyApplication.tinyDB.getString(Constants.SharedPref.ACCESS_TOKEN, "")
-            if (!token.isNullOrEmpty())
+            val deviceToken =  MyApplication.tinyDB.getString(Constants.SharedPref.FIREBASE_TOKEN, "")
+
+            Log.e("toke","TOken==>>>$deviceToken")
+             if (!token.isNullOrEmpty())
                 builder.addHeader(
                     "AccessToken",
 //                    "Bearer " + AES.decrypt(token, Constants.SharedPref.ACCESS_TOKEN)
                     "$token"
-                )
+                ).addHeader("Devicetoken","$deviceToken")
             return chain.proceed(builder.build())
         }
     }

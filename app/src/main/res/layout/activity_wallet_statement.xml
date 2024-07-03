@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/button_gradient"
+        android:background="@color/red"
         android:orientation="vertical">
 
     <RelativeLayout
@@ -24,6 +24,13 @@
 
 
     </RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:layout_below="@+id/rl_tool"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
     <RelativeLayout
         android:layout_below="@+id/rl_tool"
         android:background="@color/white_opacity"
@@ -44,7 +51,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
                     android:layout_marginVertical="10dp"
 
                     android:elevation="5dp"
@@ -54,7 +61,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/bluetheme"
+                        android:background="@color/red"
                         android:gravity="center_vertical"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="10dp"
@@ -66,22 +73,23 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:background="@drawable/bg_red_grey"
-                            android:backgroundTint="@color/yellowdark"
+                            android:backgroundTint="@color/white"
                             android:gravity="center"
                             android:paddingHorizontal="16dp"
                             android:paddingVertical="6dp"
                             android:text="@string/point_available"
-                            android:textColor="@color/white_opacity"
+                            android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/coins"
+                            android:visibility="gone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="14dp"
                             android:layout_toEndOf="@id/ptsText"
-                            android:textColor="@color/golden"
+                            android:textColor="@color/black"
                             android:textSize="25sp"
                             android:textStyle="bold" />
 
@@ -93,7 +101,7 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="5dp"
                             android:text="@string/withdraw_open_time"
-                            android:textColor="@color/golden"
+                            android:textColor="@color/white"
                             android:textStyle="bold"
                             android:visibility="visible" />
 
@@ -103,7 +111,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/withd_opentime"
                             android:text="@string/withdraw_close_time"
-                            android:textColor="@color/golden"
+                            android:textColor="@color/white"
                             android:textStyle="bold"
                             android:visibility="visible" />
 
@@ -114,7 +122,7 @@
                             android:layout_below="@id/withd_closetime"
                             android:layout_marginVertical="5dp"
                             android:text="@string/minimum_withdrawal_points"
-                            android:textColor="@color/golden"
+                            android:textColor="@color/white"
                             android:textStyle="bold"
                             android:visibility="visible" />
                     </RelativeLayout>
@@ -124,7 +132,7 @@
                     android:id="@+id/add_withdraw"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
                     android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
                     android:visibility="visible">
@@ -132,7 +140,7 @@
                     <RelativeLayout
                         android:id="@+id/withdraw_add"
                         android:layout_width="0dp"
-                        android:layout_height="45dp"
+                        android:layout_height="@dimen/_30sdp"
                         android:layout_marginVertical="2dp"
                         android:layout_marginEnd="2dp"
                         android:layout_weight="1"
@@ -143,8 +151,8 @@
 
                         <ImageView
                             android:id="@+id/a61"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/withdrawfunds"
                             app:tint="@color/white" />
@@ -152,15 +160,11 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_marginBottom="4dp"
+                             android:layout_marginTop="4dp"
+                             android:layout_marginBottom="4dp"
                             android:layout_toEndOf="@id/a61"
                             android:gravity="center"
-                            android:paddingStart="8dp"
-                            android:paddingEnd="8dp"
-                            android:text="WITHDRAW"
+                              android:text="WITHDRAW"
                             android:textAllCaps="true"
                             android:textColor="@color/white_opacity"
                             android:textStyle="bold"
@@ -172,7 +176,7 @@
                     <RelativeLayout
                         android:id="@+id/addpoints"
                         android:layout_width="0dp"
-                        android:layout_height="45dp"
+                        android:layout_height="@dimen/_30sdp"
                         android:layout_marginVertical="2dp"
                         android:layout_marginStart="2dp"
                         android:layout_weight="1"
@@ -183,23 +187,57 @@
 
                         <ImageView
                             android:id="@+id/a3"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/add" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_marginBottom="4dp"
+                             android:layout_marginTop="4dp"
+                             android:layout_marginBottom="4dp"
                             android:layout_toEndOf="@id/a3"
                             android:gravity="center"
-                            android:paddingStart="8dp"
+                            android:paddingStart="2sp"
                             android:paddingEnd="8dp"
                             android:text="ADD FUNDS"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white_opacity"
+                            android:textStyle="bold"
+                            app:autoSizeMaxTextSize="16sp"
+                            app:autoSizeMinTextSize="10dp"
+                            app:autoSizeTextType="uniform" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/transferpoints"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginVertical="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/white_border"
+                        android:backgroundTint="@color/blackdark"
+                        android:gravity="center_vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:id="@+id/a4"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="20dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/add" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                             android:layout_marginTop="4dp"
+                             android:layout_marginBottom="4dp"
+                            android:layout_toEndOf="@id/a4"
+                            android:gravity="center"
+                            android:paddingStart="2sp"
+                            android:paddingEnd="8dp"
+                            android:text="Transfer"
                             android:textAllCaps="true"
                             android:textColor="@color/white_opacity"
                             android:textStyle="bold"
@@ -220,7 +258,7 @@
                         android:id="@+id/recyclerViewWallet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
                         tools:listitem="@layout/adapter_wallet_statement" />
 
                 </RelativeLayout>
@@ -228,5 +266,7 @@
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
     </RelativeLayout>
 </layout>

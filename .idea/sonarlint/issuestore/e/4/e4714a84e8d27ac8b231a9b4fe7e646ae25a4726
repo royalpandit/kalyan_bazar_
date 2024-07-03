@@ -1,0 +1,20 @@
+
+Rkotlin:S1172ä"2Use "_" instead of these unused lambda parameters.(µÈ¿8è©Ä´å1
+Bkotlin:S125A"Remove this commented out code.(çØ¾ùÿÿÿÿ8ì©Ä´å1
+Bkotlin:S125I"Remove this commented out code.(çØ¾ùÿÿÿÿ8ì©Ä´å1
+Bkotlin:S125Q"Remove this commented out code.(çØ¾ùÿÿÿÿ8–„¸¤ê1
+<kotlin:S125{"Remove this commented out code.(è»»_8í©Ä´å1
+>kotlin:S125˜"Remove this commented out code.(¸Ãé8í©Ä´å1
+>kotlin:S125º"Remove this commented out code.(¸Ãé8í©Ä´å1
+>kotlin:S125‚"Remove this commented out code.(¡¯Çã8î©Ä´å1
+>kotlin:S125³"Remove this commented out code.(¸Ãé8î©Ä´å1
+rkotlin:S117Ò"SRename this local variable to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(œİà¥8ñ©Ä´å1
+Mkotlin:S108Ö")Either remove or fill this block of code.(Î†üŒøÿÿÿÿ8÷©Ä´å1
+Mkotlin:S108û")Either remove or fill this block of code.(Î†üŒøÿÿÿÿ8÷©Ä´å1
+Hkotlin:S108Ï")Either remove or fill this block of code.(å¥‡8÷©Ä´å1
+9kotlin:S6531¢"Remove this useless cast.(ÔÅƒâ8û©Ä´å1
+Hkotlin:S1874Ñ"#Deprecated code should not be used.(â›àìşÿÿÿÿ8€ªÄ´å1
+~kotlin:S1186x"ZAdd a nested comment explaining why this function is empty or complete the implementation.(¸Œ…‡şÿÿÿÿ8„ªÄ´å1
+akotlin:S6510ú"AMove "return" statements from all branches before "if" statement.(¶ÈÒ8„ªÄ´å1
+Pkotlin:S6519·"+Replace "equals" with binary operator "==".(ÁÚ¬Íüÿÿÿÿ8†ªÄ´å1
+Kkotlin:S6519Ä"+Replace "equals" with binary operator "==".(ÁÃÉÎ8†ªÄ´å1

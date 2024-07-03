@@ -24,8 +24,14 @@
 
 
     </RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:layout_below="@+id/rl_tool"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <RelativeLayout
-            android:layout_below="@id/rl_tool"
+
             android:background="@color/white_opacity"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -183,7 +189,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:layout_marginBottom="20dp"
-                        android:backgroundTint="@color/yellowdark"
+                        android:backgroundTint="@color/red"
                         android:gravity="center"
                         android:id="@+id/banksubmit"
                         android:paddingHorizontal="40dp"
@@ -194,12 +200,39 @@
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:cornerRadius="20dp" />
+                    <RelativeLayout
+                        android:visibility="gone"
+                        android:id="@+id/rlwhatsup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvregister"
+                        android:layout_centerInParent="true"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/ivWhatsupp"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:src="@drawable/whatsups"
+                            android:tint="@color/green"
+                            tools:ignore="UseAppTint" />
+
+                        <TextView
+                            android:id="@+id/tvsupport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivWhatsupp"
+                            android:text="Support"
+                            android:textColor="@color/black" />
+
+
+                    </RelativeLayout>
                 </LinearLayout>
 
 
             </androidx.core.widget.NestedScrollView>
         </RelativeLayout>
-
+        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 </layout>

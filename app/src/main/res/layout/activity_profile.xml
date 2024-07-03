@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/white"
+        android:background="@color/red"
         android:orientation="vertical">
 
     <RelativeLayout
@@ -21,6 +21,12 @@
             android:id="@+id/toolbar"
             layout="@layout/header" />
     </RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:layout_below="@+id/rl_tool"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <LinearLayout
             android:layout_margin="@dimen/_20sdp"
             android:orientation="vertical"
@@ -33,7 +39,7 @@
             <ImageView
                 android:layout_gravity="center"
                 android:id="@+id/ivprofile"
-                android:src="@drawable/transparent"
+                android:src="@drawable/kalyanbazar_logo"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"/>
 
@@ -51,8 +57,8 @@
                     android:id="@+id/tvname"
                     android:background="@drawable/button_gradient"
                     android:text="name"
-                    android:backgroundTint="@color/black"
-                    android:textColor="@color/golden"
+                    android:backgroundTint="@color/red"
+                    android:textColor="@color/white"
                     android:padding="@dimen/_10sdp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"/>
@@ -69,8 +75,8 @@
                     android:id="@+id/tvemail"
                     android:background="@drawable/button_gradient"
                     android:text="Email"
-                    android:backgroundTint="@color/black"
-                    android:textColor="@color/golden"
+                    android:backgroundTint="@color/red"
+                    android:textColor="@color/white"
                     android:padding="@dimen/_10sdp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"/>
@@ -87,13 +93,13 @@
                     android:id="@+id/tvmobile"
                     android:background="@drawable/button_gradient"
                     android:text="Mobile"
-                    android:backgroundTint="@color/black"
-                    android:textColor="@color/golden"
+                    android:backgroundTint="@color/red"
+                    android:textColor="@color/white"
                     android:padding="@dimen/_10sdp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"/>
             </LinearLayout>
         </LinearLayout>
-
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 </layout>
