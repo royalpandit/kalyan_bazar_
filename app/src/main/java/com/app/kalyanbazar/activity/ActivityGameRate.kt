@@ -55,6 +55,9 @@ class ActivityGameRate : BaseActivity<ActivityGameRateBinding>() {
                     dataBinding.root,
                     activity = this@ActivityGameRate,
                     retry = { getUserList() })
+                is Resource.Loading -> {
+
+                }
             }
         })
         viewModel.getUserList(
@@ -97,6 +100,9 @@ class ActivityGameRate : BaseActivity<ActivityGameRateBinding>() {
                     dataBinding.root,
                     activity = this@ActivityGameRate,
                     retry = { getNormalGameRate() })
+                is Resource.Loading -> {
+
+                }
             }
         })
         viewModel.getNormalGameRate()

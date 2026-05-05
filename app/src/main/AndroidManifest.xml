@@ -2,10 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".utils.MyApplication"
@@ -13,91 +17,144 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:hardwareAccelerated="true"
-        android:icon="@drawable/logoblacksplash"
+        android:icon="@drawable/kalyanbazar_logo"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@drawable/logoblacksplash"
+        android:roundIcon="@drawable/kalyanbazar_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kalyanbazar"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activity.ActivityProfile"
-            android:exported="false">
+            android:name=".activity.ActivityMerchant"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ActivityTerm"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ActivityPrivacyPolicy"
+            android:exported="false" />
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
 
-        </activity>
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <service
+            android:name=".utils.SellerFirebaseService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".activity.ActivityTransferHIstoryList"
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ActivityHelp"
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ActivityContactUs"
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ActivityTransfer"
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ActivityForgotPassword"
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ActivityWithdrwalList"
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ActivityProfile"
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivityStarline"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivityChart"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivityCreateBid"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivityIndashboard"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivityChangePassword"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivitySupport"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.SecurityPin"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ActivityGameRate"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivityBidHistory"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivityWalletStatement"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivityUpi"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivityBankDetails"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivityWithdrawFund"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivityAddPoint"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.HomeActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.HomeDashboardActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivityRegister"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.ActivityLogin"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".activity.ActivitySplash"

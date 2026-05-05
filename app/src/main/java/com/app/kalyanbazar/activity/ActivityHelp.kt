@@ -1,6 +1,7 @@
 package com.app.kalyanbazar.activity
 
 
+import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebViewClient
@@ -25,7 +26,8 @@ class ActivityHelp : BaseActivity<ActivityHelpBinding>() {
     override fun setupViews() {
 
         dataBinding.apply {
-
+            toolbar.ivWallet.visibility= View.GONE
+            toolbar.tvcois.visibility= View.GONE
             toolbar.tvTitle.text = "How to help"
             toolbar.ivBack.setOnClickListener {
                 onBackPressed()
@@ -74,6 +76,8 @@ class ActivityHelp : BaseActivity<ActivityHelpBinding>() {
 
                     }
                 )
+
+                is Resource.Loading -> {}
             }
         })
 
@@ -103,6 +107,8 @@ class ActivityHelp : BaseActivity<ActivityHelpBinding>() {
                     dataBinding.root,
                     activity = this@ActivityHelp,
                     retry = { getUserList() })
+
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(

@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
@@ -92,6 +91,7 @@ class ActivityTransfer : BaseActivity<ActivityTransferBinding>(){
 
                     }
                 )
+                is Resource.Loading -> {}
             }
         })
 
@@ -127,6 +127,7 @@ class ActivityTransfer : BaseActivity<ActivityTransferBinding>(){
                     }
 
                 )
+                is Resource.Loading -> {}
 
             }
 
@@ -176,6 +177,7 @@ class ActivityTransfer : BaseActivity<ActivityTransferBinding>(){
                     dataBinding.root,
                     activity = this@ActivityTransfer,
                     retry = { getUserList() })
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(

@@ -107,14 +107,14 @@
 
                         android:padding="@dimen/_10sdp"
                         android:text="Forgot Password"
-                        android:textColor="@color/red" />
+                        android:textColor="@color/orange" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/login"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:backgroundTint="@color/red"
+                        android:backgroundTint="@color/orange"
                         android:paddingVertical="13dp"
                         android:text="@string/login"
                         android:textAllCaps="false"
@@ -136,7 +136,7 @@
                             android:paddingVertical="@dimen/_10sdp"
                             android:text="@string/notaccount_register"
                             android:textAllCaps="false"
-                            android:textColor="@color/red"
+                            android:textColor="@color/orange"
                             android:textStyle="bold"
                             app:cornerRadius="@dimen/_8sdp" />
 
@@ -163,7 +163,7 @@
                                 android:layout_centerInParent="true"
                                 android:layout_toRightOf="@+id/ivWhatsupp"
                                 android:text="For Support"
-                                android:textColor="@color/red" />
+                                android:textColor="@color/orange" />
 
 
                         </RelativeLayout>

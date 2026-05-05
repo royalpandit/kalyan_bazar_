@@ -1,7 +1,6 @@
 package com.app.kalyanbazar.model.response
 
- import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
+ import com.google.gson.annotations.SerializedName
 
  data class ResponseHowtoHelp(
 

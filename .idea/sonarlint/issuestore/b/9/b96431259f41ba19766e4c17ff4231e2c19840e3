@@ -1,7 +1,8 @@
 
->kotlin:S125Þ"Remove this commented out code.(¸Ãé8¢Òò£Ô1
-Mkotlin:S108þ")Either remove or fill this block of code.(Î†üŒøÿÿÿÿ8¦Òò£Ô1
-Mkotlin:S108À")Either remove or fill this block of code.(Î†üŒøÿÿÿÿ8¦Òò£Ô1
->kotlin:S1128"Remove this unused import.(¥×âÞÿÿÿÿÿ8ªÒò£Ô1
-kotlin:S1186Ö"ZAdd a nested comment explaining why this function is empty or complete the implementation.(¸Œ…‡þÿÿÿÿ8®Òò£Ô1
-akotlin:S6511l"=Merge chained "if" statements into a single "when" statement.(Ðº®žøÿÿÿÿ8¯Òò£Ô1
+<kotlin:S125‘"Remove this commented out code.(ŽßÐ¬úÿÿÿÿ
+7kotlin:S125"Remove this commented out code.(¸Ãé
+Fkotlin:S108°")Either remove or fill this block of code.(Î†üŒøÿÿÿÿ
+Fkotlin:S108ò")Either remove or fill this block of code.(Î†üŒøÿÿÿÿ
+okotlin:S3776."RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ÜšâÜúÿÿÿÿ
+xkotlin:S1186ˆ"ZAdd a nested comment explaining why this function is empty or complete the implementation.(¸Œ…‡þÿÿÿÿ
+Zkotlin:S6511v"=Merge chained "if" statements into a single "when" statement.(Ðº®žøÿÿÿÿ

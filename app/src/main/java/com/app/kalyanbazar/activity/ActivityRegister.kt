@@ -13,8 +13,6 @@ import com.app.kalyanbazar.databinding.ActivityRegisterBinding
 import com.app.kalyanbazar.model.request.RequestRegister
 import com.app.kalyanbazar.utils.BaseActivity
 import com.app.kalyanbazar.utils.Constants
-import com.app.kalyanbazar.utils.Helper
-import com.app.kalyanbazar.utils.Helper.Companion.isValidEmail
 import com.app.kalyanbazar.utils.MyApplication
 import com.app.kalyanbazar.utils.MyApplication.Companion.toast
 import com.app.kalyanbazar.utils.handleApiError
@@ -32,7 +30,7 @@ class ActivityRegister : BaseActivity<ActivityRegisterBinding>() {
         dataBinding.apply {
             editFirst.requestFocus()
             val imm: InputMethodManager =
-                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.showSoftInput(editFirst, InputMethodManager.SHOW_IMPLICIT)
 
             getContactUs()
@@ -44,7 +42,7 @@ class ActivityRegister : BaseActivity<ActivityRegisterBinding>() {
                 val intent = Intent(this@ActivityRegister, ActivityLogin::class.java)
                 startActivity(intent)
             }
-btnsignup.setOnClickListener {
+            btnsignup.setOnClickListener {
                 if (editFirst.text.toString().isEmpty()) {
                     editFirst.requestFocus()
                     editFirst.error = "Enter First Name"
@@ -58,7 +56,7 @@ btnsignup.setOnClickListener {
                 }*/ /*else if (Helper.isMobileValid(editPhonenumber.text.toString())) {
                     editPhonenumber.requestFocus()
                     editPhonenumber.error = "Please Number Start With 9/8/7/6"
-                }*/else if (editPhonenumber.text.toString().isEmpty()) {
+                }*/ else if (editPhonenumber.text.toString().isEmpty()) {
                     editPhonenumber.requestFocus()
                     editPhonenumber.error = "Enter Phone Number"
                 } else if (editPhonenumber.text.toString().length != 10) {
@@ -71,15 +69,16 @@ btnsignup.setOnClickListener {
                     editPin.requestFocus()
                     editPin.error = "Enter Last name"
                 } else {
-
-                    if (editPhonenumber.text.toString().startsWith("9") || editPhonenumber.text.toString().startsWith("8") || editPhonenumber.text.toString().startsWith("7") ||editPhonenumber.text.toString().startsWith("6"))
-                    {
+                    if (editPhonenumber.text.toString()
+                            .startsWith("9") || editPhonenumber.text.toString()
+                            .startsWith("8") || editPhonenumber.text.toString()
+                            .startsWith("7") || editPhonenumber.text.toString().startsWith("6")
+                    ) {
                         register()
-                    }   else {
+                    } else {
                         editPhonenumber.requestFocus()
                         editPhonenumber.error = "Please Number Start With 9/8/7/6"
                     }
-
 
                 }
             }
@@ -96,6 +95,31 @@ btnsignup.setOnClickListener {
             when (it) {
                 is Resource.Success -> {
                     if (it.value.status) {
+
+                        MyApplication.tinyDB.putString(
+                            Constants.SharedPref.ACCESS_TOKEN,
+                            it.value.accessToken
+                        )
+
+                        MyApplication.tinyDB.putInt(
+                            Constants.SharedPref.OWNER_ID,
+                            it.value.data[0].id!!
+                        )
+
+                        MyApplication.tinyDB.putString(
+                            Constants.SharedPref.USERPIN,
+                            it.value.data[0].userPin!!
+                        )
+                        val intent = Intent(this@ActivityRegister, HomeDashboardActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                       /* val intent = Intent(this@ActivityRegister, SecurityPin::class.java)
+                        intent.putExtra("phone", dataBinding.editPhonenumber.text.toString())
+                        intent.putExtra("screen", "1")
+                        startActivity(intent)
+                        finish()*/
+                    }
+                    /*if (it.value.status) {
                         toast("Register Succefull")
                         MyApplication.tinyDB.putString(
                             Constants.SharedPref.ACCESS_TOKEN,
@@ -107,7 +131,7 @@ btnsignup.setOnClickListener {
                         startActivity(intent)
                         finish()
 
-                    }
+                    }*/
                 }
 
                 is Resource.Failure -> handleApiError(
@@ -116,6 +140,7 @@ btnsignup.setOnClickListener {
                     activity = this, retry = {
                     }
                 )
+                is Resource.Loading -> {}
             }
         })
 
@@ -135,44 +160,47 @@ btnsignup.setOnClickListener {
         }
 
     }
+
     fun getContactUs() {
         viewModel.getContactUs.observe(this, Observer {
             MyApplication.ProgressBar(this, it is Resource.Loading)
             when (it) {
                 is Resource.Success -> {
-
                     if (it.value.status) {
                         try {
-                            phoneNumber=it.value.data.phoneNumber.toString()
-                        }catch (ex:Exception){
-
+                            phoneNumber = it.value.data.phoneNumber.toString()
+                        } catch (ex: Exception) {
                         }
                         //   minFund=it.value.data[0].minDeposit!!.toInt()
                         //   maxFund=it.value.data[0].maxDeposit!!.toInt()
 
                     }
                 }
+
                 is Resource.Failure -> handleApiError(
                     it,
                     dataBinding.root,
                     activity = this, retry = {
-
                     }
                 )
+                is Resource.Loading -> {}
             }
         })
 
 
         dataBinding.apply {
             viewModel.getContactUs(
-
             )
-
         }
 
     }
+
     fun whatsAppBtn() {
-        val url = "https://api.whatsapp.com/send?phone="+"+91"+ phoneNumber +"&text=" + URLEncoder.encode("", "UTF-8")
+        val url =
+            "https://api.whatsapp.com/send?phone=" + "+91" + phoneNumber + "&text=" + URLEncoder.encode(
+                "",
+                "UTF-8"
+            )
         val i = Intent(Intent.ACTION_VIEW)
         i.data = Uri.parse(url)
         startActivity(i)

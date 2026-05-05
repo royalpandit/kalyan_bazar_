@@ -1,15 +1,26 @@
 
-Xkotlin:S1172_"4Use "_" instead of this unused lambda parameter "v".(´òäÔıÿÿÿÿ8ö˜İ1
-=kotlin:S1255"Remove this commented out code.(ªáˆû8ù˜İ1
-=kotlin:S125G"Remove this commented out code.(–±Ù8ù˜İ1
-=kotlin:S125j"Remove this commented out code.(…íœ†8ú˜İ1
-Ckotlin:S125µ"Remove this commented out code.(üßæ‡üÿÿÿÿ8ú˜İ1
->kotlin:S125»"Remove this commented out code.(Ô´à¸8ú˜İ1
->kotlin:S125È"Remove this commented out code.(°¹şœ8ú˜İ1
->kotlin:S125ì"Remove this commented out code.(’Œàû8û˜İ1
->kotlin:S125Ÿ"Remove this commented out code.(îÅ¼8û˜İ1
->kotlin:S125»"Remove this commented out code.(ï ğ‰8û˜İ1
->kotlin:S125Ù"Remove this commented out code.(¸Ãé8û˜İ1
-~kotlin:S1186S"ZAdd a nested comment explaining why this function is empty or complete the implementation.(¸Œ…‡şÿÿÿÿ8ˆ™İ1
-Kkotlin:S6519ß"+Replace "equals" with binary operator "==".(ÁÃÉÎ8‰™İ1
-Pkotlin:S6519å"+Replace "equals" with binary operator "==".(ÁÚ¬Íüÿÿÿÿ8ç˜ï«İ1
+Kkotlin:S1172¯"2Use "_" instead of these unused lambda parameters.(µÈ¿
+Rkotlin:S1172Î"4Use "_" instead of this unused lambda parameter "v".(´òäÔıÿÿÿÿ
+6kotlin:S125X"Remove this commented out code.(ªáˆû
+;kotlin:S125t"Remove this commented out code.(çØ¾ùÿÿÿÿ
+;kotlin:S125|"Remove this commented out code.(çØ¾ùÿÿÿÿ
+<kotlin:S125„"Remove this commented out code.(çØ¾ùÿÿÿÿ
+<kotlin:S125š"Remove this commented out code.(üßæ‡üÿÿÿÿ
+<kotlin:S125£"Remove this commented out code.(üßæ‡üÿÿÿÿ
+<kotlin:S125¬"Remove this commented out code.(üßæ‡üÿÿÿÿ
+7kotlin:S125²"Remove this commented out code.(Ô´à¸
+7kotlin:S125ş"Remove this commented out code.(îÅ¼
+7kotlin:S125š"Remove this commented out code.(ï ğ‰
+7kotlin:S125Œ"Remove this commented out code.(Œşµ
+7kotlin:S125¥"Remove this commented out code.(Ã¢ı—
+7kotlin:S125æ"Remove this commented out code.(¸Ãé
+7kotlin:S125"Remove this commented out code.(¸Ãé
+7kotlin:S125Ø"Remove this commented out code.(¡¯Çã
+kkotlin:S117¨"SRename this local variable to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(œİà¥
+Fkotlin:S108©")Either remove or fill this block of code.(Î†üŒøÿÿÿÿ
+Fkotlin:S108Ä")Either remove or fill this block of code.(Î†üŒøÿÿÿÿ
+Akotlin:S108£")Either remove or fill this block of code.(å¥‡
+Akotlin:S1874§"#Deprecated code should not be used.(â›àìşÿÿÿÿ
+Zkotlin:S6510ı"AMove "return" statements from all branches before "if" statement.(¶ÈÒ
+Dkotlin:S6519Ê"+Replace "equals" with binary operator "==".(ÁÃÉÎ
+Ikotlin:S6519Ñ"+Replace "equals" with binary operator "==".(ÁÚ¬Íüÿÿÿÿ

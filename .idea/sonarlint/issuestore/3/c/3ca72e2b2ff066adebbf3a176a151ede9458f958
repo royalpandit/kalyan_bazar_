@@ -1,9 +1,0 @@
-
-Bkotlin:S125M"Remove this commented out code.(€Ü¾ùÿÿÿÿ8ŠÛ™÷Í1
-=kotlin:S125R"Remove this commented out code.(ßÜƒˆ8‹Û™÷Í1
-Lkotlin:S108|")Either remove or fill this block of code.(Î†üŒøÿÿÿÿ8ÿÉååÓ1
-8kotlin:S1128"Remove this unused import.(‰¿Ë8Û™÷Í1
->kotlin:S1128"Remove this unused import.(­¡©úÿÿÿÿ8Û™÷Í1
-kkotlin:S18712"LThis branch's code block is the same as the block for the branch on line 46.(óÈôÂ8Û™÷Í1
-~kotlin:S1186="ZAdd a nested comment explaining why this function is empty or complete the implementation.(¸Œ…‡şÿÿÿÿ8Û™÷Í1
-Lkotlin:S18622"-This condition duplicates the one on line 46.(óÈôÂ8Û™÷Í1

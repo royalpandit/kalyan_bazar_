@@ -1,14 +1,12 @@
 package com.app.kalyanbazar.utils
 
 import android.Manifest
-import android.annotation.TargetApi
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -16,7 +14,6 @@ import android.provider.Settings
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
-import android.util.Log
 import android.view.KeyEvent
 import android.view.Window
 import android.view.WindowManager
@@ -264,10 +261,10 @@ if (BuildConfig.DEBUG){
 
 
 
-    fun getDeviceId():String{
+  /*  fun getDeviceId():String{
         return Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
     }
-
+*/
 fun  isLogacteEnabled():Int{
     val devOptions = Settings.Secure.getInt(
         this.contentResolver,

@@ -4,10 +4,12 @@ import android.app.Activity
 import android.app.Application
 import android.app.Dialog
 import android.content.Context
-
+import android.view.Gravity
+import android.view.LayoutInflater
 import androidx.multidex.MultiDex
  import android.view.Window
- import android.widget.Toast
+import android.widget.TextView
+import android.widget.Toast
 import com.app.kalyanbazar.R
 import dagger.hilt.android.HiltAndroidApp
 
@@ -92,9 +94,23 @@ class MyApplication : Application() {
                 dialog!!.dismiss()
             }
         }
+        fun Context.customTopToast(message: String) {
+            val inflater = LayoutInflater.from(this)
+            val layout = inflater.inflate(R.layout.toast_top, null)
+            layout.findViewById<TextView>(R.id.toast_text).text = message
 
-
+            val toast = Toast(this)
+            toast.duration = Toast.LENGTH_SHORT
+            toast.view = layout
+            toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 100)
+            toast.show()
+        }
         fun Context.toast(message: CharSequence) {
+            val toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 100) // 100 is the Y offset
+            toast.show()
+        }
+        fun Context.toasts(message: CharSequence) {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
 

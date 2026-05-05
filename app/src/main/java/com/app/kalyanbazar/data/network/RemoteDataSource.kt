@@ -18,35 +18,25 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 
+
+
 class RemoteDataSource @Inject constructor() {
 
-/*
+
     fun <Api> buildApi(
         api: Class<Api>,
         context: Context
     ): Api {
         val gson = GsonBuilder().setLenient().create()
         return Retrofit.Builder()
-       .baseUrl("http://solar.betablackboard.in/")
-            .client(UnsafeOkHttpClient.getUnsafeOkHttpClient())
+            //.baseUrl("http://16.170.7.195/v1/")
+            .baseUrl("https://api.kalyanbazar.co.in/v1/")
+            .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(api)
-    }*/
-fun <Api> buildApi(
-    api: Class<Api>,
-    context: Context
-): Api {
-    val gson = GsonBuilder().setLenient().create()
-    return Retrofit.Builder()
-        //.baseUrl("http://16.170.7.195/v1/")
-        .baseUrl("http://api.kalyanbazar.co.in/v1/")
-        .client(httpClient)
-        .addConverterFactory(GsonConverterFactory.create(gson))
-        .build()
-        .create(api)
 
-}
+    }
     private val httpClient: OkHttpClient
         get() {
             val cookieHandler: CookieHandler = CookieManager()
@@ -69,33 +59,15 @@ fun <Api> buildApi(
             return client.build()
         }
 
-  /*  private class AddHeaderInterceptor : Interceptor {
-        @kotlin.jvm.Throws(IOException::class)
-        override fun intercept(chain: Interceptor.Chain): Response {
-            val builder = chain.request().newBuilder()
-            builder.addHeader("Accept", "application/json; charset=utf-8")
-            val token = MyApplication.tinyDB.getString(
-                Constants.SharedPref.ACCESS_TOKEN,
-                "not_selected"
-            )
-            if (!token.isNullOrEmpty())
-                builder.addHeader(
-                    "Authorization",
-//                    "Bearer " + AES.decrypt(token, Constants.SharedPref.ACCESS_TOKEN)
-                    "Bearer $token"
-                )
-            return chain.proceed(builder.build())
-        }
-    }*/
-  class BasicAuthInterceptor(username: String, password: String): Interceptor {
-      private var credentials: String = Credentials.basic(username, password)
+    class BasicAuthInterceptor(username: String, password: String): Interceptor {
+        private var credentials: String = Credentials.basic(username, password)
 
-      override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
-          var request = chain.request()
-          request = request.newBuilder().header("Authorization", credentials).build()
-          return chain.proceed(request)
-      }
-  }
+        override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
+            var request = chain.request()
+            request = request.newBuilder().header("Authorization", credentials).build()
+            return chain.proceed(request)
+        }
+    }
 
     private class AddHeaderInterceptor : Interceptor {
         @kotlin.jvm.Throws(IOException::class)
@@ -108,7 +80,7 @@ fun <Api> buildApi(
             val deviceToken =  MyApplication.tinyDB.getString(Constants.SharedPref.FIREBASE_TOKEN, "")
 
             Log.e("toke","TOken==>>>$deviceToken")
-             if (!token.isNullOrEmpty())
+            if (!token.isNullOrEmpty())
                 builder.addHeader(
                     "AccessToken",
 //                    "Bearer " + AES.decrypt(token, Constants.SharedPref.ACCESS_TOKEN)
@@ -118,3 +90,79 @@ fun <Api> buildApi(
         }
     }
 }
+
+
+/*class RemoteDataSource @Inject constructor() {
+
+    fun <Api> buildApi(api: Class<Api>, context: Context): Api {
+        val gson = GsonBuilder().setLenient().create()
+        return Retrofit.Builder()
+            .baseUrl("http://api.kalyanbazar.co.in/v1/")
+            .client(getHttpClient())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+            .create(api)
+    }
+
+    private fun getHttpClient(): OkHttpClient {
+        val cookieHandler: CookieHandler = CookieManager()
+
+        val clientBuilder = OkHttpClient.Builder()
+            .cookieJar(JavaNetCookieJar(cookieHandler))
+            .connectTimeout(1, TimeUnit.MINUTES)
+            .readTimeout(1, TimeUnit.MINUTES)
+            .writeTimeout(1, TimeUnit.MINUTES)
+            .addNetworkInterceptor(AddHeaderInterceptor())
+            .cache(MyApplication.instance?.let {
+                Cache(it.cacheDir, (10 * 1024 * 1024).toLong()) // 10MB
+            })
+
+        // 🔥 This is the main fix: use HEADERS level only
+        if (BuildConfig.DEBUG) {
+            val interceptor = HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
+            clientBuilder.addInterceptor(interceptor)
+
+            // Optional: Chucker (for in-app HTTP log view)
+            // MyApplication.instance?.let {
+            //     clientBuilder.addInterceptor(ChuckerInterceptor(it))
+            // }
+        }
+
+        return clientBuilder.build()
+    }
+
+    private class AddHeaderInterceptor : Interceptor {
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val builder = chain.request().newBuilder()
+            builder.addHeader("Accept", "application/json; charset=utf-8")
+
+            val token = MyApplication.tinyDB.getString(Constants.SharedPref.ACCESS_TOKEN, "")
+            val deviceToken = MyApplication.tinyDB.getString(Constants.SharedPref.FIREBASE_TOKEN, "")
+            Log.e("FireBaseToken","TOken==>>>$deviceToken")
+            Log.e("userToken","TOken==>>>$token")
+            if (!token.isNullOrEmpty())
+                builder.addHeader(
+                    "AccessToken",
+//                    "Bearer " + AES.decrypt(token, Constants.SharedPref.ACCESS_TOKEN)
+                    "$token"
+                ).addHeader("Devicetoken","$deviceToken")
+
+
+            return chain.proceed(builder.build())
+        }
+    }
+
+    class BasicAuthInterceptor(username: String, password: String) : Interceptor {
+        private val credentials = Credentials.basic(username, password)
+
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val request = chain.request().newBuilder()
+                .header("Authorization", credentials)
+                .build()
+            return chain.proceed(request)
+        }
+    }
+}*/
+

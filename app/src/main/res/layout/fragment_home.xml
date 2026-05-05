@@ -26,7 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:background="@color/red" />
+                    android:background="@color/orange" />
 
             </FrameLayout>
         </androidx.cardview.widget.CardView>
@@ -102,7 +102,7 @@ android:layout_gravity="center"
                     android:layout_margin="@dimen/_5sdp"
                     android:layout_weight="1"
                     android:background="@drawable/white"
-                    android:backgroundTint="@color/red"
+                    android:backgroundTint="@color/orange"
                     android:gravity="center_vertical">
 
                     <LinearLayout
@@ -192,7 +192,7 @@ android:layout_gravity="center"
                     android:layout_margin="@dimen/_5sdp"
                     android:layout_weight="1"
                     android:background="@drawable/white"
-                    android:backgroundTint="@color/red"
+                    android:backgroundTint="@color/orange"
                     android:gravity="center">
 
                     <LinearLayout
@@ -229,7 +229,7 @@ android:layout_gravity="center"
                     android:layout_margin="@dimen/_5sdp"
                     android:layout_weight="1"
                     android:background="@drawable/white"
-                    android:backgroundTint="@color/red"
+                    android:backgroundTint="@color/orange"
                     android:gravity="center">
 
                     <LinearLayout

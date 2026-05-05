@@ -2,8 +2,6 @@ package com.app.kalyanbazar.adapter
 
 import android.app.Activity
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.app.kalyanbazar.R
 import com.app.kalyanbazar.databinding.AdapterTransferHistoryBinding
-import com.app.kalyanbazar.databinding.AdapterWalletStatementBinding
 import com.app.kalyanbazar.model.response.ResponseWithdrawalList
 
 //adapter_transfer_history

@@ -1,25 +1,15 @@
 package com.app.kalyanbazar.adapter
 
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
-import android.widget.RelativeLayout
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.app.kalyanbazar.R
-import com.app.kalyanbazar.databinding.AdapterHomeBinding
 import com.app.kalyanbazar.databinding.AdapterIndashboardBinding
-import com.app.kalyanbazar.model.response.ResponseDashBoardListItem
 import com.app.kalyanbazar.model.response.ResponseInDashBoard
 import com.bumptech.glide.Glide
-import com.romainpiel.shimmer.Shimmer
-import com.romainpiel.shimmer.ShimmerTextView
 
 class AdapterInDashboard (
     private val activity: Activity,

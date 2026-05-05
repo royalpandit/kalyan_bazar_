@@ -45,14 +45,11 @@ class AdapterHome(
 
         }
         if (isBetting){
-
-
-
            // if (list[position].marketStatus!!.equals(true)){
             if (list[position].openingStatus!!.equals(true)){
                 val rotate = AnimationUtils.loadAnimation(activity, R.anim.round)
                 holder.binding.eventStatus.startAnimation(rotate)
-                holder.binding.eventStatus.setImageResource(R.drawable.play)
+                holder.binding.eventStatus.setImageResource(R.drawable.ic_play_green)
                 holder.binding.marketOpen.visibility=View.VISIBLE
                 holder.binding.marketOpen.text = "Market is Running"
                 holder.binding.marketOpen.setBackgroundColor(ContextCompat.getColor(activity, R.color.white))
@@ -73,6 +70,7 @@ class AdapterHome(
 
         }else{
 holder.binding.eventStatus.visibility=View.GONE
+holder.binding.lleventstaus.visibility=View.GONE
         }
 
         Log.e("MarketPoint==>",""+list[position].marketName)
@@ -96,29 +94,7 @@ if (list[position].openPanaResult.equals("")&&list[position].closePanaResult.equ
         val shimmer = Shimmer()
 
         shimmer.start<ShimmerTextView>( holder.binding.eventType)
-      /*  if (list[position].marketStatus!!.equals(true)){
-            val rotate = AnimationUtils.loadAnimation(activity, R.anim.round)
-            holder.binding.eventStatus.startAnimation(rotate)
-            holder.binding.eventStatus.setImageResource(R.drawable.play)
-            holder.binding.marketOpen.visibility=View.VISIBLE
-            holder.binding.marketOpen.setText("Market is Running")
-            holder.binding.marketOpen.setBackgroundColor(ContextCompat.getColor(activity, R.color.white))
-            holder.binding.marketOpen.setTextColor(ContextCompat.getColor(activity, R.color.greendark))
-        }else{
-            holder.binding.marketOpen.visibility=View.VISIBLE
-            holder.binding.eventStatus.setImageResource(R.drawable.close)
-            holder.binding.marketOpen.setText("Market Closed")
-            holder.binding.marketOpen.setBackgroundColor(ContextCompat.getColor(activity, R.color.white))
-            holder.binding.marketOpen.setTextColor(ContextCompat.getColor(activity, R.color.red_200))
-        }
-        val animation = AnimationUtils.loadAnimation(activity, R.anim.dd)
-        holder.binding.eventNumber.setAnimation(animation)
-*/
-/*
-        holder.itemView.setOnClickListener {
-            onClick.onItemClickBazar(list[position],holder.binding.rlhead)
 
-        }*/
         holder.binding.llchart.setOnClickListener {
             //
             val chartTable = Intent(activity, ActivityChart::class.java).putExtra("market_name",list[position].marketName)

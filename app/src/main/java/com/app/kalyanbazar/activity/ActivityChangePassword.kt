@@ -5,7 +5,6 @@ import android.text.method.PasswordTransformationMethod
 import android.text.method.SingleLineTransformationMethod
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import com.app.kalyanbazar.R
 import com.app.kalyanbazar.databinding.ActivityChangePasswordBinding
 import com.app.kalyanbazar.utils.BaseActivity

@@ -1,7 +1,5 @@
 package com.app.kalyanbazar.activity
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.app.kalyanbazar.R
@@ -53,6 +51,7 @@ class ActivityProfile : BaseActivity<ActivityProfileBinding>() {
                     dataBinding.root,
                     activity = this@ActivityProfile,
                     retry = { getUserList() })
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(

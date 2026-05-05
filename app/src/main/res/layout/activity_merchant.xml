@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/orange"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_tool"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            tools:ignore="MissingConstraints">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/header" />
+
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rl_tool"
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_5sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/rl_tool"
+                android:background="@color/white_opacity">
+
+                <ImageView
+                    android:id="@+id/ivMerchnatCode"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="@dimen/_200sdp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:src="@drawable/logoblacksplash" />
+
+                <TextView
+                    android:id="@+id/tvtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivMerchnatCode"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:text="For Add Fund Related Query Call Or Whatsup"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvNumber"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvtext"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="@dimen/_30sdp"
+                    android:text="XXX-XXX-XXXX"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvDposit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvNumber"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="@dimen/_30sdp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</layout>

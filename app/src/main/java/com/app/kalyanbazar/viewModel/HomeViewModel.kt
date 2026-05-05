@@ -16,8 +16,18 @@ import javax.inject.Inject
 class HomeViewModel  @Inject constructor(
     private val repository: UserRepository,
 ) : BaseViewModel(repository) {
+    private val _RequestRegister: MutableLiveData<Resource<BaseModel<ArrayList<ResponseLoginItem>>>> =
+        MutableLiveData()
 
-    private val _RequestRegister: MutableLiveData<Resource<BaseModel<*>>> =
+    val RequestRegister: LiveData<Resource<BaseModel<ArrayList<ResponseLoginItem>>>>
+        get() = _RequestRegister
+
+
+    fun RequestRegister(data: RequestRegister) = viewModelScope.launch {
+        _RequestRegister.value = Resource.Loading
+        _RequestRegister.value = repository.RequestRegister(data)
+    }
+    /*private val _RequestRegister: MutableLiveData<Resource<BaseModel<*>>> =
         MutableLiveData()
     val RequestRegister: LiveData<Resource<BaseModel<*>>>
         get() = _RequestRegister
@@ -25,7 +35,7 @@ class HomeViewModel  @Inject constructor(
     fun RequestRegister(data: RequestRegister) = viewModelScope.launch {
         _RequestRegister.value = Resource.Loading
         _RequestRegister.value = repository.RequestRegister(data)
-    }
+    }*/
 
 
     private val _RequestLogin: MutableLiveData<Resource<BaseModel<ArrayList<ResponseLoginItem>>>> =
@@ -81,6 +91,16 @@ class HomeViewModel  @Inject constructor(
     fun getContactUs() = viewModelScope.launch {
         _getContactUs.value = Resource.Loading
         _getContactUs.value = repository.getContactUs()
+    }
+
+    private val _getMerchant: MutableLiveData<Resource<BaseModel<ResponseMerchantCode>>> =
+        MutableLiveData()
+    val getMerchant: LiveData<Resource<BaseModel<ResponseMerchantCode>>>
+        get() = _getMerchant
+
+    fun getMerchant() = viewModelScope.launch {
+        _getMerchant.value = Resource.Loading
+        _getMerchant.value = repository.getMerchant()
     }
 
     private val _getHowToHelp: MutableLiveData<Resource<BaseModel<ArrayList<ResponseHowtoHelp>>>> =

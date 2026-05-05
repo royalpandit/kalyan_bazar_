@@ -8,14 +8,13 @@ import com.app.kalyanbazar.data.network.Resource
 import com.app.kalyanbazar.databinding.ActivityBankDetailsBinding
 import com.app.kalyanbazar.model.request.RequestBankAccountDetails
 import com.app.kalyanbazar.model.response.ResponseBankDetailsItem
-import com.app.kalyanbazar.model.response.ResponseWithdrawalList
 import com.app.kalyanbazar.utils.BaseActivity
 import com.app.kalyanbazar.utils.Constants
 import com.app.kalyanbazar.utils.MyApplication
 import com.app.kalyanbazar.utils.MyApplication.Companion.toast
 import com.app.kalyanbazar.utils.handleApiError
 import com.app.kalyanbazar.viewModel.HomeViewModel
-import dagger.hilt.android.AndroidEntryPoint
+ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ActivityBankDetails : BaseActivity<ActivityBankDetailsBinding>() {
@@ -81,6 +80,8 @@ class ActivityBankDetails : BaseActivity<ActivityBankDetailsBinding>() {
                     activity = this, retry = {
                     }
                 )
+
+                is Resource.Loading -> {}
             }
         })
 
@@ -127,6 +128,8 @@ class ActivityBankDetails : BaseActivity<ActivityBankDetailsBinding>() {
                     activity = this, retry = {
                     }
                 )
+
+                is Resource.Loading -> {}
             }
         })
 
@@ -160,6 +163,8 @@ class ActivityBankDetails : BaseActivity<ActivityBankDetailsBinding>() {
                     dataBinding.root,
                     activity = this@ActivityBankDetails,
                     retry = { getUserList() })
+
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(

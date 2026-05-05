@@ -11,16 +11,12 @@ import android.content.pm.PackageManager
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.ColorDrawable
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.text.TextUtils
 import android.text.format.DateUtils
 import android.util.Base64
 import android.util.Log
-import android.util.Patterns
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -28,7 +24,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

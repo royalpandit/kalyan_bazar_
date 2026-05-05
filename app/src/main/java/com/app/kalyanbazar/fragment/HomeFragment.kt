@@ -66,26 +66,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), AdapterHome.onClicklis
             getUserList()
             getInformation()
             whatsappItem.setOnClickListener {
-                /*   val url = "https://api.whatsapp.com/send?phone=" + "+918107116566"
-                   val i = Intent(Intent.ACTION_VIEW)
-                   i.data = Uri.parse(url)
-                   startActivity(i)*/
+
                 openPopup(popUpMessage)
             }
 
             rlwhatsups.setOnClickListener {
-                /*   val url = "https://api.whatsapp.com/send?phone=" + "+918107116566"
-                   val i = Intent(Intent.ACTION_VIEW)
-                   i.data = Uri.parse(url)
-                   startActivity(i)*/
+
                 whatsAppBtn()
             }
 
             rlcalls.setOnClickListener {
-                /*   val url = "https://api.whatsapp.com/send?phone=" + "+918107116566"
-                   val i = Intent(Intent.ACTION_VIEW)
-                   i.data = Uri.parse(url)
-                   startActivity(i)*/
+
                 callBtn()
             }
 
@@ -112,12 +103,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), AdapterHome.onClicklis
                 i.data = Uri.parse(url)
                 startActivity(i)
             }
-          /*  swipeRefLyt.setOnRefreshListener {
-                swipeRefLyt.isRefreshing = false
-Log.e("tag","Tag1")
-                // getDashboardList()
-                getUserList()
-            }*/
+
         }
 
     }
@@ -126,27 +112,7 @@ Log.e("tag","Tag1")
     }
 
     //
-    /* fun setAdapter(){
 
-         users.add(User("Welcome Bnous", "2023-06-01 10:20:09","Milan Morning","10:20 AM","12:20 PM","220-47-223","Teen Bazar"))
-         users.add(User("New Bonus", "2023-06-03 10:20:09","Rudrakh Morning","10:20 AM","12:20 PM","120-47-253","Teen Bazar"))
-         users.add(User("Joining Bonus", "2023-06-08 10:20:09","Kalyan Morning","10:20 AM","12:20 PM","820-47-223","Teen Bazar"))
-         users.add(User("Logout Bonus Also", "2023-06-12 10:20:09","Madhur Morning","10:20 AM","12:20 PM","720-47-423","Teen Bazar"))
-         users.add(User("Refer Bonus Also", "2023-06-12 10:20:09","Sapna Morning","10:20 AM","12:20 PM","720-47-423","Teen Bazar"))
-         users.add(User("Double Bonus Also", "2023-06-12 10:20:09","Double Morning","10:20 AM","12:20 PM","720-47-423","Teen Bazar"))
-         users.add(User("Iphone Bonus Also", "2023-06-12 10:20:09","Iphone Morning","10:20 AM","12:20 PM","720-47-423","Teen Bazar"))
-         users.add(User("Small Bonus Also", "2023-06-12 10:20:09","Small Morning","10:20 AM","12:20 PM","720-47-423","Teen Bazar"))
-         users.add(User("Big Bonus Also", "2023-06-12 10:20:09","Big Morning","10:20 AM","12:20 PM","720-47-423","Teen Bazar"))
-         users.add(User("Triple Bonus Also", "2023-06-12 10:20:09","Triple Morning","10:20 AM","12:20 PM","720-47-423","Teen Bazar"))
-
-
-         val adapter = AdapterHome(requireActivity(), users, this)
-         dataBinding.recRecyclerView.setHasFixedSize(true)
-         dataBinding.recRecyclerView.adapter = adapter
-         dataBinding.recRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
-
-
-     }*/
 //getImageSlider
     private fun getDashboardList(isBetting: Boolean) {
         viewModel.RequestDashBoardList.observe(this, Observer {
@@ -176,6 +142,8 @@ Log.e("tag","Tag1")
                     dataBinding.root,
                     activity = requireActivity(),
                     retry = { getDashboardList(this.isBetting) })
+
+                is Resource.Loading -> {}
             }
         })
         viewModel.RequestDashBoardList(
@@ -209,6 +177,8 @@ Log.e("tag","Tag1")
                     dataBinding.root,
                     activity = requireActivity(),
                     retry = { getImageSlider() })
+
+                is Resource.Loading -> {}
             }
         })
         viewModel.getImageSlider(
@@ -317,20 +287,8 @@ Log.e("tag","Tag1")
             when (it) {
                 is Resource.Success -> {
                     if (it.value.status) {
-                        //  dataBinding.rvHome.hideShimmer()
-                        //       dataBinding.rvHome.hideShimmerAdapter()
 
-                     /*   requireActivity()?.runOnUiThread {
-                            val activityHome = activity as? HomeDashboardActivity
-                            if (activityHome != null)
-                            {
-                                activityHome.updatecoin(it.value.data.totalAmount.toString().toString())
-                            }
-                        }
-*/
 
-                     // MyApplication.tinyDB.putString(Constants.TOTAL_AMO,it.value.data.totalAmount.toString())
-                        //activityHome
                         isBetting = it.value.data.betting!!
                         isUserStatus = it.value.data.userStatus!!
                         if (isBetting.equals(false)) {
@@ -367,6 +325,8 @@ Log.e("tag","Tag1")
                     retry = {
                        // getUserList()
                     })
+
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(
@@ -511,6 +471,8 @@ Log.e("tag","Tag1")
                     activity = requireActivity(), retry = {
                     }
                 )
+
+                is Resource.Loading -> {}
             }
         })
 
@@ -549,6 +511,8 @@ Log.e("tag","Tag1")
 
                     }
                 )
+
+                is Resource.Loading -> {}
             }
         })
 

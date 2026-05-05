@@ -26,13 +26,18 @@ import dev.shreyaspatil.easyupipayment.EasyUpiPayment
 import dev.shreyaspatil.easyupipayment.listener.PaymentStatusListener
 import dev.shreyaspatil.easyupipayment.model.TransactionDetails
 import dev.shreyaspatil.easyupipayment.model.TransactionStatus
+/*import dev.shreyaspatil.easyupipayment.EasyUpiPayment
+import dev.shreyaspatil.easyupipayment.listener.PaymentStatusListener
+import dev.shreyaspatil.easyupipayment.model.TransactionDetails
+import dev.shreyaspatil.easyupipayment.model.TransactionStatus*/
 import java.net.URLEncoder
 import java.util.Locale
 
 @AndroidEntryPoint
 class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusListener {
+
     private val viewModel by viewModels<HomeViewModel>()
-    private lateinit var easyUpiPayment: EasyUpiPayment
+   private lateinit var easyUpiPayment: EasyUpiPayment
     var phoneNumber: String = ""
     var amonut: Int = 0
     var GOOGLE_PAY_PACKAGE_NAME = "com.google.android.apps.nbu.paisa.user"
@@ -120,6 +125,8 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
                     dataBinding.root,
                     activity = this@ActivityAddPoint,
                     retry = { getUserList() })
+
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(
@@ -150,11 +157,12 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
 
         Log.e(">>>>>>>>>>>Submitedtion", "$transactionRefIdd")
         //TID1689419163129
+        //Code UNcomment When App Is Live
          pay()
-         //  payUsingUpi()
+
     }
 
-    override fun onTransactionCancelled() {
+   override fun onTransactionCancelled() {
         Log.e("===>>>Submited", "Cancelled by user")
         // Payment Cancelled by User
         toast("Cancelled by user")
@@ -259,35 +267,7 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
         }
     }
 
-    fun payUsingUpi() {
-        val uri = Uri.parse("upi://pay").buildUpon()
-            //  val uri = Uri.parse("net.one97.paytm").buildUpon()
-            .appendQueryParameter("pa", "7289056741@paytm")
-            // .appendQueryParameter("pa", "merchant482402.augp@aubank")
-            .appendQueryParameter("pn", "Add Point")
-            .appendQueryParameter("tn", R.string.app_name.toString())
-            .appendQueryParameter("am", dataBinding.inputCoins.text.toString() + ".0")
-            .appendQueryParameter("cu", "INR")
-            .appendQueryParameter("transactionId", transactionIdd)
-            .appendQueryParameter("transactionRefId", transactionRefIdd)
-            .build()
-//TID1689422369810
-        val upiPayIntent = Intent(Intent.ACTION_VIEW)
-        upiPayIntent.data = uri
-        // will always show a dialog to user to choose an app
-        val chooser = Intent.createChooser(upiPayIntent, "Pay with")
-        // check if intent resolves
-        if (null != chooser.resolveActivity(packageManager)) {
-            startActivityForResult(chooser, UPI_PAYMENT)
-        } else {
-            Toast.makeText(
-                this@ActivityAddPoint,
-                "No UPI app found, please install one to continue",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
 
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -321,61 +301,6 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
         }
     }
 
-    private fun upiPaymentDataOperation(data: ArrayList<String>) {
-        if (isConnectionAvailable(this@ActivityAddPoint)) {
-            var str: String? = data[0]
-            Log.e(">>>>>>>>UPIPAY", "upiPaymentDataOperation: " + str!!)
-            var paymentCancel = ""
-            if (str == null) str = "discard"
-            var status = ""
-            var approvalRefNo = ""
-            var logsd = ""
-            val response = str.split("&".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-            for (i in response.indices) {
-                val equalStr =
-                    response[i].split("=".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-                Log.e(">>>>>>>>equalStr==>>>", "$equalStr")
-                if (equalStr.size >= 2) {
-                    if (equalStr[0].lowercase(Locale.getDefault()) == "Status".lowercase(Locale.getDefault())) {
-                        status = equalStr[1].lowercase(Locale.getDefault())
-                    } else if (equalStr[0].lowercase(Locale.getDefault()) == "ApprovalRefNo".lowercase(Locale.getDefault()) || equalStr[0].lowercase(
-                            Locale.getDefault()
-                        ) == "txnRef".lowercase(
-                            Locale.getDefault()
-                        )) {
-                        approvalRefNo = equalStr[1]
-                    }
-                } else {
-                    paymentCancel = "Payment cancelled by user."
-                }
-            }
-
-            if (status == "success") {
-                //Code to handle successful transaction here.
-                Toast.makeText(this@ActivityAddPoint, "Transaction successful.", Toast.LENGTH_SHORT)
-                    .show()
-                Log.e(">>>>>>>>UPI", "responseStr: $approvalRefNo")
-            } else if ("Payment cancelled by user." == paymentCancel) {
-                Toast.makeText(
-                    this@ActivityAddPoint,
-                    "Payment cancelled by user.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else {
-                Toast.makeText(
-                    this@ActivityAddPoint,
-                    "Transaction failed.Please try again",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        } else {
-            Toast.makeText(
-                this@ActivityAddPoint,
-                "Internet connection is not available. Please check and try again",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
 
     private fun upiPaymentDataOperations(data: ArrayList<String>) {
         if (isConnectionAvailable(this@ActivityAddPoint)) {
@@ -464,7 +389,7 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
 
 
 
-    fun AddFund(
+  fun AddFund(
         amount: String?,
         transactionId: String?,
         transactionRefId: String?,
@@ -493,6 +418,8 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
                     activity = this, retry = {
                     }
                 )
+
+                is Resource.Loading -> {}
             }
         })
 
@@ -536,6 +463,8 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
                     activity = this, retry = {
                     }
                 )
+
+                is Resource.Loading -> {}
             }
         })
 
@@ -573,6 +502,8 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
                     activity = this, retry = {
                     }
                 )
+
+                is Resource.Loading -> {}
             }
         })
 
@@ -617,6 +548,8 @@ class ActivityAddPoint : BaseActivity<ActivityAddPointBinding>(), PaymentStatusL
                     activity = this, retry = {
                     }
                 )
+
+                is Resource.Loading -> {}
             }
         })
 

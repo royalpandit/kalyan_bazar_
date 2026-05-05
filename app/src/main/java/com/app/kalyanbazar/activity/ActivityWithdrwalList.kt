@@ -90,6 +90,7 @@ class ActivityWithdrwalList : BaseActivity<ActivityWithdrwalListBinding>(),
                     activity = this@ActivityWithdrwalList,
                     retry = {
                     })
+                is Resource.Loading -> {}
             }
         })
         viewModel.getWithdrwalList(
@@ -133,6 +134,7 @@ class ActivityWithdrwalList : BaseActivity<ActivityWithdrwalListBinding>(),
                     dataBinding.root,
                     activity = this@ActivityWithdrwalList,
                     retry = { getUserList() })
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(

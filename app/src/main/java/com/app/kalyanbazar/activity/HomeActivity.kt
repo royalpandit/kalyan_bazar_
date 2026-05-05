@@ -1,11 +1,7 @@
 package com.app.kalyanbazar.activity
 
-import android.widget.LinearLayout
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.kalyanbazar.R
-import com.app.kalyanbazar.adapter.AdapterHome
 import com.app.kalyanbazar.databinding.ActivityHomeBinding
-import com.app.kalyanbazar.model.User
 import com.app.kalyanbazar.utils.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 

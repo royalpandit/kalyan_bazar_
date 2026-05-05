@@ -70,7 +70,7 @@ class ActivitySplash : BaseActivity<ActivitySplashBinding>() {
                  startAActivity(HomeDashboardActivity::class.java)
                 finish()
             }else {
-                 startAActivity(ActivityLogin::class.java)
+                 startAActivity(ActivityRegister::class.java)
                 finish()
             }
 
@@ -104,7 +104,7 @@ class ActivitySplash : BaseActivity<ActivitySplashBinding>() {
             }
 
         } else {
-            startActivity(Intent(this, ActivityLogin::class.java))
+            startActivity(Intent(this, ActivityRegister::class.java))
             overridePendingTransition(R.anim.fadein, R.anim.fadeout)
             finish()
 
@@ -151,6 +151,8 @@ class ActivitySplash : BaseActivity<ActivitySplashBinding>() {
 
                     }
                 )
+
+                is Resource.Loading -> {}
             }
         })
 

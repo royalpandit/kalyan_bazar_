@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Kalyan Bazar</string>
+    <!--<string name="app_name">Sara777</string>-->
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
     <string name="dev_name">Dev</string>
@@ -49,6 +50,7 @@
     <string name="support">Support</string>
     <string name="share_with_friends">Share With Friends</string>
     <string name="rate_app">Rate App</string>
+    <string name="term_condtions">Terms &amp; Condition</string>
     <string name="logout">Logout</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -140,6 +142,8 @@
     <string name="transfer_fund">Transfer Points</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="enter_your_query_here">Enter Your Query Here</string>
+
+
 
     <string-array name="Languages">
         <item>Bank</item>

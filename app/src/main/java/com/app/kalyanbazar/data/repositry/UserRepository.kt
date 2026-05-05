@@ -27,6 +27,9 @@ class UserRepository @Inject constructor(
     suspend fun getContactUs() =
         safeApiCall { api.getContactUs() }
 
+    suspend fun getMerchant() =
+        safeApiCall { api.getMerchant() }
+
     suspend fun getHowToHelp() =
         safeApiCall { api.getHowToHelp() }
 

@@ -17,7 +17,6 @@ import androidx.lifecycle.Observer
 import com.app.kalyanbazar.R
 import com.app.kalyanbazar.data.network.Resource
 import com.app.kalyanbazar.databinding.ActivityWithdrawFundBinding
-import com.app.kalyanbazar.model.request.RequestAddFund
 import com.app.kalyanbazar.model.request.RequestWithdrwalFund
 import com.app.kalyanbazar.utils.BaseActivity
 import com.app.kalyanbazar.utils.Constants
@@ -26,7 +25,6 @@ import com.app.kalyanbazar.utils.MyApplication.Companion.toast
 import com.app.kalyanbazar.utils.handleApiError
 import com.app.kalyanbazar.viewModel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import dev.shreyaspatil.easyupipayment.model.TransactionStatus
 import java.net.URLEncoder
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -203,6 +201,7 @@ class ActivityWithdrawFund :  BaseActivity<ActivityWithdrawFundBinding>() {
 
                     }
                 )
+                is Resource.Loading -> {}
             }
         })
 
@@ -230,11 +229,17 @@ class ActivityWithdrawFund :  BaseActivity<ActivityWithdrawFundBinding>() {
                     Log.e("Success==>>>qq", "suceess")
 
                     if (it.value.status) {
-                        withdrwalUpi=it.value.data[0].upiAddress.toString()
+                        val setting = it.value.data[0]
+                        withdrwalUpi = setting.upiAddress.orEmpty()
+                        minWithdrwal = setting.minWithdrawl?.takeIf { it.isNotBlank() }?.toIntOrNull() ?: 0
+                        maxWithdrwal = setting.maxWithdrawl?.takeIf { it.isNotBlank() }?.toIntOrNull() ?: 0
+                        withdrwalOpenTime = setting.withdrawlOpenTime.orEmpty()
+                        withdrwalCloseTime = setting.withdrawlCloseTime.orEmpty()
+                      /*  withdrwalUpi=it.value.data[0].upiAddress.toString()
                         minWithdrwal=it.value.data[0].minWithdrawl!!.toInt()
                         maxWithdrwal=it.value.data[0].maxWithdrawl!!.toInt()
                         withdrwalOpenTime=it.value.data[0].withdrawlOpenTime.toString()
-                        withdrwalCloseTime=it.value.data[0].withdrawlCloseTime.toString()
+                        withdrwalCloseTime=it.value.data[0].withdrawlCloseTime.toString()*/
 
                     }
                 }
@@ -245,6 +250,7 @@ class ActivityWithdrawFund :  BaseActivity<ActivityWithdrawFundBinding>() {
 
                     }
                 )
+                is Resource.Loading -> {}
             }
         })
 
@@ -278,6 +284,7 @@ class ActivityWithdrawFund :  BaseActivity<ActivityWithdrawFundBinding>() {
                     dataBinding.root,
                     activity = this@ActivityWithdrawFund,
                     retry = { getUserList() })
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(
@@ -312,6 +319,7 @@ class ActivityWithdrawFund :  BaseActivity<ActivityWithdrawFundBinding>() {
 
                     }
                 )
+                is Resource.Loading -> {}
             }
         })
 
@@ -325,35 +333,6 @@ class ActivityWithdrawFund :  BaseActivity<ActivityWithdrawFundBinding>() {
 
     }
 
-    private fun successdialog() {
-         val btnconfirm: TextView
-        val succesfull: TextView
-        val placed: TextView
-        val photo: ImageView
-        val dialog = Dialog(this@ActivityWithdrawFund)
-        val li = this@ActivityWithdrawFund.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val v = li.inflate(R.layout.dialogue_succefull, null, false)
-        val window = dialog.window
-        window?.setBackgroundDrawableResource(android.R.color.transparent)
-        v.background = resources.getDrawable(R.drawable.bg_radius)
-        dialog.setContentView(v)
-
-        btnconfirm = dialog.findViewById(R.id.playagainbtn)
-        succesfull = dialog.findViewById(R.id.succesfull)
-        placed = dialog.findViewById(R.id.placed)
-        photo = dialog.findViewById(R.id.photo)
-        succesfull.visibility=View.GONE
-        photo.visibility=View.GONE
-        placed.text="Withdrawal Request Send Successfully"
-        btnconfirm.text="OK"
-        btnconfirm.setOnClickListener {
-            dialog.dismiss()
-             finish()
-
-        }
-        dialog.show()
-
-    }
     fun getContactUs() {
         viewModel.getContactUs.observe(this, Observer {
             MyApplication.ProgressBar(this, it is Resource.Loading)
@@ -378,6 +357,7 @@ class ActivityWithdrawFund :  BaseActivity<ActivityWithdrawFundBinding>() {
 
                     }
                 )
+                is Resource.Loading -> {}
             }
         })
 
@@ -390,10 +370,40 @@ class ActivityWithdrawFund :  BaseActivity<ActivityWithdrawFundBinding>() {
         }
 
     }
+
     fun whatsAppBtn() {
         val url = "https://api.whatsapp.com/send?phone="+"+91"+ phoneNumber +"&text=" + URLEncoder.encode("", "UTF-8")
         val i = Intent(Intent.ACTION_VIEW)
         i.data = Uri.parse(url)
         startActivity(i)
+    }
+
+    private fun successdialog() {
+         val btnconfirm: TextView
+        val succesfull: TextView
+        val placed: TextView
+        val photo: ImageView
+        val dialog = Dialog(this@ActivityWithdrawFund)
+        val li = this@ActivityWithdrawFund.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val v = li.inflate(R.layout.dialogue_succefull, null, false)
+        val window = dialog.window
+        window?.setBackgroundDrawableResource(android.R.color.transparent)
+        v.background = resources.getDrawable(R.drawable.roundalert)
+        dialog.setContentView(v)
+
+        btnconfirm = dialog.findViewById(R.id.playagainbtn)
+        placed = dialog.findViewById(R.id.placed)
+        succesfull = dialog.findViewById(R.id.succesfull)
+        photo = dialog.findViewById(R.id.photo)
+        placed.text=""
+        btnconfirm.text="OK"
+        succesfull.text="Withdraw Points Request Placed Successfully"
+        btnconfirm.setOnClickListener {
+            dialog.dismiss()
+            finish()
+
+        }
+        dialog.show()
+
     }
 }

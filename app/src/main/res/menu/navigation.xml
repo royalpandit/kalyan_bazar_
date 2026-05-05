@@ -115,20 +115,34 @@
     </group>
     <group android:id="@+id/group14">
         <item
-            android:id="@+id/shareWithFriends"
+            android:id="@+id/shareApp"
             android:icon="@drawable/sharewithfriend"
             android:orderInCategory="14"
             android:title="@string/share_with_friends" />
     </group>
     <group android:id="@+id/group15">
         <item
-            android:id="@+id/rateApp"
+            android:id="@+id/rateUs"
             android:icon="@drawable/rateapp"
             android:orderInCategory="15"
             android:title="@string/rate_app" />
     </group>
-
     <group android:id="@+id/group16">
+        <item
+            android:id="@+id/privacy"
+            android:icon="@drawable/rateapp"
+            android:orderInCategory="15"
+            android:title="Privacy Policy" />
+    </group>
+    <group android:id="@+id/group17">
+        <item
+            android:id="@+id/termcondition"
+            android:icon="@drawable/rateapp"
+            android:orderInCategory="15"
+            android:title="@string/term_condtions" />
+    </group>
+
+    <group android:id="@+id/group18">
         <item
             android:id="@+id/changePassword"
             android:icon="@drawable/changepasswords"
@@ -138,7 +152,7 @@
     </group>
 
 
-    <group android:id="@+id/group17">
+    <group android:id="@+id/group19">
         <item
             android:id="@+id/logout"
             android:icon="@drawable/logout"
@@ -147,7 +161,7 @@
     </group>
 
 
-    <group android:id="@+id/group18">
+    <group android:id="@+id/group20">
         <item
             android:id="@+id/transferPoints"
             android:icon="@drawable/sharepoint"

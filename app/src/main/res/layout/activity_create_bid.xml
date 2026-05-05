@@ -257,7 +257,7 @@
                             android:gravity="center"
                             android:paddingHorizontal="40dp"
                             android:paddingVertical="12dp"
-                            android:text="@string/prf1boceed"
+                            android:text="Add Bid"
                             android:textAllCaps="false"
                             android:textSize="16sp"
                             app:cornerRadius="20dp" />
@@ -388,7 +388,7 @@
                             android:gravity="center"
                             android:paddingHorizontal="40dp"
                             android:paddingVertical="12dp"
-                            android:text="@string/prf1boceed"
+                            android:text="Confirm"
                             android:textAllCaps="false"
                             android:textSize="16sp"
                             android:visibility="gone"

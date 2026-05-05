@@ -88,6 +88,7 @@ class ActivityStarline : BaseActivity<ActivityStarlineBinding>(), AdapterStarlin
                     dataBinding.root,
                     activity = this@ActivityStarline,
                     retry = { getDashboardList() })
+                is Resource.Loading -> {}
             }
         })
         viewModel.RequestDashBoardStarlineList(
@@ -179,6 +180,7 @@ class ActivityStarline : BaseActivity<ActivityStarlineBinding>(), AdapterStarlin
                     dataBinding.root,
                     activity = this@ActivityStarline,
                     retry = { getUserList() })
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(

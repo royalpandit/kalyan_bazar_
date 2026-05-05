@@ -64,6 +64,7 @@ class ActivityUpi : BaseActivity<ActivityUpiBinding>() {
                     dataBinding.root,
                     activity = this@ActivityUpi,
                     retry = { getUserList() })
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(
@@ -90,6 +91,7 @@ class ActivityUpi : BaseActivity<ActivityUpiBinding>() {
                     activity = this, retry = {
                     }
                 )
+                is Resource.Loading -> {}
             }
         })
 
@@ -135,6 +137,7 @@ class ActivityUpi : BaseActivity<ActivityUpiBinding>() {
                     activity = this, retry = {
                     }
                 )
+                is Resource.Loading -> {}
             }
         })
 
@@ -174,6 +177,7 @@ class ActivityUpi : BaseActivity<ActivityUpiBinding>() {
                     activity = this, retry = {
                     }
                 )
+                is Resource.Loading -> {}
             }
         })
 

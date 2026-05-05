@@ -11,12 +11,9 @@ import androidx.lifecycle.Observer
 import com.app.kalyanbazar.R
 import com.app.kalyanbazar.data.network.Resource
 import com.app.kalyanbazar.databinding.ActivityContactUsBinding
-import com.app.kalyanbazar.model.request.RequestCreateUserApi
 import com.app.kalyanbazar.model.request.RequestWithdrwalFund
 import com.app.kalyanbazar.utils.BaseActivity
-import com.app.kalyanbazar.utils.Constants
 import com.app.kalyanbazar.utils.MyApplication
-import com.app.kalyanbazar.utils.MyApplication.Companion.toast
 import com.app.kalyanbazar.utils.handleApiError
 import com.app.kalyanbazar.viewModel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -68,6 +65,9 @@ class ActivityContactUs : BaseActivity<ActivityContactUsBinding>() {
                     activity = this, retry = {
                     }
                 )
+                is Resource.Loading -> {
+
+                }
             }
         })
 

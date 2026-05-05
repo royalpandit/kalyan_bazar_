@@ -142,6 +142,9 @@ Log.e("Tranfer","MarketID==>>$marketId")
 
                     }
                 )
+                is Resource.Loading -> {
+
+                }
             }
         })
 
@@ -196,6 +199,10 @@ Log.e("Tranfer","MarketID==>>$marketId")
                     dataBinding.root,
                     activity = this@ActivityChart,
                     retry = { getUserList() })
+
+                is Resource.Loading -> {
+
+                }
             }
         })
         viewModel.getUserList(

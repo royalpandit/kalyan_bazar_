@@ -1,7 +1,6 @@
 package com.app.kalyanbazar.utils
 
 import android.content.Context
-import java.util.*
 import android.annotation.TargetApi;
 import android.content.ContextWrapper;
 import android.content.res.Configuration;

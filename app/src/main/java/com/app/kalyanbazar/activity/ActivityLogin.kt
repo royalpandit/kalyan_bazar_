@@ -13,8 +13,8 @@ import com.app.kalyanbazar.databinding.ActivityLoginBinding
 import com.app.kalyanbazar.model.request.RequestLogin
 import com.app.kalyanbazar.utils.BaseActivity
 import com.app.kalyanbazar.utils.Constants
-import com.app.kalyanbazar.utils.Helper.Companion.isValidEmail
 import com.app.kalyanbazar.utils.MyApplication
+import com.app.kalyanbazar.utils.MyApplication.Companion.customTopToast
 import com.app.kalyanbazar.utils.MyApplication.Companion.toast
 import com.app.kalyanbazar.utils.handleApiError
 import com.app.kalyanbazar.viewModel.HomeViewModel
@@ -110,7 +110,9 @@ class ActivityLogin : BaseActivity<ActivityLoginBinding>() {
                         finish()
 
                     }else{
-                        toast(it.value.message)
+                        customTopToast(it.value.message)
+
+                      //  toast(it.value.message)
 
                     }
 
@@ -123,6 +125,8 @@ class ActivityLogin : BaseActivity<ActivityLoginBinding>() {
                     activity = this, retry = {
                     }
                 )
+
+                is Resource.Loading -> {}
             }
         })
 
@@ -165,6 +169,8 @@ class ActivityLogin : BaseActivity<ActivityLoginBinding>() {
 
                     }
                 )
+
+                is Resource.Loading -> {}
             }
         })
 

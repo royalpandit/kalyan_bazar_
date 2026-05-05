@@ -3,7 +3,6 @@ package com.app.kalyanbazar.activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -35,6 +34,7 @@ class ActivityWalletStatement : BaseActivity<ActivityWalletStatementBinding>(),
             toolbar.ivBack.setOnClickListener {
                 onBackPressed()
             }
+            observeMerchant()
             getUserFundHistory()
             getUserList()
             getAppSetting()
@@ -44,9 +44,11 @@ class ActivityWalletStatement : BaseActivity<ActivityWalletStatementBinding>(),
                 startActivity(withdrawPoints)
             }
             addpoints.setOnClickListener {
-                val withdrawPoints =
+                addpoints.isEnabled = false   // 👈 disable click
+                viewModel.getMerchant()
+               /* val withdrawPoints =
                     Intent(this@ActivityWalletStatement, ActivityAddPoint::class.java)
-                startActivity(withdrawPoints)
+                startActivity(withdrawPoints)*/
             }
 
 
@@ -125,6 +127,7 @@ class ActivityWalletStatement : BaseActivity<ActivityWalletStatementBinding>(),
                     dataBinding.root,
                     activity = this@ActivityWalletStatement,
                     retry = { getUserFundHistory() })
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserFundList(
@@ -166,6 +169,7 @@ class ActivityWalletStatement : BaseActivity<ActivityWalletStatementBinding>(),
                     dataBinding.root,
                     activity = this@ActivityWalletStatement,
                     retry = { getUserList() })
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(
@@ -199,6 +203,7 @@ class ActivityWalletStatement : BaseActivity<ActivityWalletStatementBinding>(),
                     activity = this, retry = {
                     }
                 )
+                is Resource.Loading -> {}
             }
         })
 
@@ -208,5 +213,42 @@ class ActivityWalletStatement : BaseActivity<ActivityWalletStatementBinding>(),
             )
         }
 
+    }
+
+    private fun observeMerchant() {
+
+        viewModel.getMerchant.observe(this) { response ->
+
+            MyApplication.ProgressBar(this, response is Resource.Loading)
+
+            when (response) {
+
+                is Resource.Success -> {
+
+                    dataBinding.addpoints.isEnabled = true   // 👈 enable back
+
+                    if (response.value.status) {
+
+                        val merchantData = response.value.data
+
+                        if (merchantData?.status == true) {
+                            startActivity(Intent(this, ActivityMerchant::class.java))
+                        } else {
+                            startActivity(Intent(this, ActivityAddPoint::class.java))
+                        }
+
+                    }
+                }
+
+                is Resource.Failure -> {
+
+                    dataBinding.addpoints.isEnabled = true   // 👈 important
+
+                    handleApiError(response, dataBinding.root, this)
+                }
+
+                is Resource.Loading -> {}
+            }
+        }
     }
 }

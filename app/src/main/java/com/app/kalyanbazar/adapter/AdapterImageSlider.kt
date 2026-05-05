@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
-import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 import com.app.kalyanbazar.R
  import com.app.kalyanbazar.model.response.ResponseImageSlider

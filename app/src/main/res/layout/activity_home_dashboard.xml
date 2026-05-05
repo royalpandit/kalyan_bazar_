@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white_opacity"
-        tools:ct=".sixthAttempt.sixthAttemptEleven"
         tools:openDrawer="start">
 
         <RelativeLayout
@@ -30,7 +29,6 @@
                     android:layout_height="@dimen/_40sdp"
                     android:background="@drawable/toolbar"
                     android:contentInsetStart="0dp"
-                    android:textSize="@dimen/_12sdp"
                     app:contentInsetLeft="0dp"
                     app:contentInsetStart="0dp"
                     app:contentInsetStartWithNavigation="0dp"
@@ -95,11 +93,17 @@
                         android:layout_height="match_parent">
 
                         <androidx.viewpager.widget.ViewPager
-                            android:id="@+id/viewpager"
+                            android:id="@+id/viewPager"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:background="@color/red" />
+
+                        <me.relex.circleindicator.CircleIndicator
+                            android:id="@+id/indicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_gravity="bottom" />
 
                     </FrameLayout>
                 </androidx.cardview.widget.CardView>
@@ -122,10 +126,7 @@
                         android:textColor="@color/white_opacity"
                         android:textSize="18sp" />
                 </FrameLayout>
-                <!--
-                    android:layout_below="@id/stripLayout"
-                        android:layout_below="@id/aaa"
-                -->
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -140,20 +141,19 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tvhelp"
-                            android:text=""
+                            android:id="@+id/tvAnnouncement"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_centerInParent="true"
                             android:ellipsize="marquee"
                             android:fadingEdge="horizontal"
                             android:marqueeRepeatLimit="marquee_forever"
                             android:scrollHorizontally="true"
                             android:singleLine="true"
+                            android:text=""
                             android:textColor="@color/black_dark"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textStyle="bold" />
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/aaa"
@@ -387,7 +387,7 @@
                                  android:layout_width="match_parent"
                                  android:layout_height="wrap_content">
                             <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rec_recyclerView"
+                                android:id="@+id/rvHome"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
@@ -423,15 +423,15 @@
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_centerHorizontal="true"
-                            android:background="@drawable/circle_shape"
+                            android:background="@drawable/bg_circle_shadow"
                             android:layout_marginBottom="@dimen/_20sdp"
                             android:gravity="center">
 
                             <ImageView
-
-                                android:layout_width="@dimen/_35sdp"
-                                android:layout_height="@dimen/_35sdp"
-                                android:src="@drawable/whatsups"
+android:padding="@dimen/_2sdp"
+                                android:layout_width="@dimen/_38sdp"
+                                android:layout_height="@dimen/_38sdp"
+                                android:src="@drawable/ic_whatsapp"
                                 app:tint="@color/green" />
 
                         </RelativeLayout>
@@ -452,15 +452,15 @@
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_marginBottom="@dimen/_20sdp"
-                            android:background="@drawable/circle_shape"
+                            android:background="@drawable/bg_circle_shadow"
                             android:gravity="center">
 
                             <ImageView
-
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="@dimen/_30sdp"
+android:padding="@dimen/_2sdp"
+                                android:layout_width="@dimen/_38sdp"
+                                android:layout_height="@dimen/_38sdp"
                                 android:src="@drawable/call"
-                                app:tint="@color/green" />
+                                  />
 
                         </RelativeLayout>
                     </RelativeLayout>
@@ -480,37 +480,7 @@
                 android:text="@string/notconected"
                 android:textColor="@color/white_opacity"
                 android:visibility="gone" />
-<!--
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/swipe_ref_lyt"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_120sdp"
-                android:layout_below="@id/dataConText"
-                android:visibility="visible">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    &lt;!&ndash;
-
-                                        <com.kalyanmarket.trusted.seventhAttempt.seventhAttemptTen
-                                            android:id="@+id/viewPager"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-                    &ndash;&gt;
-
-                    &lt;!&ndash; <include layout="@layout/fragment_home" />&ndash;&gt;
-
-                    <ProgressBar
-                        android:id="@+id/progressBar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:visibility="gone" />
-                </RelativeLayout>
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    -->    </RelativeLayout>
+    </RelativeLayout>
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigationView"

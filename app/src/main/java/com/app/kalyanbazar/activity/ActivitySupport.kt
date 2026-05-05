@@ -28,6 +28,8 @@ class ActivitySupport : BaseActivity<ActivitySupportBinding>() {
     override fun setupViews() {
         dataBinding.apply {
             getContactUs()
+            toolbar.ivWallet.visibility=View.GONE
+            toolbar.tvcois.visibility=View.GONE
             toolbar.tvTitle.text="Support"
             toolbar.ivBack.setOnClickListener {
                 onBackPressed()
@@ -78,6 +80,7 @@ class ActivitySupport : BaseActivity<ActivitySupportBinding>() {
 
                     }
                 )
+                is Resource.Loading -> {}
             }
         })
 
@@ -113,6 +116,7 @@ class ActivitySupport : BaseActivity<ActivitySupportBinding>() {
                     dataBinding.root,
                     activity = this@ActivitySupport,
                     retry = { getUserList() })
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(

@@ -3,8 +3,6 @@ package com.app.kalyanbazar.activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
@@ -13,10 +11,7 @@ import com.app.kalyanbazar.R
 import com.app.kalyanbazar.data.network.Resource
 import com.app.kalyanbazar.databinding.ActivityForgotPasswordBinding
 import com.app.kalyanbazar.model.request.RequestForgotPassword
-import com.app.kalyanbazar.model.request.RequestLogin
 import com.app.kalyanbazar.utils.BaseActivity
-import com.app.kalyanbazar.utils.Constants
-import com.app.kalyanbazar.utils.Helper
 import com.app.kalyanbazar.utils.MyApplication
 import com.app.kalyanbazar.utils.handleApiError
 import com.app.kalyanbazar.viewModel.HomeViewModel
@@ -95,6 +90,9 @@ class ActivityForgotPassword : BaseActivity<ActivityForgotPasswordBinding>() {
 
                     }
                 )
+                is Resource.Loading -> {
+
+                }
             }
         })
 
@@ -141,6 +139,9 @@ class ActivityForgotPassword : BaseActivity<ActivityForgotPasswordBinding>() {
 
                     }
                 )
+                is Resource.Loading -> {
+
+                }
             }
         })
 

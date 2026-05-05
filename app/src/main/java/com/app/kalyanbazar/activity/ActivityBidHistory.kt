@@ -195,6 +195,8 @@ fun datecalanderOpen(){
                     dataBinding.root,
                     activity = this@ActivityBidHistory,
                     retry = { getBidHIstory(from, toDate, this.markeTYpe) })
+
+                is Resource.Loading -> {}
             }
         })
         viewModel.getBid(
@@ -231,6 +233,8 @@ fun datecalanderOpen(){
                     dataBinding.root,
                     activity = this@ActivityBidHistory,
                     retry = { getWinHIstory(from, toDate, this.markeTYpe) })
+
+                is Resource.Loading -> {}
             }
         })
         viewModel.getWin(
@@ -268,6 +272,8 @@ fun datecalanderOpen(){
                     dataBinding.root,
                     activity = this@ActivityBidHistory,
                     retry = { getUserList() })
+
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(

@@ -6,7 +6,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.kalyanbazar.R
 import com.app.kalyanbazar.adapter.AdapterTransferHistory
-import com.app.kalyanbazar.adapter.AdapterWithDrwalStatement
 import com.app.kalyanbazar.data.network.Resource
 import com.app.kalyanbazar.databinding.ActivityTransferHistoryListBinding
 import com.app.kalyanbazar.model.response.ResponseWithdrawalList
@@ -89,6 +88,7 @@ class ActivityTransferHIstoryList : BaseActivity<ActivityTransferHistoryListBind
                     activity = this@ActivityTransferHIstoryList,
                     retry = {
                     })
+                is Resource.Loading -> {}
             }
         })
         viewModel.adminTransferHistory(
@@ -133,6 +133,7 @@ class ActivityTransferHIstoryList : BaseActivity<ActivityTransferHistoryListBind
                     dataBinding.root,
                     activity = this@ActivityTransferHIstoryList,
                     retry = { getUserList() })
+                is Resource.Loading -> {}
             }
         })
         viewModel.getUserList(

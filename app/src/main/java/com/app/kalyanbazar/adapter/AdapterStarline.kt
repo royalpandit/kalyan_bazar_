@@ -1,28 +1,19 @@
 package com.app.kalyanbazar.adapter
 
 import android.app.Activity
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.app.kalyanbazar.R
-import com.app.kalyanbazar.activity.ActivityChart
-import com.app.kalyanbazar.databinding.AdapterHomeBinding
 import com.app.kalyanbazar.databinding.AdapterStarlineBinding
-import com.app.kalyanbazar.model.response.ResponseDashBoardListItem
 import com.app.kalyanbazar.model.response.ResponseStarline
-import com.romainpiel.shimmer.Shimmer
-import com.romainpiel.shimmer.ShimmerTextView
 
- class AdapterStarline (
+class AdapterStarline (
      private val activity: Activity,
      var list: ArrayList<ResponseStarline>,
      private val onClick: onClicklistBazar,

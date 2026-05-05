@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.app.kalyanbazar.R
 import com.app.kalyanbazar.databinding.AdapterWalletStatementBinding
-import com.app.kalyanbazar.model.response.ResponseGetUserFund
 import com.app.kalyanbazar.model.response.ResponseWithdrawalList
 
 class AdapterWithDrwalStatement (

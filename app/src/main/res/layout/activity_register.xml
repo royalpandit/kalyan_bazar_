@@ -210,7 +210,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:backgroundTint="@color/red"
+                    android:backgroundTint="@color/orange"
                     android:onClick="SignUpBtn"
                     android:paddingVertical="13dp"
                     android:text="@string/signup"
@@ -235,7 +235,7 @@
                         android:text="@string/alreadyaccount_login"
                         android:textAllCaps="false"
                         android:textStyle="bold"
-                        android:textColor="@color/red"
+                        android:textColor="@color/orange"
                         app:cornerRadius="@dimen/_8sdp" />
 
                     <RelativeLayout
@@ -261,7 +261,7 @@
                             android:layout_centerInParent="true"
                             android:layout_toRightOf="@+id/ivWhatsupp"
                             android:text="For Support"
-                            android:textColor="@color/red" />
+                            android:textColor="@color/orange" />
 
 
                     </RelativeLayout>

@@ -1,41 +1,22 @@
 
-Wkotlin:S6619¨"7Remove this useless non-null check, it always succeeds.(σθƒ8ϋόλιτ1
-=kotlin:S125d"Remove this commented out code.(ΈΓι8όόλιτ1
-Ckotlin:S125Ώ"Remove this commented out code.(ϊ θδϊÿÿÿÿ8όόλιτ1
-Ckotlin:S125β"Remove this commented out code.(―°Αϊÿÿÿÿ8ύόλιτ1
->kotlin:S125…"Remove this commented out code.(¬Η8ύόλιτ1
-\kotlin:S1144Δ"<Remove this unused private "upiPaymentDataOperation" method.(΄νΣ8Ωνιτ1
-kkotlin:S107¶"GThis function has 8 parameters, which is greater than the 7 authorized.(ΐαίώÿÿÿÿ8ύλιτ1
-Mkotlin:S108")Either remove or fill this block of code.(Ξ†όψÿÿÿÿ8ύλιτ1
-Mkotlin:S108Η")Either remove or fill this block of code.(Ξ†όψÿÿÿÿ8ύλιτ1
-Tkotlin:S1656η"/Remove or correct this useless self-assignment.(•£λ‰ώÿÿÿÿ8ύλιτ1
-Jkotlin:S1481Μ"*Remove this unused "logsd" local variable.(«Γ½Ò8ύλιτ1
-9kotlin:S1128"Remove this unused import.(υεήθ8ύλιτ1
->kotlin:S1128"Remove this unused import.(Ό„χγϋÿÿÿÿ8ύλιτ1
-okotlin:S1192’"ODefine a constant instead of duplicating this literal "===>>>Submited" 6 times.(κ€ΰκ8‘ύλιτ1
-kkotlin:S1192±"LDefine a constant instead of duplicating this literal ">>>>>>>>UPI" 3 times.(΅—=8’ύλιτ1
-{kotlin:S1192Ω"[Define a constant instead of duplicating this literal "Payment cancelled by user." 6 times.(Ò‹Έ¥8’ύλιτ1
-nkotlin:S1192Ζ"ODefine a constant instead of duplicating this literal "Success==>>>qq" 3 times.(Π²Δn8’ύλιτ1
-Hkotlin:S1874Σ"#Deprecated code should not be used.(Μό•¤ωÿÿÿÿ8”ύλιτ1
-Hkotlin:S1874Σ"#Deprecated code should not be used.(Μό•¤ωÿÿÿÿ8”ύλιτ1
-Hkotlin:S1874Τ"#Deprecated code should not be used.( ””ÿÿÿÿÿ8”ύλιτ1
-Ckotlin:S1874Υ"#Deprecated code should not be used.(ΛΡÒά8”ύλιτ1
-Ckotlin:S1874Υ"#Deprecated code should not be used.(ΛΡÒά8”ύλιτ1
-Ckotlin:S1874Υ"#Deprecated code should not be used.(ΛΡÒά8”ύλιτ1
-Ckotlin:S1874Υ"#Deprecated code should not be used.(ΛΡÒά8”ύλιτ1
-Ckotlin:S1874†"#Deprecated code should not be used.(”μΜ8”ύλιτ1
-Ckotlin:S1874†"#Deprecated code should not be used.(”μΜ8”ύλιτ1
-Hkotlin:S1874‡"#Deprecated code should not be used.(ΕΟΕ΄ÿÿÿÿÿ8”ύλιτ1
-Hkotlin:S1874"#Deprecated code should not be used.(ωΦΔΨόÿÿÿÿ8”ύλιτ1
-Ckotlin:S1874"#Deprecated code should not be used.(ϋΥηΪ8”ύλιτ1
-Ckotlin:S1874©"#Deprecated code should not be used.(ΙΩΛ8”ύλιτ1
-Hkotlin:S1874ª"#Deprecated code should not be used.(Ϊ–³Ωωÿÿÿÿ8”ύλιτ1
-Hkotlin:S1874«"#Deprecated code should not be used.(‡¦Υ™ϋÿÿÿÿ8”ύλιτ1
-Hkotlin:S1874¬"#Deprecated code should not be used.(όΡµϋωÿÿÿÿ8”ύλιτ1
-rkotlin:S3776Δ"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(΄νΣ8•ύλιτ1
-wkotlin:S3776χ"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(¦με¬ύÿÿÿÿ8•ύλιτ1
-Pkotlin:S6529z"1Replace collection size check with "isNotEmpty()"(ΖγΫ°8—ύλιτ1
-~kotlin:S1186["ZAdd a nested comment explaining why this function is empty or complete the implementation.(Έ…‡ώÿÿÿÿ8™ύλιτ1
-]kotlin:S6511™"=Merge chained "if" statements into a single "when" statement.(›©ΑΨ8ύλιτ1
-Kkotlin:S6519ΰ"+Replace "equals" with binary operator "==".(·‹μÿ8›ύλιτ1
-Pkotlin:S6519δ"+Replace "equals" with binary operator "==".(ΐ›ς·ϋÿÿÿÿ8›ύλιτ1
+Pkotlin:S6619υ"7Remove this useless non-null check, it always succeeds.(σθƒ
+6kotlin:S125u"Remove this commented out code.(ΈΓι
+<kotlin:S125λ"Remove this commented out code.(―°Αϊÿÿÿÿ
+okotlin:S117I"SRename this local variable to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(φΈίεωÿÿÿÿ
+dkotlin:S107†"GThis function has 8 parameters, which is greater than the 7 authorized.(ΐαίώÿÿÿÿ
+Fkotlin:S108ε")Either remove or fill this block of code.(Ξ†όψÿÿÿÿ
+Fkotlin:S108‘")Either remove or fill this block of code.(Ξ†όψÿÿÿÿ
+Mkotlin:S1656π"/Remove or correct this useless self-assignment.(•£λ‰ώÿÿÿÿ
+hkotlin:S1192¤"ODefine a constant instead of duplicating this literal "===>>>Submited" 6 times.(κ€ΰκ
+tkotlin:S1192Μ"[Define a constant instead of duplicating this literal "Payment cancelled by user." 3 times.(Ò‹Έ¥
+gkotlin:S1192”"ODefine a constant instead of duplicating this literal "Success==>>>qq" 3 times.(Π²Δn
+<kotlin:S1874φ"#Deprecated code should not be used.(ΙΩΛ
+Akotlin:S1874χ"#Deprecated code should not be used.(Ϊ–³Ωωÿÿÿÿ
+Akotlin:S1874ψ"#Deprecated code should not be used.(‡¦Υ™ϋÿÿÿÿ
+Akotlin:S1874ω"#Deprecated code should not be used.(όΡµϋωÿÿÿÿ
+pkotlin:S3776―"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(¦με¬ύÿÿÿÿ
+Jkotlin:S6529‹"1Replace collection size check with "isNotEmpty()"(ΖγΫ°
+wkotlin:S1186l"ZAdd a nested comment explaining why this function is empty or complete the implementation.(Έ…‡ώÿÿÿÿ
+Vkotlin:S6511ª"=Merge chained "if" statements into a single "when" statement.(›©ΑΨ
+Dkotlin:S6519­"+Replace "equals" with binary operator "==".(·‹μÿ
+Ikotlin:S6519±"+Replace "equals" with binary operator "==".(ΐ›ς·ϋÿÿÿÿ

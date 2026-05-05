@@ -327,7 +327,7 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                         )
 
                     } else if (marketName.equals("FULL_SANGAM")) {
-                        Log.e("==>", "inputdigits==>" + inputdigits.text.toString())
+                        Log.e("==>", "inputdigits==Sync>" + inputdigits.text.toString())
                         Log.e("==>", "inputpana==>" + inputpana.text.toString())
                         hasValue = openAnk.contains(inputdigits.text.toString()) && closeAnk.contains(
                             inputpana.text.toString()
@@ -393,6 +393,10 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                     activity = this, retry = {
                     }
                 )
+
+                is Resource.Loading -> {
+
+                }
             }
         })
 
@@ -462,6 +466,10 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                     activity = this, retry = {
                     }
                 )
+
+                is Resource.Loading -> {
+
+                }
             }
         })
 
@@ -536,6 +544,10 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                     dataBinding.root,
                     activity = this@ActivityCreateBid,
                     retry = { getNumberList(this.marketName) })
+
+                is Resource.Loading -> {
+
+                }
             }
         })
 
@@ -584,6 +596,10 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                     dataBinding.root,
                     activity = this@ActivityCreateBid,
                     retry = { getNumberList(this.marketName) })
+
+                is Resource.Loading -> {
+
+                }
             }
         })
 
@@ -636,6 +652,10 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                     dataBinding.root,
                     activity = this@ActivityCreateBid,
                     retry = { getNumberList(this.marketName) })
+
+                is Resource.Loading -> {
+
+                }
             }
         })
 
@@ -663,6 +683,10 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                     dataBinding.root,
                     activity = this@ActivityCreateBid,
                     retry = { getUserList() })
+
+                is Resource.Loading -> {
+
+                }
             }
         })
         viewModel.getUserList(
@@ -877,6 +901,10 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                     activity = this, retry = {
                     }
                 )
+
+                is Resource.Loading -> {
+
+                }
             }
         })
 
