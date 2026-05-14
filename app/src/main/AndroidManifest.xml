@@ -26,6 +26,10 @@
         android:theme="@style/Theme.Kalyanbazar"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity
+            android:name=".activity.TrainingActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.ActivityMerchant"
             android:exported="false" />

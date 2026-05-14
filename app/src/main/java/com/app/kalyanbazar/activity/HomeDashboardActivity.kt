@@ -86,16 +86,24 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
                 startActivity(intent)
             }
             menu = navigationView.menu
+            menu.findItem(R.id.termcondition).isVisible = false
+            menu.findItem(R.id.privacy).isVisible = false
             confToolbar()
             observeMerchant()
+            observeDashboardList()
             onCLick()
             getUserList()
-            profile()
+           // profile()
             getContactUs()
             getImageSlider()
             getInformation()
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            dataBinding.swipeRefLyt.setOnRefreshListener {
 
+                dataBinding.swipeRefLyt.isRefreshing = false
+
+                getUserList()
+            }
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
 
     }
@@ -103,34 +111,20 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
     fun onCLick() {
         dataBinding.apply {
             whatsappItem.setOnClickListener {
-                /*   val url = "https://api.whatsapp.com/send?phone=" + "+918107116566"
-                   val i = Intent(Intent.ACTION_VIEW)
-                   i.data = Uri.parse(url)
-                   startActivity(i)*/
                 openPopup(popUpMessage)
             }
 
             rlwhatsups.setOnClickListener {
-                /*   val url = "https://api.whatsapp.com/send?phone=" + "+918107116566"
-                   val i = Intent(Intent.ACTION_VIEW)
-                   i.data = Uri.parse(url)
-                   startActivity(i)*/
                 whatsAppBtn()
             }
 
             rlcalls.setOnClickListener {
-                /*   val url = "https://api.whatsapp.com/send?phone=" + "+918107116566"
-                   val i = Intent(Intent.ACTION_VIEW)
-                   i.data = Uri.parse(url)
-                   startActivity(i)*/
                 callBtn()
             }
 
             addpointsItem.setOnClickListener {
                 addpointsItem.isEnabled = false
                 viewModel.getMerchant()
-             //   val addfund = Intent(this@HomeDashboardActivity, ActivityAddPoint::class.java)
-             //   startActivity(addfund)
             }
 
             withdrawItem.setOnClickListener {
@@ -177,24 +171,23 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
     override fun onResume() {
         super.onResume()
 
-     }
+    }
 
     override fun setupViewsOnResume() {
-         // getUserList()
-        profile()
+        // getUserList()
+      //  profile()
         getContactUs()
         getImageSlider()
         getInformation()
-        dataBinding.swipeRefLyt.setOnRefreshListener {
+        /*dataBinding.swipeRefLyt.setOnRefreshListener {
             dataBinding.swipeRefLyt.isRefreshing = false
-              // getDashboardList()
+            // getDashboardList()
             getUserList()
-        }
+        }*/
 
     }
 
     private fun confToolbar() {
-
         dataBinding.toolbar.setNavigationOnClickListener(View.OnClickListener { v: View? ->
             dataBinding.drawerLayout.openDrawer(
                 GravityCompat.START
@@ -203,7 +196,6 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
         dataBinding.navigationView.setNavigationItemSelectedListener(NavigationView.OnNavigationItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.home -> {
-
                     dataBinding.drawerLayout.closeDrawers()
                 }
 
@@ -213,8 +205,8 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
                 }
 
                 R.id.addFunds -> {
-                     viewModel.getMerchant()
-                   // val addfund = Intent(this@HomeDashboardActivity, ActivityAddPoint::class.java)
+                    viewModel.getMerchant()
+                    // val addfund = Intent(this@HomeDashboardActivity, ActivityAddPoint::class.java)
                     //startActivity(addfund)
                 }
 
@@ -335,42 +327,11 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
                 R.id.logout -> {
                     logout()
                 }
-
             }
             true
         })
     }
 
-    private fun profile() {
-        viewModel.getUserList.observe(this, Observer {
-            MyApplication.ProgressBar(this@HomeDashboardActivity, it is Resource.Loading)
-            when (it) {
-                is Resource.Success -> {
-                    if (it.value.status) {
-                        dataBinding.tvcois.text = it.value.data.totalAmount.toString()
-                        val headerView = dataBinding.navigationView.getHeaderView(0)
-
-                        val tvUserName = headerView.findViewById<TextView>(R.id.tvusername)
-                        val tvPhone = headerView.findViewById<TextView>(R.id.tvphone)
-                        tvUserName.text = it.value.data.firstName.toString()
-                        tvPhone.text = it.value.data.phoneNumber.toString()
-                        //   dataBinding.toolbar.setTitle(it.value.data.totalAmount.toString())
-                    }
-                }
-
-                is Resource.Failure -> handleApiError(it,
-                    dataBinding.root,
-                    activity = this@HomeDashboardActivity,
-                    retry = { profile() })
-                is Resource.Loading -> {}
-            }
-        })
-
-        viewModel.getUserList(
-            userID = MyApplication.tinyDB.getInt(Constants.SharedPref.OWNER_ID, -1)
-        )
-
-    }
 
     private fun logout() {
         MyApplication.tinyDB.clear()
@@ -378,30 +339,41 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
         startActivity(contactUs)
         finish()
     }
+    private fun observeDashboardList() {
 
-    fun getDashboardList() {
-        viewModel.RequestDashBoardList.observe(this, Observer {
+        viewModel.RequestDashBoardList.observe(this) {
+
             MyApplication.ProgressBar(this@HomeDashboardActivity, it is Resource.Loading)
+
             when (it) {
+
                 is Resource.Success -> {
+
                     if (it.value.status) {
-                        //  dataBinding.rvHome.hideShimmer()
-                        //       dataBinding.rvHome.hideShimmerAdapter()
+
                         arr = ArrayList()
-                      //  arr = it.value.data
-                        arr = it.value.data.filter { it.active == true } as ArrayList<ResponseDashBoardListItem>
+
+                        arr = it.value.data.filter {
+                            it.active == true
+                        } as ArrayList<ResponseDashBoardListItem>
 
                         setHomeUserAdapter()
                     }
                 }
 
-                is Resource.Failure -> handleApiError(it,
+                is Resource.Failure -> handleApiError(
+                    it,
                     dataBinding.root,
                     activity = this@HomeDashboardActivity,
-                    retry = { getDashboardList() })
+                    retry = { getDashboardList() }
+                )
+
                 is Resource.Loading -> {}
             }
-        })
+        }
+    }
+    fun getDashboardList() {
+
         viewModel.RequestDashBoardList(
             marketType = "normal"
         )
@@ -425,6 +397,8 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
                     Constants.marketID,
                     position.id
                 ).putExtra(Constants.marketType, position.marketType)
+                    .putExtra(Constants.openTime, position.marketOpeningTime)
+                    .putExtra(Constants.closeTime, position.marketClosingTime)
             )
 
         } else {
@@ -472,13 +446,52 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
             when (it) {
                 is Resource.Success -> {
                     if (it.value.status) {
+
+                         val headerView = dataBinding.navigationView.getHeaderView(0)
+                        val tvUserName = headerView.findViewById<TextView>(R.id.tvusername)
+                        val tvPhone = headerView.findViewById<TextView>(R.id.tvphone)
+                        tvUserName.text = it.value.data.firstName.toString()
+                        tvPhone.text = it.value.data.phoneNumber.toString()
                         //  dataBinding.rvHome.hideShimmer()
                         //       dataBinding.rvHome.hideShimmerAdapter()
                         //   dataBinding.toolbar.setTitle(it.value.data.totalAmount.toString())
                         dataBinding.tvcois.text = it.value.data.totalAmount.toString()
                         isUserStatus = it.value.data.userStatus!!
                         isBetting = it.value.data.betting!!
+                        if (isBetting == false) {
+                            dataBinding.aaa.visibility = View.GONE
+                            dataBinding.tvcois.visibility = View.GONE
+                            dataBinding.ivwallet.visibility = View.GONE
+                            dataBinding.tvAnnouncement.visibility = View.GONE
+                            menu.findItem(R.id.walletStatement).isVisible = false
+                            menu.findItem(R.id.game_withdrwallist).isVisible = false
+                            menu.findItem(R.id.game_transferhistory).isVisible = false
+                            menu.findItem(R.id.bidHistory).isVisible = false
+                            menu.findItem(R.id.winHistory).isVisible = false
+                            menu.findItem(R.id.game_values).isVisible = false
+                            menu.findItem(R.id.how_to_learn).isVisible = false
+                            menu.findItem(R.id.shareApp).isVisible = false
+                            menu.findItem(R.id.rateUs).isVisible = false
 
+
+                         //   getDashboardList()
+                        } else {
+                            dataBinding.tvAnnouncement.visibility = View.VISIBLE
+                            dataBinding.aaa.visibility = View.VISIBLE
+                            dataBinding.tvcois.visibility = View.VISIBLE
+                            dataBinding.ivwallet.visibility = View.VISIBLE
+                            menu.findItem(R.id.walletStatement).isVisible = true
+                            menu.findItem(R.id.game_withdrwallist).isVisible = true
+                            menu.findItem(R.id.game_transferhistory).isVisible = true
+                            menu.findItem(R.id.bidHistory).isVisible = true
+                            menu.findItem(R.id.winHistory).isVisible = true
+                            menu.findItem(R.id.game_values).isVisible = true
+                            menu.findItem(R.id.how_to_learn).isVisible = true
+                            menu.findItem(R.id.shareApp).isVisible = true
+                            menu.findItem(R.id.rateUs).isVisible = true
+
+                          //  getDashboardList()
+                        }
                         if (isUserStatus.equals(false)) {
                             MyApplication.tinyDB.clear()
                             val contactUs =
@@ -486,14 +499,16 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
                             startActivity(contactUs)
                             finish()
                         }
-                        getDashboardList()
+                         getDashboardList()
                     }
                 }
 
-                is Resource.Failure -> handleApiError(it,
+                is Resource.Failure -> handleApiError(
+                    it,
                     dataBinding.root,
                     activity = this@HomeDashboardActivity,
                     retry = { getUserList() })
+
                 is Resource.Loading -> {}
             }
         })
@@ -509,19 +524,36 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
             when (it) {
                 is Resource.Success -> {
                     if (it.value.status) {
-                        //  dataBinding.rvHome.hideShimmer()
-                        //       dataBinding.rvHome.hideShimmerAdapter()
+                        /* arrImageSlider = ArrayList()
+                         arrImageSlider = it.value.data
+                         init()*/
                         arrImageSlider = ArrayList()
-                        arrImageSlider = it.value.data
+
+                        if (isBetting == false) {
+                            val staticBanner1 = ResponseImageSlider(
+                                imageUrl = "https://static.vecteezy.com/system/resources/thumbnails/067/618/488/small/quiz-word-on-yellow-speech-bubble-free-vector.jpg"
+                            )
+                            val staticBanner2 = ResponseImageSlider(
+                                imageUrl = "https://i.pinimg.com/736x/67/68/01/676801edfff1985c7e93af9ee88adb9a.jpg"
+                            )
+
+                            arrImageSlider.add(staticBanner1)
+                            arrImageSlider.add(staticBanner2)
+
+                        } else {
+                            arrImageSlider = it.value.data
+                        }
+
                         init()
-                        //  setHomeUserAdapter()
                     }
                 }
 
-                is Resource.Failure -> handleApiError(it,
+                is Resource.Failure -> handleApiError(
+                    it,
                     dataBinding.root,
                     activity = this@HomeDashboardActivity,
                     retry = { getImageSlider() })
+
                 is Resource.Loading -> {}
             }
         })
@@ -531,14 +563,11 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
     }
 
     private fun init() {
-
         dataBinding.viewPager.adapter =
             AdapterImageSlider(this@HomeDashboardActivity, arrImageSlider)
 
         dataBinding.indicator.setViewPager(dataBinding.viewPager)
-
         //NUM_PAGES = arrImageSlider.size
-
         // Auto start of viewpager
         val handler = Handler()
         val Update = Runnable {
@@ -567,13 +596,14 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
                         try {
                             dataBinding.tvAnnouncement.text =
                                 it.value.data[0].information!!.popUpMessage!!.message
+                            dataBinding.tvAnnouncement.isSelected = true
                             popUpMessage = it.value.data[0].information!!.popUpMessage!!.message!!
-                            maintenece = it.value.data[0].information!!.appMaintanence!!.status.toString()
+                            maintenece =
+                                it.value.data[0].information!!.appMaintanence!!.status.toString()
                             if (maintenece.equals("true")) {
                                 openPopup(popUpMessage)
                             }
                         } catch (ex: Exception) {
-
                         }
                         //   minFund=it.value.data[0].minDeposit!!.toInt()
                         //   maxFund=it.value.data[0].maxDeposit!!.toInt()
@@ -585,9 +615,9 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
                     it,
                     dataBinding.root,
                     activity = this, retry = {
-
                     }
                 )
+
                 is Resource.Loading -> {}
             }
         })
@@ -595,9 +625,7 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
 
         dataBinding.apply {
             viewModel.getInformation(
-
             )
-
         }
 
     }
@@ -607,12 +635,10 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
             MyApplication.ProgressBar(this, it is Resource.Loading)
             when (it) {
                 is Resource.Success -> {
-
                     if (it.value.status) {
                         try {
                             phoneNumber = it.value.data.phoneNumber.toString()
                         } catch (ex: Exception) {
-
                         }
                         //   minFund=it.value.data[0].minDeposit!!.toInt()
                         //   maxFund=it.value.data[0].maxDeposit!!.toInt()
@@ -624,9 +650,9 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
                     it,
                     dataBinding.root,
                     activity = this, retry = {
-
                     }
                 )
+
                 is Resource.Loading -> {}
             }
         })
@@ -634,9 +660,7 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
 
         dataBinding.apply {
             viewModel.getContactUs(
-
             )
-
         }
 
     }
@@ -659,17 +683,13 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
     }
 
     private fun observeMerchant() {
-
         viewModel.getMerchant.observe(this) { response ->
-
             MyApplication.ProgressBar(this, response is Resource.Loading)
 
             when (response) {
-
                 is Resource.Success -> {
                     dataBinding.addpointsItem.isEnabled = true
                     if (response.value.status) {
-
                         val merchantData = response.value.data
 
                         if (merchantData?.status == true) {
@@ -689,4 +709,4 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
             }
         }
     }
- }
+}

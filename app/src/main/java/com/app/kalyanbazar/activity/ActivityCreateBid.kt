@@ -35,6 +35,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONArray
 import org.json.JSONObject
 import java.net.URLEncoder
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @AndroidEntryPoint
 class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
@@ -52,6 +55,8 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
     var catId: Int = 0
     var marketName: String = ""
     var marketType: String = ""
+    var openTime: String = ""
+    var closeTime: String = ""
     var sessionName: String = ""
     var userId: Int? = null
     var sessionButton = false
@@ -65,14 +70,6 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
     var valueOfText = ""
     var bitFormlist: ArrayList<BitformModel> = ArrayList()
 
-    //  lateinit var bitForm1Adapter: BitForm1Adapter
-    /*    http://api.kalyanbazar.co.in/v1/get-numbers-list?number_type=SINGLE_DIGIT
-        Abhishek Gupta12:43 PM
-        http://api.kalyanbazar.co.in/swagger/
-        Abhishek Gupta12:45 PM
-        v1/get-add-numbers
-        v1/change-pin
-        v1/get-normal-game-rate*/
     override fun getLayoutResId(): Int = R.layout.activity_create_bid
 
     override fun setupViews() {
@@ -86,19 +83,73 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
         catId = intent.getIntExtra(Constants.CAT_ID, 0)
         marketName = intent.getStringExtra(Constants.Category_Name).toString()
         marketType = intent.getStringExtra(Constants.marketType).toString()
+        openTime = intent.getStringExtra(Constants.openTime).toString()
+        closeTime = intent.getStringExtra(Constants.closeTime).toString()
+
+        Log.e("OPEN_TIME", "OPEN_TIMEBID" + openTime)
+        Log.e("CLOSE_TIME", "CLOSE_TIMEBID" + closeTime)
         showOpen = intent.getStringExtra(Constants.SHOW_OPEN).toString()
         Log.e("showOpen", "showOpen==>>" + showOpen)
         Log.e("showOpen", "showOpen==>>showOpen:" + showOpen)
         Log.e("marketName", "marketName==>>" + marketName)
         Log.e("marketName", "marketTypewe==>>" + marketType)
         getContactUs()
-        if (marketName.equals("JODI DIGIT")){
+        if (marketName.equals("JODI DIGIT")) {
+
             sessionButton = false
-        }else  if (marketName.equals("HALF SANGAM")){
+
+        } else if (marketName.equals("HALF SANGAM")) {
+
             sessionButton = false
-        }else  if (marketName.equals("FULL SANGAM")){
+
+        } else if (marketName.equals("FULL SANGAM")) {
+
             sessionButton = false
-        }else{
+
+        } else {
+
+            val currentTime =
+                SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
+
+            Log.e("CURRENT_TIME", currentTime)
+            Log.e("OPEN_TIME", openTime)
+
+            if (currentTime >= openTime) {
+
+                // ONLY CLOSE SESSION
+
+                dataBinding.close.isChecked = true
+                dataBinding.close.isActivated = true
+
+                dataBinding.open.isChecked = false
+                dataBinding.open.isActivated = false
+
+                dataBinding.open.isEnabled = false
+
+                sessionButton = false
+
+            } else {
+
+                // BOTH OPEN/CLOSE AVAILABLE
+
+                dataBinding.open.isChecked = true
+                dataBinding.open.isActivated = true
+
+                dataBinding.close.isChecked = false
+                dataBinding.close.isActivated = false
+
+                dataBinding.open.isEnabled = true
+
+                sessionButton = true
+            }
+        }
+   /*     if (marketName.equals("JODI DIGIT")) {
+            sessionButton = false
+        } else if (marketName.equals("HALF SANGAM")) {
+            sessionButton = false
+        } else if (marketName.equals("FULL SANGAM")) {
+            sessionButton = false
+        } else {
             if (showOpen.equals("Yes")) {
                 dataBinding.close.isChecked = true
                 dataBinding.close.isActivated = true
@@ -122,30 +173,7 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
 
                 sessionButton = true
             }
-        }
-
-
-        /*
-         if (showOpen.equals("Yes")) {
-
-                    dataBinding.close.isChecked = true
-                    dataBinding.close.isActivated = true
-
-                    dataBinding.open.isChecked = false
-                    dataBinding.open.isActivated = false
-
-                    sessionButton = false
-
-                } else {
-                    dataBinding.open.isChecked = true
-                    dataBinding.open.isActivated = true
-
-                    dataBinding.close.isChecked = false
-                    dataBinding.close.isActivated = false
-
-                    sessionButton = true
-                }
-        */
+        }*/
 
         getAppSetting()
         if (marketType.equals("NORMAL")) {
@@ -171,6 +199,7 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                 dataBinding.llsession.visibility = View.VISIBLE
                 dataBinding.lldigit.visibility = View.VISIBLE
                 dataBinding.llPana.visibility = View.GONE
+                dataBinding.inputdigits.hint = "Enter Pana"
                 getNumberListDouble(marketName)
             } else if (marketName.equals("DOUBLE PANA")) {
                 marketName = "DOUBLE_PANA"
@@ -178,6 +207,8 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                 dataBinding.llsession.visibility = View.VISIBLE
                 dataBinding.lldigit.visibility = View.VISIBLE
                 dataBinding.llPana.visibility = View.GONE
+                dataBinding.digText.text = "Pana"
+                dataBinding.inputdigits.hint = "Enter Pana"
                 getNumberListDouble(marketName)
             } else if (marketName.equals("TRIPLE PANA")) {
                 marketName = "TRIPLE_PANA"
@@ -185,6 +216,9 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                 dataBinding.llsession.visibility = View.VISIBLE
                 dataBinding.lldigit.visibility = View.VISIBLE
                 dataBinding.llPana.visibility = View.GONE
+                dataBinding.digText.text = "Pana"
+                dataBinding.inputdigits.hint = "Enter Pana"
+
                 getNumberList(marketName)
             } else if (marketName.equals("HALF SANGAM")) {
                 marketName = "HALF_SANGAM"
@@ -193,7 +227,7 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                 dataBinding.lldigit.visibility = View.VISIBLE
                 dataBinding.llPana.visibility = View.VISIBLE
                 dataBinding.digText.text = "Open Digit"
-                dataBinding.panaText.text = "Close Digit"
+                dataBinding.panaText.text = "Close Pana"
                 // getNumberListDouble(marketName)
                 getNumberListFull(marketName)
             } else if (marketName.equals("FULL SANGAM")) {
@@ -202,8 +236,9 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                 dataBinding.llsession.visibility = View.GONE
                 dataBinding.lldigit.visibility = View.VISIBLE
                 dataBinding.llPana.visibility = View.VISIBLE
-                dataBinding.digText.text = "Open Digit"
-                dataBinding.panaText.text = "Close Digit"
+                dataBinding.digText.text = "Open Pana"
+                dataBinding.inputdigits.hint = "Enter Pana"
+                dataBinding.panaText.text = "Close Pana"
                 getNumberListFull(marketName)
             } else {
             }
@@ -322,16 +357,18 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                         hasValue = numberlistName.contains(inputdigits.text.toString())
 
                     } else if (marketName.equals("HALF_SANGAM")) {
-                        hasValue = openAnk.contains(inputdigits.text.toString()) && closeAnk.contains(
-                            inputpana.text.toString()
-                        )
+                        hasValue =
+                            openAnk.contains(inputdigits.text.toString()) && closeAnk.contains(
+                                inputpana.text.toString()
+                            )
 
                     } else if (marketName.equals("FULL_SANGAM")) {
                         Log.e("==>", "inputdigits==Sync>" + inputdigits.text.toString())
                         Log.e("==>", "inputpana==>" + inputpana.text.toString())
-                        hasValue = openAnk.contains(inputdigits.text.toString()) && closeAnk.contains(
-                            inputpana.text.toString()
-                        )
+                        hasValue =
+                            openAnk.contains(inputdigits.text.toString()) && closeAnk.contains(
+                                inputpana.text.toString()
+                            )
 
                     } else {
                     }
@@ -540,7 +577,8 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                     }
                 }
 
-                is Resource.Failure -> handleApiError(it,
+                is Resource.Failure -> handleApiError(
+                    it,
                     dataBinding.root,
                     activity = this@ActivityCreateBid,
                     retry = { getNumberList(this.marketName) })
@@ -592,7 +630,8 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                     }
                 }
 
-                is Resource.Failure -> handleApiError(it,
+                is Resource.Failure -> handleApiError(
+                    it,
                     dataBinding.root,
                     activity = this@ActivityCreateBid,
                     retry = { getNumberList(this.marketName) })
@@ -648,7 +687,8 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                     }
                 }
 
-                is Resource.Failure -> handleApiError(it,
+                is Resource.Failure -> handleApiError(
+                    it,
                     dataBinding.root,
                     activity = this@ActivityCreateBid,
                     retry = { getNumberList(this.marketName) })
@@ -679,7 +719,8 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                     }
                 }
 
-                is Resource.Failure -> handleApiError(it,
+                is Resource.Failure -> handleApiError(
+                    it,
                     dataBinding.root,
                     activity = this@ActivityCreateBid,
                     retry = { getUserList() })
@@ -781,7 +822,6 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
             tvdigitopen.text = inputdigit
             tvpoint.text = inputCoiins
             tvdigitclose.text = inputPana
-
             /*
                val user_Id: Int,
     val marketInsideId: Int,

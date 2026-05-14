@@ -72,15 +72,16 @@
             </com.google.android.material.appbar.AppBarLayout>
 
             <FrameLayout
-                android:visibility="gone"
                 android:id="@+id/content_frame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/dataConText" />
-            <RelativeLayout
                 android:layout_below="@+id/dataConText"
+                android:visibility="gone" />
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@+id/dataConText"
                 android:background="@color/white">
 
                 <androidx.cardview.widget.CardView
@@ -131,6 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/stripLayout">
+
                     <LinearLayout
                         android:id="@+id/linmarque"
                         android:layout_width="match_parent"
@@ -142,7 +144,7 @@
 
                         <TextView
                             android:id="@+id/tvAnnouncement"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:ellipsize="marquee"
@@ -150,16 +152,18 @@
                             android:marqueeRepeatLimit="marquee_forever"
                             android:scrollHorizontally="true"
                             android:singleLine="true"
+
                             android:text=""
                             android:textColor="@color/black_dark"
                             android:textSize="@dimen/_12ssp"
                             android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/aaa"
-                        android:layout_below="@+id/linmarque"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_50sdp"
+                        android:layout_below="@+id/linmarque"
                         android:layout_centerHorizontal="true"
                         android:background="@color/white_opacity"
                         android:baselineAligned="false"
@@ -205,12 +209,11 @@
                                     android:text="Withdraw"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/_9sdp"
-                                    android:textStyle="bold"  />
+                                    android:textStyle="bold" />
                             </LinearLayout>
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:visibility="gone"
                             android:id="@+id/whatsapp_item"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/_40sdp"
@@ -219,7 +222,8 @@
                             android:layout_weight="1"
                             android:background="@drawable/white"
                             android:backgroundTint="@color/red"
-                            android:gravity="center_vertical">
+                            android:gravity="center_vertical"
+                            android:visibility="gone">
 
                             <LinearLayout
 
@@ -382,27 +386,28 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/_5sdp">
 
-                             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                                 android:id="@+id/swipe_ref_lyt"
-                                 android:layout_width="match_parent"
-                                 android:layout_height="wrap_content">
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rvHome"
+                            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                                android:id="@+id/swipe_ref_lyt"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                tools:itemCount="5"
-                                tools:listitem="@layout/adapter_home" />
+                                android:layout_height="wrap_content">
 
-                            <ProgressBar
-                                android:id="@+id/progressBar"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone" />
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rvHome"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    tools:itemCount="5"
+                                    tools:listitem="@layout/adapter_home" />
+
+                                <ProgressBar
+                                    android:id="@+id/progressBar"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:visibility="gone" />
 
 
-                                                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
                         </RelativeLayout>
 
@@ -418,49 +423,49 @@
 
                         <RelativeLayout
 
-                            android:layout_marginStart="@dimen/_15sdp"
                             android:id="@+id/rlwhatsup"
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_centerHorizontal="true"
-                            android:background="@drawable/bg_circle_shadow"
+                            android:layout_marginStart="@dimen/_15sdp"
                             android:layout_marginBottom="@dimen/_20sdp"
+                            android:background="@drawable/bg_circle_shadow"
                             android:gravity="center">
 
                             <ImageView
-android:padding="@dimen/_2sdp"
                                 android:layout_width="@dimen/_38sdp"
                                 android:layout_height="@dimen/_38sdp"
+                                android:padding="@dimen/_2sdp"
                                 android:src="@drawable/ic_whatsapp"
                                 app:tint="@color/green" />
 
                         </RelativeLayout>
 
                     </RelativeLayout>
+
                     <RelativeLayout
                         android:id="@+id/rlcalls"
-                        android:layout_alignParentRight="true"
                         android:layout_width="@dimen/_60sdp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_alignParentBottom="true">
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="@dimen/_10sdp">
 
 
                         <RelativeLayout
                             android:id="@+id/rlcall"
-                            android:layout_alignParentRight="true"
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
+                            android:layout_alignParentRight="true"
                             android:layout_marginBottom="@dimen/_20sdp"
                             android:background="@drawable/bg_circle_shadow"
                             android:gravity="center">
 
                             <ImageView
-android:padding="@dimen/_2sdp"
                                 android:layout_width="@dimen/_38sdp"
                                 android:layout_height="@dimen/_38sdp"
-                                android:src="@drawable/call"
-                                  />
+                                android:padding="@dimen/_2sdp"
+                                android:src="@drawable/call" />
 
                         </RelativeLayout>
                     </RelativeLayout>
@@ -480,11 +485,12 @@ android:padding="@dimen/_2sdp"
                 android:text="@string/notconected"
                 android:textColor="@color/white_opacity"
                 android:visibility="gone" />
-    </RelativeLayout>
+        </RelativeLayout>
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigationView"
             android:layout_width="@dimen/_180sdp"
+
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="@color/white"

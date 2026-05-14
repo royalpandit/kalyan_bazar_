@@ -314,7 +314,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), AdapterHome.onClicklis
                             startActivity(contactUs)
                             requireActivity().finish()
                         }
-                        getDashboardList(isBetting)
+                     //   getDashboardList(isBetting)
 
                     }
                 }

@@ -1,6 +1,5 @@
 package com.app.kalyanbazar.activity
 
-
 import android.content.Intent
 import android.os.Build
 import android.util.Log
@@ -27,18 +26,21 @@ import java.util.Date
 import java.util.Locale
 
 @AndroidEntryPoint
-class ActivityIndashboard : BaseActivity<ActivityIndashboardBinding>(), AdapterInDashboard.onClicklistBazar {
+class ActivityIndashboard : BaseActivity<ActivityIndashboardBinding>(),
+    AdapterInDashboard.onClicklistBazar {
     private val viewModel by viewModels<HomeViewModel>()
     var arrUser: ArrayList<ResponseInDashBoard> = ArrayList()
     var arrUserDataToshow: ArrayList<ResponseInDashBoard> = ArrayList()
     var marketID: Int = 0
     var showAll: String = "yes"
     var showOpen: String = ""
-     var currenttime: String = ""
-     var marketType: String = ""
+    var currenttime: String = ""
+    var marketType: String = ""
+    var openTime: String = ""
+    var closeTime: String = ""
     var endtime: String = ""
     var inBetween: Boolean = true
-    override fun getLayoutResId(): Int =R.layout.activity_indashboard
+    override fun getLayoutResId(): Int = R.layout.activity_indashboard
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun setupViews() {
@@ -47,49 +49,53 @@ class ActivityIndashboard : BaseActivity<ActivityIndashboardBinding>(), AdapterI
         Log.e("showOpen", "showOpen==>>showAll:" + showAll)
 
 
-        Log.e("Show","Show==>>>"+showAll)
+        Log.e("Show", "Show==>>>" + showAll)
 
         marketType = intent.getStringExtra(Constants.marketType!!).toString()
-        Log.e("Show","marketType==>>>"+marketType)
+        openTime = intent.getStringExtra(Constants.openTime).toString()
+        closeTime = intent.getStringExtra(Constants.closeTime).toString()
+        Log.e("OPEN_TIME", "OPEN_TIMEINDashBoard"+openTime)
+        Log.e("CLOSE_TIME", "CLOSE_TIMEDashBoard"+closeTime)
+
+        Log.e("Show", "marketType==>>>" + marketType)
         dataBinding.apply {
-            toolbar.tvTitle.text="Game"
+            toolbar.tvTitle.text = "Game"
             toolbar.ivBack.setOnClickListener {
                 onBackPressed()
             }
-            currenttime= SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
+            currenttime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
             //Log.e("Currenttime","time--->>>"+currenttime)
             //checkTime("08:00:00","17:00:00",currenttime)
             //Log.e("inBetween","inBetween--->>>"+inBetween)
-           /* if(showAll.equals("yes")){
-                inBetween = true
-                showOpen="Yes"
-            }else {
-                inBetween = false
-                showOpen="No"
-            }*/
+            /* if(showAll.equals("yes")){
+                 inBetween = true
+                 showOpen="Yes"
+             }else {
+                 inBetween = false
+                 showOpen="No"
+             }*/
 
-            if(showAll.equals("yes")){
+            if (showAll.equals("yes")) {
                 inBetween = true
-                showOpen="Yes"
-            }else if (showAll.equals("no")) {
+                showOpen = "Yes"
+            } else if (showAll.equals("no")) {
                 inBetween = false
-                showOpen="No"
-            }else {
+                showOpen = "No"
+            } else {
                 inBetween = false
-                showOpen="starline"
+                showOpen = "starline"
             }
 
             getInDashboardList(marketID)
-          //  getUserList()
-
-
+            //  getUserList()
         }
     }
 
     override fun setupViewsOnResume() {
         getUserList()
-        Log.e("Onresume====","OnResume====>>")
+        Log.e("Onresume====", "OnResume====>>")
     }
+
     private fun getUserList() {
         viewModel.getUserList.observe(this, Observer {
             MyApplication.ProgressBar(this@ActivityIndashboard, it is Resource.Loading)
@@ -99,11 +105,12 @@ class ActivityIndashboard : BaseActivity<ActivityIndashboardBinding>(), AdapterI
                         //  dataBinding.rvHome.hideShimmer()
                         //       dataBinding.rvHome.hideShimmerAdapter()
                         //   dataBinding.toolbar.setTitle(it.value.data.totalAmount.toString())
-                        dataBinding.toolbar.tvcois.text=it.value.data.totalAmount.toString()
+                        dataBinding.toolbar.tvcois.text = it.value.data.totalAmount.toString()
                     }
                 }
 
-                is Resource.Failure -> handleApiError(it,
+                is Resource.Failure -> handleApiError(
+                    it,
                     dataBinding.root,
                     activity = this@ActivityIndashboard,
                     retry = { getUserList() })
@@ -116,42 +123,54 @@ class ActivityIndashboard : BaseActivity<ActivityIndashboardBinding>(), AdapterI
         )
 
     }
+
     override fun onItemClickBazar(position: ResponseInDashBoard) {
 //ActivityCreateBid
-        startActivity(Intent(this@ActivityIndashboard, ActivityCreateBid::class.java)
-            .putExtra(Constants.Category_Name,position.name).putExtra(Constants.MARKET_ID,position.marketIdId).putExtra(Constants.SHOW_OPEN,showOpen)
-            .putExtra(Constants.CAT_ID,position.id).putExtra(Constants.marketType, marketType))
+        startActivity(
+            Intent(this@ActivityIndashboard, ActivityCreateBid::class.java)
+                .putExtra(Constants.Category_Name, position.name)
+                .putExtra(Constants.MARKET_ID, position.marketIdId)
+                .putExtra(Constants.SHOW_OPEN, showOpen)
+                .putExtra(Constants.CAT_ID, position.id)
+                .putExtra(Constants.marketType, marketType)
+                .putExtra(Constants.openTime, openTime)
+                .putExtra(Constants.closeTime, closeTime)
+        )
 
     }
-    private fun getInDashboardList(marketID: Int) {
 
+    private fun getInDashboardList(marketID: Int) {
         viewModel.getInDashboard.observe(this, Observer {
             MyApplication.ProgressBar(this@ActivityIndashboard, it is Resource.Loading)
             when (it) {
                 is Resource.Success -> {
                     if (it.value.status) {
-                      //  getUserList()
+                        //  getUserList()
                         arrUser = ArrayList()
                         arrUser = it.value.data
 
-                        if(!inBetween){
+                        if (!inBetween) {
                             arrUserDataToshow = arrUser
-                        }else{
-                            for(a in arrUser){
-                                if(a.name.equals("FULL SANGAM") || a.name.equals("JODI DIGIT") || a.name.equals("HALF SANGAM")){
-
-                                }else{
+                        } else {
+                            for (a in arrUser) {
+                                if (a.name.equals("FULL SANGAM") || a.name.equals("JODI DIGIT") || a.name.equals(
+                                        "HALF SANGAM"
+                                    )
+                                ) {
+                                } else {
                                     arrUserDataToshow.add(a)
                                 }
                             }
                         }
 
                         setHomeUserAdapter()
-                    }else{
+                    } else {
                         toast("BadRequest")
                     }
                 }
-                is Resource.Failure -> handleApiError(it,
+
+                is Resource.Failure -> handleApiError(
+                    it,
                     dataBinding.root,
                     activity = this,
                     retry = { getInDashboardList(this.marketID) })
@@ -161,7 +180,6 @@ class ActivityIndashboard : BaseActivity<ActivityIndashboardBinding>(), AdapterI
         })
         viewModel.getInDashboard(
             marketId = marketID
-
         )
     }
 
