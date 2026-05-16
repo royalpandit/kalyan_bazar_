@@ -34,6 +34,7 @@ import com.app.kalyanbazar.utils.Constants
 import com.app.kalyanbazar.utils.MyApplication
 import com.app.kalyanbazar.utils.handleApiError
 import com.app.kalyanbazar.viewModel.HomeViewModel
+import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import java.net.URLEncoder
@@ -95,7 +96,7 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
             getUserList()
            // profile()
             getContactUs()
-            getImageSlider()
+           // getImageSlider()
             getInformation()
             dataBinding.swipeRefLyt.setOnRefreshListener {
 
@@ -110,6 +111,16 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
 
     fun onCLick() {
         dataBinding.apply {
+            btnStartQuiz.setOnClickListener {
+
+                val intent = Intent(
+                    this@HomeDashboardActivity,
+                    TrainingActivity::class.java
+                )
+
+                startActivity(intent)
+            }
+
             whatsappItem.setOnClickListener {
                 openPopup(popUpMessage)
             }
@@ -177,7 +188,7 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
         // getUserList()
       //  profile()
         getContactUs()
-        getImageSlider()
+     //   getImageSlider()
         getInformation()
         /*dataBinding.swipeRefLyt.setOnRefreshListener {
             dataBinding.swipeRefLyt.isRefreshing = false
@@ -387,12 +398,76 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
         dataBinding.rvHome.layoutManager = LinearLayoutManager(this)
 
     }
+    override fun onItemClickBazar(position: ResponseDashBoardListItem, rlhead: RelativeLayout) {
 
+        if (position.marketStatus == true) {
+
+            if (!isBetting) {
+                return
+            }
+
+            val status = checkTimeStatus(
+                position.marketOpeningTime!!,
+                position.marketClosingTime!!
+            )
+
+            when (status) {
+
+                // Before Open Time
+                1 -> {
+                    startActivity(
+                        Intent(this, ActivityIndashboard::class.java)
+                            .putExtra(Constants.marketID, position.id)
+                            .putExtra(Constants.marketType, position.marketType)
+                            .putExtra(Constants.openTime, position.marketOpeningTime)
+                            .putExtra(Constants.closeTime, position.marketClosingTime)
+                            .putExtra(Constants.showALl, "no")
+                    )
+                }
+
+                // Market Running
+                2 -> {
+                    startActivity(
+                        Intent(this, ActivityIndashboard::class.java)
+                            .putExtra(Constants.marketID, position.id)
+                            .putExtra(Constants.marketType, position.marketType)
+                            .putExtra(Constants.openTime, position.marketOpeningTime)
+                            .putExtra(Constants.closeTime, position.marketClosingTime)
+                            .putExtra(Constants.showALl, "yes")
+                    )
+                }
+
+                // Market Closed
+                3 -> {
+                    openPopup("Today's time is over for this market.")
+                }
+            }
+
+        } else {
+
+            ObjectAnimator.ofFloat(
+                rlhead,
+                "translationX",
+                0f,
+                25f,
+                -25f,
+                25f,
+                -25f,
+                15f,
+                -15f,
+                6f,
+                -6f,
+                0f
+            ).setDuration(700).start()
+
+            vibrate()
+        }
+    }
+/*
     override fun onItemClickBazar(position: ResponseDashBoardListItem, rlhead: RelativeLayout) {
         if (position.marketStatus!!.equals(true)) {
             Log.e("not==>>", "not")
-            // ActivityIndashboard
-            startActivity(
+             startActivity(
                 Intent(this@HomeDashboardActivity, ActivityIndashboard::class.java).putExtra(
                     Constants.marketID,
                     position.id
@@ -421,7 +496,29 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
             vibrate()
         }
     }
+*/
 
+    fun checkTimeStatus(startTime: String, endTime: String): Int {
+
+        val dateFormat = java.text.SimpleDateFormat("HH:mm", java.util.Locale.getDefault())
+        val currentTime = dateFormat.format(java.util.Date())
+
+        return try {
+
+            val startDate = dateFormat.parse(startTime)
+            val endDate = dateFormat.parse(endTime)
+            val currentTimeDate = dateFormat.parse(currentTime)
+
+            when {
+                currentTimeDate.before(startDate) -> 1
+                currentTimeDate.after(endDate) -> 3
+                else -> 2
+            }
+
+        } catch (e: Exception) {
+            -1
+        }
+    }
     fun vibrate() {
         val vib = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             val vibratorManager =
@@ -452,13 +549,19 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
                         val tvPhone = headerView.findViewById<TextView>(R.id.tvphone)
                         tvUserName.text = it.value.data.firstName.toString()
                         tvPhone.text = it.value.data.phoneNumber.toString()
-                        //  dataBinding.rvHome.hideShimmer()
-                        //       dataBinding.rvHome.hideShimmerAdapter()
-                        //   dataBinding.toolbar.setTitle(it.value.data.totalAmount.toString())
                         dataBinding.tvcois.text = it.value.data.totalAmount.toString()
                         isUserStatus = it.value.data.userStatus!!
                         isBetting = it.value.data.betting!!
+                        getImageSlider()
                         if (isBetting == false) {
+                            dataBinding.rvHome.visibility = View.GONE
+                            dataBinding.btnStartQuiz.visibility = View.VISIBLE
+                            dataBinding.cvgif.visibility = View.VISIBLE
+                            Glide.with(this)
+                                .asGif()
+                                .load(R.drawable.dumm)
+                                .into(dataBinding.ivGif)
+
                             dataBinding.aaa.visibility = View.GONE
                             dataBinding.tvcois.visibility = View.GONE
                             dataBinding.ivwallet.visibility = View.GONE
@@ -474,8 +577,11 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
                             menu.findItem(R.id.rateUs).isVisible = false
 
 
-                         //   getDashboardList()
+
                         } else {
+                            dataBinding.rvHome.visibility = View.VISIBLE
+                            dataBinding.btnStartQuiz.visibility = View.GONE
+                            dataBinding.cvgif.visibility = View.GONE
                             dataBinding.tvAnnouncement.visibility = View.VISIBLE
                             dataBinding.aaa.visibility = View.VISIBLE
                             dataBinding.tvcois.visibility = View.VISIBLE
@@ -490,7 +596,7 @@ class HomeDashboardActivity : BaseActivity<ActivityHomeDashboardBinding>(),
                             menu.findItem(R.id.shareApp).isVisible = true
                             menu.findItem(R.id.rateUs).isVisible = true
 
-                          //  getDashboardList()
+
                         }
                         if (isUserStatus.equals(false)) {
                             MyApplication.tinyDB.clear()
