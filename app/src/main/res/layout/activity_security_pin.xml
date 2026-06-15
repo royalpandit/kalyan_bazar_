@@ -46,7 +46,7 @@
                 android:text="@string/please_enter_your_security_pin"
                 android:textColor="@android:color/black" />
 
-            <com.app.kalyanbazar.utils.PFCodeView
+            <com.kalyan.kalyanbazzar.utils.PFCodeView
                 android:id="@+id/code_view"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
