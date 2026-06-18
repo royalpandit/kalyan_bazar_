@@ -8,6 +8,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
@@ -317,6 +318,7 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
                 whatsAppBtn()
             }
             btnProceed.setOnClickListener {
+                hideKeyboard()
                 if (inputdigits.text.toString().isEmpty()) {
                     inputdigits.requestFocus()
                     inputdigits.error = "Enter Digit"
@@ -974,5 +976,10 @@ class ActivityCreateBid : BaseActivity<ActivityCreateBidBinding>() {
         i.data = Uri.parse(url)
         startActivity(i)
     }
-
+    private fun hideKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        currentFocus?.let {
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
+        }
+    }
 }
